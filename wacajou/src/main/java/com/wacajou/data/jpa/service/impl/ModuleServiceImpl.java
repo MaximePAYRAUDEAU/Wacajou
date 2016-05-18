@@ -62,9 +62,9 @@ public class ModuleServiceImpl implements ModuleService {
 	public void Update(Module module) throws ServiceException {
 		int version = module.getVersion();
 		module.setVersion(version + 1);
-		String path = module.getPath();
-		String save = path.split("_V")[0] + module.getVersion();
-		module.setPath(save);
+//		String path = module.getPath();
+//		String save = path.split("_V")[0] + module.getVersion();
+//		module.setPath(save);
 		moduleRepository.save(module);		
 	}
 }

@@ -73,9 +73,9 @@ public class ParcoursServiceImpl implements ParcoursService {
 	public void Update(Parcours parcours) throws ServiceException {
 		int version = parcours.getVersion();
 		parcours.setVersion(version + 1);
-		String path = parcours.getPath();
-		String save = path.split("_V")[0] + parcours.getVersion();
-		parcours.setPath(save);
+//		String path = parcours.getPath();
+	//	String save = path.split("_V")[0] + parcours.getVersion();
+	//	parcours.setPath(save);
 		parcoursRepository.save(parcours);		
 	}
 	
