@@ -1,0 +1,15 @@
+# Database config 
+spring: 
+    profiles: dblocal
+    datasource:
+        url: jdbc:mysql://localhost:3306/isep?serverTimezone=UTC
+        username: app_user
+        password: LSbXF`g9B*Jd;[)+
+        driverClassName: com.mysql.cj.jdbc.Driver
+        validation-query: true
+        description: Base de donnée local
+        serviceId: IsepDBlocal 
+    jpa: 
+        database-platform: org.hibernate.dialect.MySQL5Dialect
+#        hibernate:
+#            ddl-auto: create-drop

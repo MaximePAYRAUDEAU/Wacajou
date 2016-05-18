@@ -1,0 +1,14 @@
+spring:
+    profiles: dbdistant
+    datasource:
+        url: jdbc:mysql://sql8.freemysqlhosting.net:3306/sql8116561
+        username: sql8116561
+        password: pxWMneW7ZN
+        driverClassName: com.mysql.cj.jdbc.Driver
+        validation-query: true
+        description: Base de donn�e en ligne
+        serviceId: IsepDBdistant
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5Dialect  
+        hibernate:
+            ddl-auto: create-drop
