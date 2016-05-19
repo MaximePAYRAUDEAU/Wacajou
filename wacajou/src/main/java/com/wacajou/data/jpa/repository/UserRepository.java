@@ -31,6 +31,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findByFnameAndLname(String fname, String lname);
 
 	User findByMail(String mail);
+	
+	User findByLogin(String login);
 
 	Page<User> findAll(Pageable pageable);
 

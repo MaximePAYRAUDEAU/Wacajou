@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.repository.ModuleRepository;
 import com.wacajou.data.jpa.service.ModuleService;
 
@@ -25,24 +27,31 @@ public class ModuleServiceImpl implements ModuleService {
 	public ModuleServiceImpl(ModuleRepository moduleRepository) {
 		this.moduleRepository = moduleRepository;
 	}
-
+	
 	@Override
-	public void Create(String name, String domain) throws ServiceException {
-		// Vérifiaction valeur non null
-
+	public void Create(String name, String description, String image,
+			String domain) throws ServiceException {
+		// TODO Auto-generated method stub
 		Assert.notNull(name);
 		Assert.notNull(domain);
-
-		Module module = new Module(name, name + "_V0", domain);
-
+		Module module = new Module();
+		Domain[] tab = Domain.values();
+		for (int i = 0; i < tab.length; i++) {
+			if (tab[i].toString().equals(domain)) {
+				module.Create(name, description, image, tab[i]);
+				break;
+			}
+		}
+		if(module.getDomain() == null){
+			error = "Domain non conforme";
+		}
 		try {
 			moduleRepository.save(module);
 		} catch (Exception e) {
 			e.printStackTrace();
-			error = "Duplicate module";
-			throw new ServiceException("Duplicate module");
+			error = "Module déjà existant";
 		}
-
+		
 	}
 
 	public String getError() {
@@ -59,12 +68,27 @@ public class ModuleServiceImpl implements ModuleService {
 	}
 
 	@Override
-	public void Update(Module module) throws ServiceException {
-		int version = module.getVersion();
-		module.setVersion(version + 1);
-//		String path = module.getPath();
-//		String save = path.split("_V")[0] + module.getVersion();
-//		module.setPath(save);
-		moduleRepository.save(module);		
+	public void Update(String name) throws ServiceException {
+		try{
+			Module module = moduleRepository.findByName(name);
+			module.setDescription("updated desc");
+			moduleRepository.saveAndFlush(module);
+		}catch (Exception e) {
+			e.printStackTrace();
+			error = "Erreur dans l'update";
+		}
 	}
+
+	@Override
+	public void Delete(String name) throws ServiceException {
+		Module module = Consult(name);
+		try{
+			moduleRepository.delete(module);
+		}catch (Exception e){
+			e.printStackTrace();
+			error = "Erreur lors de la suppression du module";
+		}
+	}
+
+	
 }

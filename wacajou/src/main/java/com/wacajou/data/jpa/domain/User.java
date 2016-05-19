@@ -22,6 +22,8 @@ public class User extends AbstractEntity{
 	private Statut statut;
 	@Column(nullable = true)
 	private String mail;
+	@Column(nullable = false, unique = true)
+	private String login;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserModule> userModule;
@@ -30,7 +32,7 @@ public class User extends AbstractEntity{
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<Comments> comments;
 	
-	protected User(){
+	public User(){
 		
 	}
 	
@@ -42,7 +44,8 @@ public class User extends AbstractEntity{
 		this.statut = statut;
 	}
 	
-	public void Create(String promo, Statut statut){
+	public void Create(String login, String promo, Statut statut){
+		this.login = login;
 		this.statut = statut;
 		this.promo = promo;
 	}
@@ -73,8 +76,12 @@ public class User extends AbstractEntity{
 		return this.comments;
 	}
 	
+	public String getLogin(){
+		return this.login;
+	}
+	
 	@Override
 	public String toString(){
-		return getId() + ","  + getFname() + "," + getLname() + "," + getMail() + "," + getStatut();
+		return getId() + "," + getLogin() + "," + getFname() + "," + getLname() + "," + getMail() + "," + getStatut();
 	}
 }

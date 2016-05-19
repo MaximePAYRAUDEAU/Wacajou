@@ -11,5 +11,5 @@ spring:
         serviceId: IsepDBlocal 
     jpa: 
         database-platform: org.hibernate.dialect.MySQL5Dialect
-#        hibernate:
-#            ddl-auto: create-drop
+        hibernate:
+            ddl-auto: create

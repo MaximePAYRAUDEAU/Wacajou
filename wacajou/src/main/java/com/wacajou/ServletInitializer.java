@@ -21,7 +21,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	/*public void onStartup(ServletContext servletContext)
 			throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-		ctx.register(Config.class);
+		ctx.register(ConfigConnexion.class);
 		servletContext.addListener(new ContextLoaderListener(ctx));
 
 		ctx.setServletContext(servletContext);

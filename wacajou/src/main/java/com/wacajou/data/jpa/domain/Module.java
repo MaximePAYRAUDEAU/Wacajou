@@ -31,19 +31,20 @@ public class Module extends AbstractEntity {
 	private Set<Comments> comments;
 
 	@Column(name = "domain")
-	private String domain;
+	private Domain domain;
 	
 	@Column(name = "image")
 	private String image;
 	
-	protected Module() {
+	public Module() {
 
 	}
 
-	public Module(String name, String description, String domain) {
+	public void Create(String name, String description, String image, Domain domain) {
 		this.name = name;
 		this.description = description;
 		this.domain = domain;
+		this.image = image;
 	}
 
 	public String getDescription() {
@@ -61,7 +62,7 @@ public class Module extends AbstractEntity {
 		return this.comments;
 	}
 	
-	public String getDomain() {
+	public Domain getDomain() {
 		return this.domain;
 	}
 	
