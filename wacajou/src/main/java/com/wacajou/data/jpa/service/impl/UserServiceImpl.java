@@ -54,4 +54,25 @@ public class UserServiceImpl implements UserService {
 		return this.error;
 	}
 
+	@Override
+	public User Consult(String fname, String  lname, String login, String mail) throws ServiceException {
+		User user = userRepository.findByFnameAndLname(fname, lname);
+		if (user.equals(null)){
+			user = userRepository.findByLogin(login);
+			if (user.equals(null)){
+				user = userRepository.findByMail(mail);
+				if (user.equals(null)){
+					error = "Utilisateur inexistant";
+				}
+			}		
+		}
+		return null;
+	}
+
+	/*@Override
+	public void Update() {
+		// TODO Auto-generated method stub
+		
+	}*/
+
 }
