@@ -69,10 +69,10 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	/*@Override
-	public void Update() {
+	@Override
+	public void Update(String fname, String lname, String mail) {
 		// TODO Auto-generated method stub
 		
-	}*/
+	}
 
 }
