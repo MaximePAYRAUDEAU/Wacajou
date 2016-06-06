@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add user : Wacajou</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form method="post" action="/wacajou/user/add/process">
+		<label for="login">Identifiant :</label>
+		<input type="text" name="login" /><br />
+		<label for="promo" >Promotion :</label>
+		<input type="text" name="promo" /><br />
+		<label for="statut" >Statut :</label>
+		<input type="text" name="statut" /><br />
+		<input type="submit" value="Submit" />
+	</form>
+    <p th:text="${message}" />
+</body>
+</html>

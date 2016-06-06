@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="Payraudeau Maxime" />
+
+<title>Create module</title>
+<!-- Bootstrap Core CSS -->
+<link href="../../../css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="../../../css/simple-sidebar.css"
+	th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<div id="page-content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4">
+					<h1>Create new module</h1>
+					<form method="post" action="#" enctype="multipart/form-data" th:action="@{/module/create/send}">
+						<fieldset name="createModule">
+							<legend>Créer un module</legend>
+							<label for="name" >Nom :</label><br />
+							<input type="text"  name="name" /><br />
+							<label for="domain" >Domain :</label><br />
+							<select name="domain">
+								<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain}" />
+							</select><br />
+							<label for="description" >Description :</label><br />
+							<input type="text" name="description" /><br />
+							<label for="image" >Image :</label><br />
+							<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+							<input type="file" name="image" /><br />
+							<label for="respo" >Responsable :</label><br />
+							<select name="user_id" >
+								<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.lname} + ' ' + ${user.fname}" />
+							</select><br />
+							<input type="submit" value="Créer" name="send" />
+						</fieldset>
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<p th:text="${error}">Erreur :</p>
+					<p th:text="${success}"> Succès :</p> 
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
