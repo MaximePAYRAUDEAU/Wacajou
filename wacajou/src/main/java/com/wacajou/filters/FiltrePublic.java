@@ -26,16 +26,12 @@ public class FiltrePublic implements Filter {
     /**
      * Default constructor. 
      */
-    public FiltrePublic() {
-        // TODO Auto-generated constructor stub
-    }
+    public FiltrePublic() {}
 
 	/**
 	 * @see Filter#destroy()
 	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+	public void destroy() {}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
@@ -46,7 +42,7 @@ public class FiltrePublic implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
-		System.out.println("Request caught for sessionId: "+ session.getId());
+		System.out.println("Request caught for sessionId: "+ session.getId() + "connect=" + session.getAttribute("connect"));
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}
@@ -54,8 +50,6 @@ public class FiltrePublic implements Filter {
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+	public void init(FilterConfig fConfig) throws ServletException {}
 
 }

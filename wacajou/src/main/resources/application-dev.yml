@@ -5,6 +5,3 @@ logging:
         org.springframework.web: INFO
         org.hibernate: INFO 
     file: ${my.log}
-    jpa:
-        hibernate:
-            show-sql: true

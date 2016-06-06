@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.wacajou.WacajouApplication;
-import com.wacajou.data.jpa.repository.ModuleRepository;
-import com.wacajou.data.jpa.service.impl.ModuleServiceImpl;
+import com.wacajou.data.jpa.service.ModuleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WacajouApplication.class)
@@ -19,20 +18,24 @@ import com.wacajou.data.jpa.service.impl.ModuleServiceImpl;
 public class TestModuleUpdate {
 
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleService service;
 	
 	@Test
 	public void testModuleServiceUpdateFalse(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Update("tes0000");
-		assertNull(service.getError());
+		this.service.Update("tes0000");
+		assertNull(this.service.getError());
 	}
 
 	@Test
 	public void testModuleServiceUpdateTrue(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("Update", "", "", "OTHER");
-		service.Update("Update");
-		assertNull(service.getError());
+		this.service.Create("Update", "", "", "OTHER", null);
+		System.out.println(this.service.getError());
+		this.service.Update("Update");
+		assertNull(this.service.getError());
+	}
+	@Test
+	public void testModuleServiceCreate(){
+		this.service.Create("Update", "", "", "OTHER", null);
+		assertNull(this.service.getError());
 	}
 }

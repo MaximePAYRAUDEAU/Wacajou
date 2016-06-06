@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.wacajou.WacajouApplication;
-import com.wacajou.data.jpa.repository.ModuleRepository;
-import com.wacajou.data.jpa.service.impl.ModuleServiceImpl;
+import com.wacajou.data.jpa.service.ModuleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WacajouApplication.class)
@@ -19,55 +18,48 @@ import com.wacajou.data.jpa.service.impl.ModuleServiceImpl;
 public class TestModuleCreate {
 
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleService service;
 	
 	@Test
 	public void testModuleServiceCreateAllEmpty(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("", "", "", "");
+		service.Create("", "", "", "", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateName(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test0", "", "", "");
+		service.Create("test0", "", "", "", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateNameAndDomainFalse(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test1", "", "", "Odsf");
+		service.Create("test1", "", "", "Odsf", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateNameAndDomainTrue(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test2", "", "", "OTHER");
+		service.Create("test2", "", "", "OTHER", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateNameAndDomainAndDescription(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test3", "testDesc3", "", "OTHER");
+		service.Create("test3", "testDesc3", "", "OTHER", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateNameAndDomainAndDescriptionAndImage(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test4", "testDesc4", "test123", "OTHER");
+		service.Create("test4", "testDesc4", "test123", "OTHER", null);
 		assertNull(service.getError());
 	}
 	
 	@Test
 	public void testModuleServiceCreateNameAndDomainAndDescriptionAndImageSame(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("test5", "testDesc4", "test123", "OTHER");
-		service.Create("test5", "testDesc4", "test123", "OTHER");
+		service.Create("test5", "testDesc4", "test123", "OTHER", null);
+		service.Create("test5", "testDesc4", "test123", "OTHER", null);
 		assertNull(service.getError());
 	}
 }

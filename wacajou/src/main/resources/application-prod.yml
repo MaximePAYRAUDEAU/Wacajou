@@ -1,2 +1,6 @@
 spring:
     profiles: dev
+logging:
+    level:
+        org.springframework.web: INFO
+        org.hibernate: INFO 

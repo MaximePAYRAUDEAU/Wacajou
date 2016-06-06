@@ -15,27 +15,27 @@ public class Module extends AbstractEntity {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
 	private Set<ParcoursModule> parcoursModule;
 
-	@Column(name = "moduleName", unique = true)
+	@Column(name = "moduleName", unique = true, nullable = false)
 	private String name;
 
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true)
 	private User respo;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
 	private Set<UserModule> userModule;
-	
-	@Column(name = "description")
+
+	@Column(name = "description", nullable = true)
 	private String description;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
 	private Set<Comments> comments;
 
-	@Column(name = "domain")
+	@Column(name = "domain", nullable = false)
 	private Domain domain;
-	
-	@Column(name = "image")
+
+	@Column(name = "image", nullable = true)
 	private String image;
-	
+
 	public Module() {
 
 	}
@@ -47,30 +47,44 @@ public class Module extends AbstractEntity {
 		this.image = image;
 	}
 
-	public String getDescription() {
-		return this.description;
-	}
-	
-	public String getName(){
-		return this.name;
-	}
-	
 	public User getRespo() {
 		return this.respo;
 	}
-	public Set<Comments> getComms(){
-		return this.comments;
+	
+	public void setRespo(User user) {
+		this.respo = user;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public Set<Comments> getComms() {
+		return this.comments;
+	}
+
 	public Domain getDomain() {
 		return this.domain;
+	}
+
+	public void setDomain(Domain domain){
+		this.domain = domain;
 	}
 	
 	public String getImage() {
 		return this.image;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
 }

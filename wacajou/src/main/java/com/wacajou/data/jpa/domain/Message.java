@@ -1,8 +1,13 @@
 package com.wacajou.data.jpa.domain;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 @Entity
 public class Message extends AbstractEntity {
@@ -13,10 +18,14 @@ public class Message extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true)
 	private User userSender;
 	
+	@Column(name = "message", nullable = false)
 	private String message;
+	@Column(name = "title", nullable = true)
 	private String title;
+	@Column(name = "subject", nullable = true)
 	private String subject;
-	private String logdate;
+	@Column(name = "logdate")
+	private Date logdate;
 	
 	protected Message(){
 		
@@ -42,8 +51,14 @@ public class Message extends AbstractEntity {
 		return this.message;
 	}
 	
-	public String getLogdate(){
+	public Date getLogdate(){
 		return this.logdate;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	public void setLogDate(){
+		this.logdate = new Date();
 	}
 	
 	@Override

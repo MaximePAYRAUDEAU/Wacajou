@@ -10,21 +10,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.wacajou.WacajouApplication;
-import com.wacajou.data.jpa.repository.ModuleRepository;
-import com.wacajou.data.jpa.service.impl.ModuleServiceImpl;
+import com.wacajou.data.jpa.service.ModuleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WacajouApplication.class)
 @WebAppConfiguration
 public class TestModuleConsult {
+
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleService service;
 	
 	@Test
 	public void testModuleServiceConsult(){
-		ModuleServiceImpl service = new ModuleServiceImpl(moduleRepository);
-		service.Create("Update", "", "", "OTHER");
-		service.Consult("Update");
+		this.service.Create("Update", "", "", "OTHER" , null);
+		this.service.ConsultByName("Update");
 		assertNull(service.getError());
 	}
 }
