@@ -6,7 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wacajou.data.jpa.domain.Module;
@@ -14,6 +17,7 @@ import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
+import com.wacajou.data.jpa.service.ModuleService;
 import com.wacajou.data.jpa.service.ParcoursService;
 import com.wacajou.data.jpa.service.UserService;
 
@@ -27,6 +31,7 @@ import com.wacajou.data.jpa.service.UserService;
  *
  */
 @Controller
+@SessionAttributes(value = UserController.SESSION_USER, types = { User.class })
 public class GlobalController {
 	protected static final String SESSION_USER = "session_user";
 
@@ -36,16 +41,18 @@ public class GlobalController {
 	@Autowired
 	private ParcoursService parcoursService;
 	
-	@RequestMapping("/home")
+	@Autowired
+	private ModuleService moduleService;
+	
+	@RequestMapping(value = "/home")
 	public ModelAndView goHome(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home");
-		System.out.println("Home called");
 		modelAndView = setPortFolio(null, modelAndView);
 		return modelAndView;
 	}
 	
-	@RequestMapping("/test")
+	@RequestMapping(value = "/test")
 	public ModelAndView testing(HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home");
@@ -57,25 +64,23 @@ public class GlobalController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/admin")
-	public ModelAndView administration(HttpSession session){
-		ModelAndView modelAndView = new ModelAndView();
+	@RequestMapping(value = "administration")
+	public ModelAndView admin(HttpSession session, ModelAndView modelAndView){
 		User user = (User) session.getAttribute(SESSION_USER);
 		if(user != null){
 			if(!(user.getStatut().equals(Statut.ANCIEN) || user.getStatut().equals(Statut.STUDENT)))
 				modelAndView.setViewName("admin/admin");
 			else
-				modelAndView.setViewName("redirect:/home");
+				modelAndView.setViewName("home");
 		}else
-			modelAndView.setViewName("redirect:/home");
+			modelAndView.setViewName("home");
 		return modelAndView;
 	}
 	
-	@RequestMapping("/sidebar")
-	public ModelAndView profilPage(HttpSession session) {
+	@RequestMapping(value = "/sidebar")
+	public ModelAndView sidebar(HttpSession session, ModelAndView mandv) {
 		
-		ModelAndView mandv = new ModelAndView();
-		mandv.setViewName("/template/sidebar");
+		mandv.setViewName("template/sidebar");
 		
 		User user = (User) session.getAttribute("session_user");
 		
@@ -111,4 +116,13 @@ public class GlobalController {
 		return modelAndView;
 	}
 	
+	@ModelAttribute("Allmodule")
+	public List<Module> modules() {
+		return moduleService.getAllModule();
+	}
+	
+	@ModelAttribute("Allparcours")
+	public List<Parcours> parcours() {
+		return parcoursService.getAll();
+	}
 }

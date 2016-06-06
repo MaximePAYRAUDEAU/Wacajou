@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @WebFilter(dispatcherTypes = {DispatcherType.FORWARD }
-					, urlPatterns = { "/wacajou/*" })
+					, urlPatterns = { "/wacajou/user/*" })
 public class FiltrePublic implements Filter {
 
     /**
@@ -41,8 +41,8 @@ public class FiltrePublic implements Filter {
 		// place your code here
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
-
-		System.out.println("Request caught for sessionId: "+ session.getId() + "connect=" + session.getAttribute("connect"));
+        
+	//	System.out.println("Request caught for sessionId: "+ session.getId() + "connect=" + session.getAttribute("connect"));
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}

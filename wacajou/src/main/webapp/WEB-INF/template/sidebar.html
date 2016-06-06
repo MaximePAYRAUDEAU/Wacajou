@@ -35,23 +35,28 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<a href="/wacajou/home"> Wacajou application </a>
+					<a th:href="@{/home}"> Wacajou application </a>
 				</li>
 				<div th:if="${user != null}" >
 					<li>
-						<a href="/wacajou/user/profil" th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</a>
+						<a th:href="@{/logout}" ><i class="fa fa-lock"></i></a>
+					</li>
+					<li>
+						<a th:href="@{/profil}" th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</a>
 						<img src="../images/profile.png"
 								th:src="@{/images/${user-info.image}}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
 					</li>
 					<li>
-						<a href="#" th:href="@{/profil}">Profil</a>
+						<a th:href="@{/profil}" >Profil</a>
 					</li>
 					<li>
-						<a href="#" th:href="@{/mail}">Messagerie</a>
+						<a th:href="@{/mail}" >Messagerie</a>
 					</li>
-					<li th:if="${right != null}" >
-						<a href="#" th:href="@{/admin}">Administration</a>
+					<div th:if="${right != null}">
+					<li>
+						<a th:href="@{/administration}" >Administration</a>
 					</li>
+					</div>
 					<li th:if="${parcours != null}" >
 						<a data-toggle="collapse" href="#module" aria-expanded="false" aria-controls="module" th:text="${parcours.name}">Mon parcours</a>
 						<ul class="collapse" id="module">
@@ -80,10 +85,10 @@
 						th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
 					<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" style="display:none">
 						<div class="form-group">
-							<input type="text" name="login" class="form-control" id="login" placeholder=" Login" />
+							<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
 						</div>
 						<div class="form-group">
-							<input type="password" name="mdp" class="form-control" id="mdp" placeholder=" Mot de passe"/>
+							<input type="password" name="mdp" class="form-control" id="mdp" placeholder="Mot de passe"/>
 						</div>
 						<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
 					</form>

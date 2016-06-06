@@ -45,7 +45,7 @@ public class FiltreAdmin implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-
+        System.out.println("Admin filter called ");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute(SESSION_USER);
         if(user != null)

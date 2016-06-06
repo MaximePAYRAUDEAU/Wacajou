@@ -94,8 +94,8 @@ public class ParcoursServiceImpl implements ParcoursService {
 	}
 
 	@Override
-	public void Create(String name, String description, String image, String domain, List<String[]> modules,
-			String user_id) throws ServiceException {
+	public void Create(String name, String description, String image, String domain, List<Long> modules, List<Long> modules_optional,
+			User user) throws ServiceException {
 		Assert.notNull(name);
 		Assert.notNull(domain);
 
@@ -113,27 +113,21 @@ public class ParcoursServiceImpl implements ParcoursService {
 			return;
 		}
 
-		if (modules != null) {
+		if (modules != null)
 			for (int i = 0; i < modules.size(); i++) {
-				Module module = moduleRepository.findByName(modules.get(i)[0]);
-				boolean optional = false;
-				if (modules.get(i)[1] == "oui")
-					optional = true;
-				try {
-					parcoursModuleRepository.save(new ParcoursModule(parcours, module, optional));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				Module module = moduleRepository.findOne(modules.get(i));
+				parcoursModuleRepository.save(new ParcoursModule(parcours, module, false));
 			}
-		}
+		
+		if (modules_optional != null)
+			for (int i = 0; i < modules_optional.size(); i++) {
+				Module module = moduleRepository.findOne(modules_optional.get(i));
+				parcoursModuleRepository.save(new ParcoursModule(parcours, module, true));
+			}
 
-		if (user_id != null) {
-			String[] user_info = user_id.split(",");
-			String fname = user_info[0];
-			String lname = user_info[1];
-			User user = userRepository.findByFnameAndLname(fname, lname);
+		if (user != null)
 			parcours.setRespo(user);
-		} else
+		else
 			parcours.setRespo(userRepository.findOne(0L));
 		
 		parcoursRepository.save(parcours);

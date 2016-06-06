@@ -83,7 +83,7 @@ public class ConnexionController {
 	@RequestMapping(value = "/logout")
 	public ModelAndView deconnexion(SessionStatus session, ModelAndView modelAndView) {
 		session.setComplete();
-		modelAndView.setViewName("forward:/home");
+		modelAndView.setViewName("home");
 		return modelAndView;
 	}
 }
