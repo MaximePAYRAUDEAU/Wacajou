@@ -18,7 +18,7 @@ import com.wacajou.data.jpa.repository.UserRepository;
 public class WacajouApplication {
 	private static final Logger logger = LoggerFactory
 			.getLogger(SpringApplication.class);
-	public static final String ROOT = null;
+	public static final String ROOT = "L:/";
 
 	@PostConstruct
 	public void logSomething() {

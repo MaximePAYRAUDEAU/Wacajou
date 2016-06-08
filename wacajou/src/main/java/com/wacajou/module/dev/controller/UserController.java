@@ -38,7 +38,7 @@ public class UserController {
 		ModelAndView mandv = new ModelAndView();
 		mandv.setViewName("admin/user/create");
 		Statut[] statut = Statut.values();
-		mandv.addObject("statut", statut);
+		mandv.addObject("statuts", statut);
 		return mandv;
 	}
 	
@@ -65,7 +65,7 @@ public class UserController {
 			@RequestParam("statut") String statut, 
 			ModelAndView modelAndView) {
 		userService.Create(login, promo, statut);
-		modelAndView.setViewName("admin/user/create");
+		modelAndView.setViewName("admin/admin");
 		if(userService.getError() != null)
 			modelAndView.addObject("success", "User was succesfully added.");
 		else
@@ -75,24 +75,24 @@ public class UserController {
 
 	@RequestMapping(value = "user/{file_name}/add", method = RequestMethod.POST)
 	public ModelAndView addFile(@PathVariable String file_name, 
-			@RequestParam("image") MultipartFile image, 
-			@RequestParam("ldm") MultipartFile ldm, 
-			@RequestParam("cv") MultipartFile cv, 
-			@RequestParam("notes") MultipartFile notes, 
+			@RequestParam(value = "image", required = false) MultipartFile image, 
+			@RequestParam(value = "ldm", required = false) MultipartFile ldm, 
+			@RequestParam(value = "cv", required = false) MultipartFile cv, 
+			@RequestParam(value = "notes", required = false) MultipartFile notes, 
 			RedirectAttributes redirectAttributes, 
 			ModelAndView modelAndView){
 		MultipartFile file = null;
 		
-		if(!image.isEmpty())
+		if(image != null)
 			file = image;
-		else if(!ldm.isEmpty())
+		else if(ldm != null)
 			file = ldm;
-		else if(!cv.isEmpty())
+		else if(cv != null)
 			file = cv;
-		else if(!notes.isEmpty())
+		else if(notes != null)
 			file = notes;
 		
-		if (!file.isEmpty())
+		if ((!file.isEmpty()) && (file != null))
 			try {
 				BufferedOutputStream stream = new BufferedOutputStream(
 						new FileOutputStream(new File(WacajouApplication.ROOT + "/" + file_name)));
@@ -108,6 +108,7 @@ public class UserController {
 		else
 			redirectAttributes.addFlashAttribute("message",
 					"You failed to upload " + file_name + " because the file was empty");
+		modelAndView.setViewName("user/profil");
 		return modelAndView;		
 	}
 }

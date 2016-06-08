@@ -1,93 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
 <meta name="author" content="Payraudeau Maxime" />
-
-<title>Create user</title>
-<!-- Bootstrap Core CSS -->
-<link href="../../../css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-
-<!-- Custom CSS -->
-<link href="../../../css/simple-sidebar.css"
-	th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body>
-	<div id="wrapper">
-
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="/wacajou/home"> Wacajou
-						application </a></li>
-				<li><a href="/wacajou/profil">Profil</a></li>
-				<li><a href="/wacajou/mail">Messagerie</a></li>
-				<li><a href="javascript:">Modules</a>
-					<ul>
-						<li><a href="#">Module 1</a></li>
-						<li><a href="#">Module 2</a></li>
-						<li><a href="#">Module 3</a></li>
-						<li><a href="#">Module 4</a></li>
-					</ul></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
+	<form class="col-lg-12 form-horizontal well" method="post" action="#" th:action="@{/user/add/process}">
+		<div class="form-group">
+			<label for="login">Identifiant :</label> 
+			<input type="text" name="login" class="form-control"/>
 		</div>
-		<!-- /#sidebar-wrapper -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-4">
-						<h1>Create new user</h1>
-						<form method="post" action="#" th:action="@{/user/add/process}">
-							<fieldset name="createUser">
-								<legend>Créer un utilisateur</legend>
-								<label for="login">Identifiant :</label> <input type="text"
-									name="login" /><br /> <label for="promo">Promotion :</label>
-								<input type="text" name="promo" /><br /> <label for="statut">Statut
-									:</label> <input type="text" name="statut" /><br /> <input
-									type="submit" value="Créer l'utilisateur" />
-							</fieldset>
-						</form>
-					</div>
-					<div class="col-lg-6">
-						<p th:text="${error}">Erreur :</p>
-						<p th:text="${success}">Succès :</p>
-					</div>
-				</div>
-			</div>
+		<div class="form-group">	
+			<label for="promo">Promotion :</label>
+			<input type="text" name="promo" class="form-control"/>
 		</div>
-	</div>
-	<!-- /#wrapper -->
-
-	<!-- jQuery -->
-	<script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-
-	<!-- Menu Toggle Script -->
-	<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+		<div class="form-group">
+			<label for="statut">Statut :</label>
+			<select name="statut" class="form-control">
+				<option th:each="statut: ${statuts}" th:value="${statut}" th:text="${statut}" />		
+			</select>
+		</div>
+		<input type="submit" value="Cr�er l'utilisateur" class="btn btn-default btn-sm"/>
+	</form>
 </body>
 
 </html>

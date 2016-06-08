@@ -83,7 +83,7 @@
 				<li th:unless="${user != null}" >
 					<img src="../images/profile-default-male.png"
 						th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
-					<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" style="display:none">
+					<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" >
 						<div class="form-group">
 							<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
 						</div>
@@ -92,12 +92,13 @@
 						</div>
 						<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
 					</form>
-					<input type="button" id="connexion" value="Connexion / Hide" class="btn btn-default btn-sm" onclick="javscript:hideThis('connexion');" />
 				</li>		
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
+		
 	</div>
+	 
 	<script>
 	w3IncludeHTML();
 	</script>
