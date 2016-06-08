@@ -24,4 +24,8 @@ public interface ParcoursService {
 
 	String getError();
 
+	List<Module> getModulesPrincipaux(Parcours parcours) throws ServiceException;
+
+	List<Module> getModulesOptional(Parcours parcours) throws ServiceException;
+
 }

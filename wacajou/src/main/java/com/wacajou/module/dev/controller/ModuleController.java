@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,5 +65,17 @@ public class ModuleController {
 		else
 			modelAndView.addObject("success", "Le module à été créer avec succès");
 		return modelAndView;	
+	}
+	
+	@RequestMapping(value = "/consult")
+	public ModelAndView consultModule(@RequestParam String name){
+		ModelAndView modelAndView = new ModelAndView();
+		Module module = moduleService.ConsultByName(name);
+		if( module != null ){
+			modelAndView.addObject("moduleConsult", module);
+			modelAndView.setViewName("consult/module");
+		}else
+			modelAndView.setViewName("redirect:../../home");
+		return modelAndView;		
 	}
 }

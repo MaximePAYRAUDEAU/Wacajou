@@ -143,4 +143,26 @@ public class ParcoursServiceImpl implements ParcoursService {
 		}
 		return null;
 	}
+
+	@Override
+	public List<Module> getModulesPrincipaux(Parcours parcours)
+			throws ServiceException {
+		List<ParcoursModule> parcoursModule = parcoursModuleRepository.findByParcoursAndOptional(parcours, false);
+		
+		List<Module> module = new ArrayList<Module>();
+		for(int i = 0; i < parcoursModule.size(); i++)
+			module.add(moduleRepository.findByParcoursModule(parcoursModule.get(i)));
+		return module;
+	}
+
+	@Override
+	public List<Module> getModulesOptional(Parcours parcours)
+			throws ServiceException {
+		List<ParcoursModule> parcoursModule = parcoursModuleRepository.findByParcoursAndOptional(parcours, true);
+		
+		List<Module> module = new ArrayList<Module>();
+		for(int i = 0; i < parcoursModule.size(); i++)
+			module.add(moduleRepository.findByParcoursModule(parcoursModule.get(i)));
+		return module;
+	}
 }

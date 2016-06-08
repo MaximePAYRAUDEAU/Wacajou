@@ -167,7 +167,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserInfo getInfos(User user) throws ServiceException {
-		return userInfoRepository.findByUser(user);
+		UserInfo info = userInfoRepository.findByUser(user);
+		if(info == null ){
+			info = new UserInfo();
+			info.setUser(user);
+			userInfoRepository.save(info);
+		}
+		return info;
 	}
 
 	@Override
@@ -183,6 +189,30 @@ public class UserServiceImpl implements UserService {
 		for(int i = 0; i < userModule.size(); i++)
 			modules.add(moduleRepository.findByUserModule(userModule.get(i)));
 		return modules;
+	}
+
+	@Override
+	public void updateInfo(User user, String full_file_name, String file_name)
+			throws ServiceException {
+		UserInfo info = userInfoRepository.findByUser(user);
+		if(file_name.equals("cv"))
+			info.setCv(full_file_name);
+		else if(file_name.equals("ldm"))
+			info.setLdm(full_file_name);
+		else if(file_name.equals("mark"))
+			info.setMark(full_file_name);
+		else if(file_name.equals("internship"))
+			info.setIntership(full_file_name);
+		else if(file_name.equals("image"))
+			info.setImage(full_file_name);
+		else if(file_name.equals("university"))
+			info.setUniversity(full_file_name);
+		try{
+			userInfoRepository.save(info);
+		}catch(Exception e){
+			error = "Unable to save informations.";
+			e.printStackTrace();
+		}
 	}
 
 }

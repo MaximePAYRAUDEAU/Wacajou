@@ -33,6 +33,9 @@ public interface UserService {
 
 	List<Module> getUserModule(User user) throws ServiceException;
 
+	void updateInfo(User user, String full_file_name, String file_name)
+			throws ServiceException;
+
 	
 
 }

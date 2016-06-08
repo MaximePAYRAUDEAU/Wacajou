@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Payraudeau Maxime" />
+
+    <title>Wacajou - Parcours page</title>
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script type="text/javascript">
+function hideThis(_div){
+    var obj = document.getElementById(_div);
+    if(obj.style.display == "block")
+        obj.style.display = "none";
+    else
+        obj.style.display = "block";
+}
+</script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet" /> 
+    <link href="../css/shop-item.css" th:href="@{/css/shop-item.css}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
+    <link href="../css/overlay.css" th:href="@{/css/overlay.css}" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+ <div id="wrapper">
+
+       <div w3-include-html="/wacajou/sidebar"></div> 
+       
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+            	<div class="row">
+        			<div class="col-lg-12">
+           				<a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>    
+        			</div>
+   				</div>
+                <div class="row">
+                    <div class="col-md-12">
+
+             			<div class="thumbnail">
+                    		<img class="img-responsive" src="http://placehold.it/800x300" alt="" />
+                    		<div class="caption-full">
+                        		<h4 class="pull-right" th:text="${parcoursConsult.domain}">Domain</h4>
+                        		<h2 th:text="${parcoursConsult.name}">Parcours Name</h2>
+                        		<p th:text="${parcoursConsult.description}">Description
+                        		</p>
+                        		<p>Responsable du parcours :
+                        		<strong th:text="${parcoursConsult.respo.fname} + ' ' + ${parcoursConsult.respo.lname}">Responsable </strong>
+                        		</p>
+                            </div>
+                    		<div class="ratings">
+                    	    	<p class="pull-right">3 reviews</p>
+                    	    	<p>
+                            	<span class="glyphicon glyphicon-star"></span>
+                            	<span class="glyphicon glyphicon-star"></span>
+                            	<span class="glyphicon glyphicon-star"></span>
+                            	<span class="glyphicon glyphicon-star"></span>
+                            	<span class="glyphicon glyphicon-star-empty"></span>
+                            	4.0 stars
+                   		    	</p>
+                    		</div>
+               			</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="well" >
+					    <h4>Modules principaux</h4>
+						<div class="col-md-4" th:each="mod_princ: ${modulePrincipaux}">
+ 							<div class="thumbnail"> 
+ 							                    			<div class="caption-full">
+ 							
+								<div class="hovereffect">
+                    				<img class="img-responsive" src="http://placehold.it/400x200" alt="" />
+                    				<div class="overlay">
+                        				<h2 class="text-center"><a href="#" th:href="@{/module/consult(name=${mod_princ.name})}" th:text="${mod_princ.name}" style="text-decoration: none">Module Name</a>
+										</h2>
+										<p class="text-center" th:text="${mod_princ.domain}">Domain</p>                 										
+									</div>
+                    			</div>
+                        	    </div> 
+	                      	</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="well" >
+						<h4>Modules optionels</h4>
+						<div class="col-md-4" th:each="mod_opt: ${moduleOptional}">
+							<div class="thumbnail">
+                    			<img class="img-responsive" src="http://placehold.it/400x200" alt="" />
+                    			<div class="caption-full">
+                        			<h4 class="pull-right" th:text="${mod_opt.domain}">Domain</h4>
+                        			<h3 class="text-center"><a href="#" th:href="@{/module/consult(name=${mod_opt.name})}" th:text="${mod_opt.name}" style="text-decoration: none">Module Name</a>
+                        			</h3>
+                        			<p th:text="${mod_opt.description}" align="justify">Description
+                        			</p>
+                        	    </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+                	<div class="well">
+                    	<div class="text-right">
+	                   	 	<a class="btn btn-success">Leave a Review</a>
+	                   	</div>
+					</div>
+				</div>
+                
+
+                <div class="row">
+                    <div class="col-md-12">
+                 	   	<span class="glyphicon glyphicon-star"></span>
+                       	<span class="glyphicon glyphicon-star"></span>
+                       	<span class="glyphicon glyphicon-star"></span>
+                       	<span class="glyphicon glyphicon-star"></span>
+                       	<span class="glyphicon glyphicon-star-empty"></span>
+                            Anonymous
+                       	<span class="pull-right">10 days ago</span>
+                    	<p>This product was great in terms of quality. I would definitely buy another!</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+    
+        <!-- /#page-content-wrapper -->
+
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+	<script>
+	w3IncludeHTML();
+	</script>
+</body>
+
+</html>

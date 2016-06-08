@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wacajou.data.jpa.domain.Domain;
+import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.service.ModuleService;
@@ -63,5 +65,20 @@ public class ParcoursController {
 			modelAndView.addObject("success", "Le module à été créer avec succès");
 		modelAndView.setViewName("forward:../../administration");
 		return modelAndView;	
+	}
+	
+	@RequestMapping(value = "/consult")
+	public ModelAndView consultParcours(@RequestParam String name){
+		ModelAndView modelAndView = new ModelAndView();
+		Parcours parcours = parcoursService.Consult(name);
+		
+		if( parcours != null ){
+			modelAndView.addObject("parcoursConsult", parcours);
+			modelAndView.addObject("modulePrincipaux",  parcoursService.getModulesPrincipaux(parcours));
+			modelAndView.addObject("moduleOptional",  parcoursService.getModulesOptional(parcours));
+			modelAndView.setViewName("consult/parcours");
+		}else
+			modelAndView.setViewName("redirect:../../home");
+		return modelAndView;		
 	}
 }

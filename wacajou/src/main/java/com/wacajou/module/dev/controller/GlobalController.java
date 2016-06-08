@@ -64,7 +64,7 @@ public class GlobalController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "administration")
+	@RequestMapping(value = "/administration")
 	public ModelAndView admin(HttpSession session, ModelAndView modelAndView){
 		User user = (User) session.getAttribute(SESSION_USER);
 		if(user != null){

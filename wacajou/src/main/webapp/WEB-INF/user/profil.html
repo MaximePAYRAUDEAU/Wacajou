@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -141,8 +140,10 @@ function hideThis(_div){
 						</div>
 					</div>
 					<div class="col-lg-4" >
+						<img th:if="${userInfo.image != null }" src="../user/profile.png"
+								th:src="@{/images/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
 						
-						<img src="../images/profile-default-male.png"
+						<img th:unless="${userInfo.image != null }" src="../images/profile-default-male.png"
 							th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />
 							<a href="#" class="fa fa-gear" style="text-decoration:none" data-toggle="collapse" data-target="#setimage" aria-expanded="false" aria-controls="setimage"></a>
 					</div>

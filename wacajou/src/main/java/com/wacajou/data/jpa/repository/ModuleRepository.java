@@ -33,11 +33,11 @@ public interface ModuleRepository  extends JpaRepository<Module, Long>{
 	Module findByComments(Comments comments);
 	List<Module> findByDomain(Domain domain);
 
-	Page<Module> findAll(Pageable pageable);
-	Page<Module> findByParcoursModule(ParcoursModule parcoursModule, Pageable pageable);
+	List<Module> findAll();
+	Module findByParcoursModule(ParcoursModule parcoursModule);
 
 	@Query(FIND_BY_USER)
-	Page<Module> findByUser(@Param("user") int id, Pageable pageable);
+	List<Module> findByUser(@Param("user") int id);
 	
 	
 }

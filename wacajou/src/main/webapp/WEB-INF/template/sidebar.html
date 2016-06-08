@@ -43,8 +43,8 @@
 					</li>
 					<li>
 						<a th:href="@{/profil}" th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</a>
-						<img src="../images/profile.png"
-								th:src="@{/images/${user-info.image}}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
+						<img src="../user/profile.png"
+								th:src="@{/images/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
 					</li>
 					<li>
 						<a th:href="@{/profil}" >Profil</a>

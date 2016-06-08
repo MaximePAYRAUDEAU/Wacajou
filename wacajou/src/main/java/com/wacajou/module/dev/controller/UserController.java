@@ -4,7 +4,9 @@ package com.wacajou.module.dev.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wacajou.WacajouApplication;
+import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Reason;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
+import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.service.UserService;
 
 @Controller
@@ -30,6 +35,7 @@ import com.wacajou.data.jpa.service.UserService;
 public class UserController {
 	protected static final String SESSION_USER = "session_user";
 
+	private String[] autoFormat = {"pdf", "png", "jpeg"};
 	@Autowired
 	private UserService userService;
 
@@ -45,7 +51,30 @@ public class UserController {
 	@RequestMapping(value = "/profil")
 	public ModelAndView profilPage(HttpSession session, ModelAndView mandv) {
 		mandv.setViewName("user/profil");
+		User user = (User) session.getAttribute("session_user");
+		
+		Statut right = null;
+		UserInfo userInfo = null;
+		Parcours parcours = null;
+		List<Module> modules = null;
+		
+		if(user != null){
+	
+			if(!(user.getStatut().equals(Statut.STUDENT) || user.getStatut().equals(Statut.ANCIEN)) )
+				right = user.getStatut();
+		
+			userInfo = userService.getInfos(user);
+			parcours = userService.getUserParcours(user);
+			modules = userService.getUserModule(user);
+		}
+		
+		mandv.addObject("user", user);
+		mandv.addObject("userInfo", userInfo);
+		mandv.addObject("right", right);
+		mandv.addObject("parcours", parcours);
+		mandv.addObject("modules", modules);
 		mandv.addObject("reasons", Reason.values());
+		
 		return mandv;
 	}
 
@@ -80,9 +109,12 @@ public class UserController {
 			@RequestParam(value = "cv", required = false) MultipartFile cv, 
 			@RequestParam(value = "notes", required = false) MultipartFile notes, 
 			RedirectAttributes redirectAttributes, 
+			HttpSession session,
 			ModelAndView modelAndView){
 		MultipartFile file = null;
 		
+		User user = (User) session.getAttribute(SESSION_USER);
+
 		if(image != null)
 			file = image;
 		else if(ldm != null)
@@ -92,22 +124,60 @@ public class UserController {
 		else if(notes != null)
 			file = notes;
 		
-		if ((!file.isEmpty()) && (file != null))
-			try {
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(new File(WacajouApplication.ROOT + "/" + file_name)));
-                FileCopyUtils.copy(file.getInputStream(), stream);
-				stream.close();
+		if ((!file.isEmpty()) && (file != null) && (user != null)){
+			String filename = null;
+			String full_file_name = null;
+			filename = file.getOriginalFilename();
+			String[] tmpFile = filename.split("\\.");
+			String extension = tmpFile[tmpFile.length-1].toLowerCase();
+			boolean upload = false;
+			for(int i = 0; i < autoFormat.length; i++)
+				if(extension.equals(autoFormat[i]))
+					upload = true;
+			if(upload)
+				try {
+					full_file_name = file_name + "-" + user.getLogin() + "." + extension;
+					BufferedOutputStream stream = new BufferedOutputStream(
+							new FileOutputStream(new File(WacajouApplication.ROOT + "/images/user/" + full_file_name)));
+	                FileCopyUtils.copy(file.getInputStream(), stream);
+					stream.close();
+					redirectAttributes.addFlashAttribute("message",
+							"You successfully uploaded " + file_name + "!");
+					userService.updateInfo(user, full_file_name, file_name);
+					if(userService.getError() != null)
+						redirectAttributes.addFlashAttribute("message",
+								"You failed to upload " + file_name);
+				}
+				catch (Exception e) {
+					redirectAttributes.addFlashAttribute("message",
+							"You failed to upload " + file_name + " => " + e.getMessage());
+				}
+			else
 				redirectAttributes.addFlashAttribute("message",
-						"You successfully uploaded " + file_name + "!");
-			}
-			catch (Exception e) {
-				redirectAttributes.addFlashAttribute("message",
-						"You failed to upload " + file_name + " => " + e.getMessage());
-			}
-		else
+						"You failed to upload " + file_name + " because the file was not supported");
+		} else
 			redirectAttributes.addFlashAttribute("message",
 					"You failed to upload " + file_name + " because the file was empty");
+		
+		Statut right = null;
+		UserInfo userInfo = null;
+		Parcours parcours = null;
+		List<Module> modules = null;
+		
+		if(user != null){
+	
+			if(!(user.getStatut().equals(Statut.STUDENT) || user.getStatut().equals(Statut.ANCIEN)) )
+				right = user.getStatut();
+		
+			userInfo = userService.getInfos(user);
+			parcours = userService.getUserParcours(user);
+			modules = userService.getUserModule(user);
+		}
+		modelAndView.addObject("user", user);
+		modelAndView.addObject("userInfo", userInfo);
+		modelAndView.addObject("right", right);
+		modelAndView.addObject("parcours", parcours);
+		modelAndView.addObject("modules", modules);
 		modelAndView.setViewName("user/profil");
 		return modelAndView;		
 	}
