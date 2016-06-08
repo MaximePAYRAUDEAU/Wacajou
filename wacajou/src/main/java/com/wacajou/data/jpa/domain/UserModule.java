@@ -3,7 +3,11 @@ package com.wacajou.data.jpa.domain;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class UserModule extends AbstractEntity{
 

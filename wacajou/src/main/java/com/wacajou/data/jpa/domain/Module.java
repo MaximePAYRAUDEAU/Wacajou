@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class Module extends AbstractEntity {
 	private static final long serialVersionUID = 1L;

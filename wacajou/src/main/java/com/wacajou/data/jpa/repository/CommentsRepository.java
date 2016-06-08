@@ -9,7 +9,11 @@ import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Rating;
 import com.wacajou.data.jpa.domain.User;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface CommentsRepository extends JpaRepository<Comments, Long> {
 	Page<Comments> findByParcours(Parcours parcoues, Pageable pageable);
 	Page<Comments> findByParcoursAndRating(Parcours parcours, Rating rating, Pageable pageable);

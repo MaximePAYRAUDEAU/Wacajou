@@ -7,7 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.ParcoursModule;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface ParcoursModuleRepository extends JpaRepository<ParcoursModule, Long>{
 	Page<ParcoursModule> findAll(Pageable page);
 	Page<ParcoursModule> findByParcours(Parcours parcours, Pageable pageable);

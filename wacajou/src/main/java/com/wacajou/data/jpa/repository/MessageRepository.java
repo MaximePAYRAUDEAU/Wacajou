@@ -6,7 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.wacajou.data.jpa.domain.Message;
 import com.wacajou.data.jpa.domain.User;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface MessageRepository extends JpaRepository<Message, Long> {
 	
 	Page<Message> findAll(Pageable page);

@@ -9,7 +9,11 @@ import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.ParcoursModule;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserParcours;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface ParcoursRepository extends JpaRepository<Parcours, Integer>{
 	Parcours findByName(String name);
 	Parcours findByComments(Comments comments);

@@ -9,7 +9,8 @@
     <meta name="author" content="Payraudeau Maxime" />
 
     <title>Wacajou - Administration </title>
-	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<script src="http://www.w3schools.com/lib/w3data.js" type="text/javascript"></script>
+	
 	<script type="text/javascript">
 function hideThis(_div){
     var obj = document.getElementById(_div);
@@ -19,10 +20,11 @@ function hideThis(_div){
         obj.style.display = "block";
 }
 </script>
+	
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet" /> 
-
+	<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
 
@@ -102,6 +104,28 @@ function hideThis(_div){
   					</table>
                     </div>
                 </div>
+                 <div class="row">
+                	<div class="col-lg-12">
+                	<table id="userTable" class="table table-striped" cellspacing="0" width="100%">
+                		<thead>
+                			<tr>
+                				<th>Id</th>
+                				<th>FName</th>
+                				<th>Login</th>
+                			</tr>
+                		</thead>
+                		<tbody>
+                			<tr th:each="users : ${Alluser}">
+      					 		<td th:text="${users.id}">1</td>
+       							<td th:text="${users.fname}">Title ...</td>
+        						<td th:text="${users.login}">Text ...</td>
+  							</tr>
+  						 </tbody>
+  						 <tfoot>
+  						 </tfoot>
+  					</table>
+                    </div>
+                </div>
                 <div class="row">
                 	<div class="col-lg-12">
                         <p th:text="${error}">Erreur :</p>
@@ -132,6 +156,14 @@ function hideThis(_div){
 	<script>
 	w3IncludeHTML();
 	</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $("#userTable").DataTable();
+	} );
+    </script>
+	<script src="//code.jquery.com/jquery-1.12.3.min.js" type="text/javascript"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	
 </body>
 
 </html>

@@ -125,4 +125,9 @@ public class GlobalController {
 	public List<Parcours> parcours() {
 		return parcoursService.getAll();
 	}
+	
+	@ModelAttribute("Alluser")
+	public List<User> users() {
+		return userService.getAllUser();
+	}
 }

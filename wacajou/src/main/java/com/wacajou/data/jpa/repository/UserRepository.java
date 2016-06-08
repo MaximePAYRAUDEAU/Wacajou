@@ -11,7 +11,11 @@ import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserModule;
 import com.wacajou.data.jpa.domain.UserParcours;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	public final static String FIND_BY_MODULE = "SELECT u " + 

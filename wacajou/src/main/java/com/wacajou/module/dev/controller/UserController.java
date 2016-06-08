@@ -73,7 +73,7 @@ public class UserController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "user/${file_name}/add", method = RequestMethod.POST)
+	@RequestMapping(value = "user/{file_name}/add", method = RequestMethod.POST)
 	public ModelAndView addFile(@PathVariable String file_name, 
 			@RequestParam("image") MultipartFile image, 
 			@RequestParam("ldm") MultipartFile ldm, 

@@ -8,7 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
 import org.springframework.util.Assert;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class Comments extends AbstractEntity {
 
