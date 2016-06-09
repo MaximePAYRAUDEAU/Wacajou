@@ -78,7 +78,11 @@ public class Parcours extends AbstractEntity {
 	public String getImage() {
 		return this.image;
 	}
-
+	
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public Domain getDomain() {
 		return this.domain;
 	}
@@ -88,5 +92,7 @@ public class Parcours extends AbstractEntity {
 		return "Id=" + getId() + ", Name=" + getName() + ", Description=" + getDescription() + ", Image=" + getImage()
 				+ ", Domain=" + getDomain().toString();
 	}
+
+	
 
 }

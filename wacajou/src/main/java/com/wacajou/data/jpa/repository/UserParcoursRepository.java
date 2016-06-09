@@ -7,17 +7,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserParcours;
+
 /**
  * 
  * @author Payraudeau Maxime
  *
  */
-public interface UserParcoursRepository extends JpaRepository<UserParcours, Long> {
+public interface UserParcoursRepository extends
+		JpaRepository<UserParcours, Long> {
 	Page<UserParcours> findAll(Pageable pageable);
-	Page<UserParcours> findByParcours(Parcours parcours, Pageable pageable);
-	UserParcours findByUser(User user);
-	Page<UserParcours> findByUserAndParcours(User user, Parcours parcours, Pageable pageable);
 
-	
-	
+	Page<UserParcours> findByParcours(Parcours parcours, Pageable pageable);
+
+	UserParcours findByUser(User user);
+
+	Page<UserParcours> findByUserAndParcours(User user, Parcours parcours,
+			Pageable pageable);
+
 }

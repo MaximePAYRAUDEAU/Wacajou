@@ -27,7 +27,7 @@
 		<div class="form-group">
 			<label for="respo" >Responsable :</label>
 			<select name="user_id" class="form-control">
-				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.lname} + ' ' + ${user.fname}" />
+				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
 			</select>
 		</div>
 		<input type="submit" value="Créer" name="send" class="btn btn-default btn-sm"/>

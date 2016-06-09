@@ -15,7 +15,6 @@ import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.domain.UserModule;
-import com.wacajou.data.jpa.domain.UserParcours;
 import com.wacajou.data.jpa.repository.ModuleRepository;
 import com.wacajou.data.jpa.repository.ParcoursRepository;
 import com.wacajou.data.jpa.repository.UserInfoRepository;
@@ -28,7 +27,7 @@ import com.wacajou.ldap.LDAPaccess;
 
 @Component("userService")
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends CommentServiceImpl<User> implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -86,7 +85,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User Connexion(String login, String mdp) throws ServiceException {
+	public User Connect(String login, String mdp) throws ServiceException {
 		// Need to be tested
 		error = null;
 		LDAPaccess access = new LDAPaccess();
@@ -178,8 +177,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Parcours getUserParcours(User user) throws ServiceException {
-		UserParcours userParcours = userParcoursRepository.findByUser(user);
-		return parcoursRepository.findByUserParcours(userParcours);
+		return parcoursRepository.findByUser(user);
 	}
 
 	@Override

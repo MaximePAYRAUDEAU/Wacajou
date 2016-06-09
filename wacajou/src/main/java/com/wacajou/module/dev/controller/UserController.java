@@ -38,43 +38,19 @@ public class UserController {
 	private String[] autoFormat = {"pdf", "png", "jpeg"};
 	@Autowired
 	private UserService userService;
-
+	
+	@RequestMapping(value = {"user/{file_name}/add", "user/add/process"  }, method = RequestMethod.GET)
+	public ModelAndView addFileGet(ModelAndView modelAndView){
+		modelAndView.setViewName("user/profil");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/user/add")
 	public ModelAndView addUserPage() {
 		ModelAndView mandv = new ModelAndView();
 		mandv.setViewName("admin/user/create");
 		Statut[] statut = Statut.values();
 		mandv.addObject("statuts", statut);
-		return mandv;
-	}
-	
-	@RequestMapping(value = "/profil")
-	public ModelAndView profilPage(HttpSession session, ModelAndView mandv) {
-		mandv.setViewName("user/profil");
-		User user = (User) session.getAttribute("session_user");
-		
-		Statut right = null;
-		UserInfo userInfo = null;
-		Parcours parcours = null;
-		List<Module> modules = null;
-		
-		if(user != null){
-	
-			if(!(user.getStatut().equals(Statut.STUDENT) || user.getStatut().equals(Statut.ANCIEN)) )
-				right = user.getStatut();
-		
-			userInfo = userService.getInfos(user);
-			parcours = userService.getUserParcours(user);
-			modules = userService.getUserModule(user);
-		}
-		
-		mandv.addObject("user", user);
-		mandv.addObject("userInfo", userInfo);
-		mandv.addObject("right", right);
-		mandv.addObject("parcours", parcours);
-		mandv.addObject("modules", modules);
-		mandv.addObject("reasons", Reason.values());
-		
 		return mandv;
 	}
 
@@ -101,7 +77,9 @@ public class UserController {
 			modelAndView.addObject("error", userService.getError());
 		return modelAndView;
 	}
-
+	
+	
+	
 	@RequestMapping(value = "user/{file_name}/add", method = RequestMethod.POST)
 	public ModelAndView addFile(@PathVariable String file_name, 
 			@RequestParam(value = "image", required = false) MultipartFile image, 
@@ -159,25 +137,6 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("message",
 					"You failed to upload " + file_name + " because the file was empty");
 		
-		Statut right = null;
-		UserInfo userInfo = null;
-		Parcours parcours = null;
-		List<Module> modules = null;
-		
-		if(user != null){
-	
-			if(!(user.getStatut().equals(Statut.STUDENT) || user.getStatut().equals(Statut.ANCIEN)) )
-				right = user.getStatut();
-		
-			userInfo = userService.getInfos(user);
-			parcours = userService.getUserParcours(user);
-			modules = userService.getUserModule(user);
-		}
-		modelAndView.addObject("user", user);
-		modelAndView.addObject("userInfo", userInfo);
-		modelAndView.addObject("right", right);
-		modelAndView.addObject("parcours", parcours);
-		modelAndView.addObject("modules", modules);
 		modelAndView.setViewName("user/profil");
 		return modelAndView;		
 	}

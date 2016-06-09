@@ -20,15 +20,15 @@ import com.wacajou.data.jpa.domain.User;
 /**
  * Servlet Filter implementation class FiltreAdmin
  */
-@WebFilter(urlPatterns = { "/admin/**" })
-public class FiltreAdmin implements Filter {
+@WebFilter(urlPatterns = { "/profil/**" })
+public class FiltreProfil implements Filter {
 	public static final String SESSION_USER = "session_user";
 	public static final String ACCES_RESTREINT = "/home";
 
     /**
      * Default constructor. 
      */
-    public FiltreAdmin() {
+    public FiltreProfil() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,14 +45,11 @@ public class FiltreAdmin implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        System.out.println("Admin filter called ");
+        System.out.println("Profil filter called ");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute(SESSION_USER);
         if(user != null)
-        	if(user.getStatut().equals(Statut.ADMIN))
-        		chain.doFilter(request, response);
-        	else 
-                res.sendRedirect( req.getContextPath() + ACCES_RESTREINT );
+        	chain.doFilter(request, response);
         else
         	res.sendRedirect( req.getContextPath() + ACCES_RESTREINT );
 	}

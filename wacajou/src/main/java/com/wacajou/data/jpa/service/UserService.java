@@ -13,29 +13,27 @@ public interface UserService {
 	void Create(String login, String promo, String statut)
 			throws ServiceException;
 
-	User Connexion(String login, String mdp) throws ServiceException;
-
-	String getError();
-
-	User getUser(String user_reciver_name) throws ServiceException;
-
-	User getUser(long user_id) throws ServiceException;
+	User Connect(String login, String mdp) throws ServiceException;
 	
-	User getUserByLogin(String string) throws ServiceException;
-
-	List<User> getAllUser() throws ServiceException;
-
 	User ConnexionAlwayTrue(String login) throws ServiceException;
 
-	UserInfo getInfos(User user) throws ServiceException;
+	User getUser(String user) throws ServiceException;
+
+	User getUser(long user) throws ServiceException;
+	
+	User getUserByLogin(String login) throws ServiceException;
 
 	Parcours getUserParcours(User user) throws ServiceException;
 
 	List<Module> getUserModule(User user) throws ServiceException;
 
+	UserInfo getInfos(User user) throws ServiceException;
+
 	void updateInfo(User user, String full_file_name, String file_name)
 			throws ServiceException;
 
-	
+	List<User> getAllUser() throws ServiceException;
+
+	String getError();
 
 }

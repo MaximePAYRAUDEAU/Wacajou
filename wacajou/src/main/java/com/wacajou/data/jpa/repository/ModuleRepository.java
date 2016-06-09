@@ -2,8 +2,6 @@ package com.wacajou.data.jpa.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,19 +23,30 @@ public interface ModuleRepository  extends JpaRepository<Module, Long>{
 			"FROM Module m " + 
 			"LEFT JOIN  m.userModule um " +
 			"LEFT JOIN um.user u " +
-			"WHERE u.id = :user ";
+			"WHERE u = :user ";
+	
+	public final static String FIND_BY_RESPO = "SELECT m " + 
+			"FROM Module m " + 
+			"LEFT JOIN m.respo u " + 
+			"WHERE u = :respo";
 	
 	Module findByName(String name);
-	Module findByRespo(User respo);
+	
+	@Query(FIND_BY_RESPO)
+	Module findByRespo(@Param("respo") User respo);
+	
 	Module findByUserModule(UserModule userModule);
+	
 	Module findByComments(Comments comments);
+	
 	List<Module> findByDomain(Domain domain);
 
 	List<Module> findAll();
+	
 	Module findByParcoursModule(ParcoursModule parcoursModule);
 
 	@Query(FIND_BY_USER)
-	List<Module> findByUser(@Param("user") int id);
+	List<Module> findByUser(@Param("user") User user);
 	
 	
 }

@@ -12,7 +12,7 @@ import com.wacajou.data.jpa.domain.User;
  * @author Payraudeau Maxime
  *
  */
-public interface ModuleService {
+public interface ModuleService extends GenericService<Module> {
 	/**
 	 * <h1>Création d'un module avec l'ensemble des informations
 	 * 
@@ -29,7 +29,8 @@ public interface ModuleService {
 	void Create(String name, String description, String image, String domain,
 			User user) throws ServiceException;
 
-	void Update(String name) throws ServiceException;
+	void Update(Module module, String name, String description, String image, String domain,
+			User user) throws ServiceException;
 
 	void Delete(String name) throws ServiceException;
 
@@ -39,7 +40,7 @@ public interface ModuleService {
 	 * @return All module on database
 	 * @throws ServiceException
 	 */
-	List<Module> getAllModule() throws ServiceException;
+//	List<Module> getAll() throws ServiceException;
 
 	/**
 	 * <h1>Recupération de tout les modules d'un domain
@@ -50,11 +51,9 @@ public interface ModuleService {
 	 */
 	List<Module> getAllModuleByDomain(String domain) throws ServiceException;
 
-	Module getByRespofNameAndlName(String fname, String lname)
-			throws ServiceException;
+//	Module getByRespo(User respo) throws ServiceException;
 
-	Module ConsultByName(String name) throws ServiceException;
+//	Module ConsultByName(String name) throws ServiceException;
 
-	Object getError();
-
+	String getError();
 }
