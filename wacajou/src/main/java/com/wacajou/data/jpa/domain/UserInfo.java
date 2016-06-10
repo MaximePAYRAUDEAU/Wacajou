@@ -38,7 +38,7 @@ public class UserInfo extends AbstractEntity {
 	@Column(name = "university", nullable = true)
 	private String university;
 
-	@Column(name = "activities", nullable = true)
+	@Column(name = "activities", nullable = true, length = 5000)
 	private String activities;
 
 	public void setLdm(String ldm) {

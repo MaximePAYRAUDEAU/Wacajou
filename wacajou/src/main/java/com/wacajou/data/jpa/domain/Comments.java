@@ -35,7 +35,7 @@ public class Comments extends AbstractEntity {
 	@Enumerated(EnumType.ORDINAL)
 	private Rating rating;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 30)
 	private String title;
 
 	@Column(nullable = true, length = 5000)
@@ -43,6 +43,7 @@ public class Comments extends AbstractEntity {
 	
 	@Column(name = "logdate")
 	private Date logdate;
+	
 	protected Comments() {
 	}
 

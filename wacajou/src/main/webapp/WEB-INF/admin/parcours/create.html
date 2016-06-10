@@ -12,13 +12,13 @@
 		<div class="form-group">
 			<label for="domain" >Domain :</label>
 			<select name="domain" class="form-control">
-				<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain}" />
+				<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain.message}" />
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="description" >Description :</label>
-			<input type="text" name="description" class="form-control"/>
-		</div>
+			<textarea name="description" class="form-control" placeholder="Description">
+			</textarea>		</div>
 		<div class="form-group">
 			<label for="image" >Image :</label>
 			<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />

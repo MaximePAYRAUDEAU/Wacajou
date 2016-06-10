@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.service.UserService;
+import com.wacajou.security.Validate;
 
 /**
  * Class ConnexionController that assure connexion in wacajou application.
@@ -44,18 +45,21 @@ public class ConnexionController {
 	 * @param model
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public void connexion(
+	public ModelAndView connexion(
 			@RequestParam(value = "login", required = true) String login,
 			@RequestParam(value = "mdp", required = true) String mdp, HttpSession session,
-			Model model) {
+			ModelAndView modelAndView) {
 		User user = userService.Connect(login, mdp);
 		if (userService.getError() == null) {
-			model.addAttribute("message", "Request successfully done !");
+			modelAndView.addObject("message", "Request successfully done !");
 			session.setAttribute(SESSION_USER, user);
-			return;
-		} else
-			model.addAttribute("message", "Fail to log on.");
-		return;
+			modelAndView.setViewName("redirect:profil");
+			return modelAndView;
+		} else {
+			modelAndView.addObject("message", "Fail to log on.");
+			modelAndView.setViewName("redirect:home");
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/login/test", method = RequestMethod.POST)
@@ -63,6 +67,7 @@ public class ConnexionController {
 			@RequestParam(value = "login", required = true) String login,
 			@RequestParam(value = "mdp", required = true) String mdp, HttpSession session,
 			ModelAndView modelAndView) {
+		Validate.isValid(login, "");
 		User user = userService.ConnexionAlwayTrue(login);
 		if (userService.getError() == null) {
 			modelAndView.addObject("message", "Request successfully done !");

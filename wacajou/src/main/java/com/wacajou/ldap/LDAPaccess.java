@@ -29,7 +29,7 @@ public class LDAPaccess implements Serializable
 
 	public LDAPObject LDAPget(String user, String mdp) throws Exception
 	{
-		System.out.println(user + " " + mdp);
+		// System.out.println(user + " " + mdp);
 		// Initial context implementation
 		String INITCTX = "com.sun.jndi.ldap.LdapCtxFactory";
 		String MY_HOST = "ldap://ldap.isep.fr:389";

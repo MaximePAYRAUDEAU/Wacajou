@@ -25,13 +25,13 @@ public class Parcours extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true )
 	private User respo;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, length = 50)
 	private String name;
 
-	@Column(name = "description", nullable = true)
+	@Column(name = "description", nullable = true, length = 5000)
 	private String description;
 
-	@Column(name = "image", nullable = true)
+	@Column(name = "image", nullable = true, length = 50)
 	private String image;
 
 	@Column(name = "domain", nullable = false)

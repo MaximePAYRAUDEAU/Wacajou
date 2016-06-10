@@ -28,7 +28,7 @@ public class Module extends AbstractEntity {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
 	private Set<UserModule> userModule;
 
-	@Column(name = "description", nullable = true)
+	@Column(name = "description", nullable = true, length = 5000)
 	private String description;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "module")
@@ -37,7 +37,7 @@ public class Module extends AbstractEntity {
 	@Column(name = "domain", nullable = false)
 	private Domain domain;
 
-	@Column(name = "image", nullable = true)
+	@Column(name = "image", nullable = true, length = 50)
 	private String image;
 
 	public Module() {

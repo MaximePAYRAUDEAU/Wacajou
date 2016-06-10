@@ -105,7 +105,7 @@ public class ParcoursController extends GenericModelAttribute{
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("name", name);
 		map.put("description", description);
-		map.put("image", image);
+		map.put("image", full_file_name);
 		map.put("domain", domain);
 		map.put("module", module);
 		map.put("module_optional", module_optional);

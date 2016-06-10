@@ -4,6 +4,9 @@ package com.wacajou.module.dev.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -50,7 +53,23 @@ public class UserController {
 		ModelAndView mandv = new ModelAndView();
 		mandv.setViewName("admin/user/create");
 		Statut[] statut = Statut.values();
-		mandv.addObject("statuts", statut);
+		List<Statut> canCreate = new ArrayList<Statut>();
+		int count = 0;
+		for(Statut stat: statut)
+			if(stat.canCreate()){
+				canCreate.add(stat);
+				count++;
+			}
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(cal.YEAR); 
+		List<String> promo = new ArrayList<String>();
+		promo.add("NONE");
+		for(int i = 0; i < 5; i++) {
+			int value = year + i;
+			promo.add("" + value);
+		}
+		mandv.addObject("promos", promo);
+		mandv.addObject("statuts", canCreate);
 		return mandv;
 	}
 

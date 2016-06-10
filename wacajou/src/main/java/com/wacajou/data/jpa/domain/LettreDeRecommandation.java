@@ -19,7 +19,7 @@ public class LettreDeRecommandation extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true)
 	private User userReciver;
 
-	@Column(name = "path", nullable = true)
+	@Column(name = "path", nullable = true, length = 125)
 	private String path;
 
 	@Column(name = "statut", nullable = false)
@@ -28,7 +28,7 @@ public class LettreDeRecommandation extends AbstractEntity {
 	@Column(name = "reason", nullable = false)
 	private Reason reason;
 	
-	@Column(name = "comment", nullable = true)
+	@Column(name = "comment", nullable = true, length = 5000)
 	private String comment;
 
 	public void setUserSender(User user) {

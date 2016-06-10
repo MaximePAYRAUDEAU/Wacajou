@@ -26,7 +26,6 @@ function hideThis(_div){
 
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -95,7 +94,7 @@ function hideThis(_div){
 						<div class="collapse" id="addCV">					
    							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/cv/add}">
        							<h3>Mon cv</h3>	
-       							<div class="form-group">
+       							<div class="form-group tmp">
  	      							<label class="control-label" for="cv" >CV :</label>
  	      							<input type="file" name="cv" class="file" />
  	      						</div>

@@ -28,8 +28,11 @@ function hideThis(_div){
 <!-- Custom CSS -->
 <link href="../css/simple-sidebar.css"
 	th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
-<link href="../css/half-slider.css" th:href="@{/css/half-slider.css}"
-	rel="stylesheet" />
+<link rel="stylesheet" href="../css/superslides.css" th:href="@{/css/superslides.css}" />
+	
+<!-- <link href="../css/half-slider.css" th:href="@{/css/half-slider.css}"
+	rel="stylesheet" /> -->
+	
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,9 +46,43 @@ function hideThis(_div){
 	<div id="wrapper">
 
 		<div w3-include-html="/wacajou/sidebar"></div>
-		<header id="carousel-example-generic" class="carousel slide">
+		<div id="slides">
+			<div class="menu-burger">
+				<a href="#menu-toggle" id="menu-toggle"><i
+					class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
+			</div>
+		    <ul class="slides-container">	
+		    <li>    
+		      <img src="http://lorempixel.com/800/600/" alt="Cinelli" />
+		      <div class="container slide-mid-left">
+		      	<h1>Test header</h1>
+		      	<div class="contrast" >
+		      		<p>Testing something</p>
+		      	</div>
+		      </div>
+		      </li>
+		      <li>
+		      <img src="http://lorempixel.com/800/600/" alt="Surly" />
+		      </li>
+		      <li>
+		      <img src="http://lorempixel.com/800/600/" alt="Cinelli" />
+		      </li>
+		      <li>
+		      <img src="http://lorempixel.com/800/600/" alt="Affinity" />
+		      </li>
+		    </ul>
+		
+		    <nav class="slides-navigation chevron">
+		      <a href="#" class="next fa fa-chevron-right fa-2x"></a>
+		      <a href="#" class="prev fa fa-chevron-left fa-2x"></a>
+		    </nav>
+		  </div>
+		</div>
+		
+		  
+		<!-- <header id="carousel-example-generic" class="carousel slide">
 
-			<!-- Indicators -->
+			Indicators
 			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0"
 					class="active"></li>
@@ -54,7 +91,7 @@ function hideThis(_div){
 					data-slide-to="${parcours.id}" class="active"></li>
 			</ol>
 
-			<!-- Wrapper for slides -->
+			Wrapper for slides
 			<div class="carousel-inner">
 				<div class="item active">
 					<img class="fill" src="../images/isep-ndl.png"
@@ -73,7 +110,7 @@ function hideThis(_div){
 				...
 			</div>
 
-			<!-- Controls -->
+			Controls
 			<a class="left carousel-control" href="#carousel-example-generic"
 				role="button" data-slide="prev"> <span
 				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -86,7 +123,7 @@ function hideThis(_div){
 		</header>
 
 
-		<!-- Page Content -->
+		Page Content
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
@@ -111,9 +148,9 @@ function hideThis(_div){
 				</div>
 			</div>
 		</div>
-		<!-- /#page-content-wrapper -->
+		/#page-content-wrapper
 
-	</div>
+	</div> -->
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->
@@ -122,6 +159,15 @@ function hideThis(_div){
 	<!-- Bootstrap Core JavaScript -->
 	<script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		  <script src="../js/jquery.superslides.min.js" th:src="@{/js/jquery.superslides.min.js}"></script>
+		  <script>
+		    $(function() {
+		      $('#slides').superslides({
+		        hashchange: true
+		      });
+		    });
+		  </script>
 	<!-- Menu Toggle Script -->
 	<script>
     $("#menu-toggle").click(function(e) {
@@ -129,11 +175,11 @@ function hideThis(_div){
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-	<script>
+	<!-- <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-    </script>
+    </script> -->
 	<script>
 	w3IncludeHTML();
 	</script>

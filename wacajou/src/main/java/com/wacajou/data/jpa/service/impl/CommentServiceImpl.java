@@ -83,7 +83,7 @@ public abstract class CommentServiceImpl<T> implements CommentService<T>{
 		for(Comments comment: comments)
 			average += (float) comment.getRating().getValue();
 		average = average / comments.size();
-		return 0;
+		return average;
 	}
 	
 	

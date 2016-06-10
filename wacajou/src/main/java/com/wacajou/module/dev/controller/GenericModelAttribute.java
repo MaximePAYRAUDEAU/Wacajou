@@ -70,7 +70,7 @@ public abstract class GenericModelAttribute {
 	
 	@ModelAttribute("userRight")
 	public Statut rightUser(HttpSession session){
-		if ( session.getAttribute(SESSION_USER) != null) {
+		if ( session.getAttribute(SESSION_USER) != null  ) {
 			User user = (User) session.getAttribute(SESSION_USER);
 			if (!(user.getStatut().equals(Statut.STUDENT) || user.getStatut()
 					.equals(Statut.ANCIEN)))
@@ -78,4 +78,19 @@ public abstract class GenericModelAttribute {
 		}
 		return null;
 	}
+	
+	@ModelAttribute("RespoParcours")
+	public Statut rightParcours(){
+		return Statut.RESPO_PARCOURS;
+	}
+
+	@ModelAttribute("RespoModule")
+	public Statut rightModule(){
+		return Statut.RESPO_MODULE;
+	}
+	@ModelAttribute("RespoPedagogique")
+	public Statut rightPedagogique(){
+		return Statut.RESPO_PEDAGOGIQUE;
+	}
+
 }

@@ -15,7 +15,7 @@ import com.wacajou.data.jpa.repository.ModuleRepository;
 import com.wacajou.data.jpa.repository.UserRepository;
 import com.wacajou.data.jpa.service.UserService;
 
-// @Configuration
+//@Configuration
 public class CreateTest {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CreateTest.class);
@@ -52,11 +52,11 @@ public class CreateTest {
 	@Bean 
 	public int createTestingModule(ModuleRepository moduleRepository){
 		Module module1 = new Module();
-		module1.Create("test_1", "test_description_1", null, Domain.ELECTRONIC);
+		module1.Create("Génie logiciel", "Le module de génie logiciel à pour but de formé les élèves aux rédactions de livrables pour software ainsi que de leur enseigner des méthodes agiles.", "module-genie-logiciel.jpg", Domain.INFORMATIC);
 		Module module2 = new Module();
-		module2.Create("test_2", "test_description_2", null, Domain.INFORMATIC);
+		module2.Create("Web technologies", "le module de technologies web à pour but d'enseigné aux élèves des habitudes de développement.", "module-web-technologie.jpg", Domain.INFORMATIC);
 		Module module3 = new Module();
-		module3.Create("test_3", "test_description_3", null, Domain.LANGUES);
+		module3.Create("Sécurité", "Le module de sécurité le la mise en place d'un certain nombre de concept primaux de sécurité.", "module-securite.jpg", Domain.OTHER);
 		Module module4 = new Module();
 		module4.Create("test_4", "test_description_4", null, Domain.MANAGERIAL);
 		Module module5 = new Module();
@@ -66,7 +66,7 @@ public class CreateTest {
 		Module module7 = new Module();
 		module7.Create("test_7", "test_description_7", null, Domain.INFORMATIC);
 		Module module8 = new Module();
-		module8.Create("test_8", "test_description_8", null, Domain.LANGUES);
+		module8.Create("test_8", "test_description_8", null, Domain.LANGUAGE);
 		
 		moduleRepository.save(module1);
 		moduleRepository.save(module2);
