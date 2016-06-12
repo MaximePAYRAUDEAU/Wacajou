@@ -5,4 +5,4 @@
  * @author X-Strike
  *
  */
-package com.wacajou.client;
+package com.wacajou.config;

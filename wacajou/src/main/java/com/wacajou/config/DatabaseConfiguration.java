@@ -1,4 +1,4 @@
-package com.wacajou;
+package com.wacajou.config;
 
 import java.util.Properties;
 
@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -27,11 +28,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @version 1.0.0
  */
 @Configuration
+@Profile("run")
 @ComponentScan("com.wacajou")
 @EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:/config/db-config.properties")
-public class ConfigConnexion {
+public class DatabaseConfiguration {
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";

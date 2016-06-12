@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
 
+import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.User;
 
 public abstract interface GenericService<T> {
@@ -59,6 +60,8 @@ public abstract interface GenericService<T> {
 	 */
 	List<T> getAll() throws ServiceException;
 	
+	T getOne(Long id) throws ServiceException;
+
 	/**
 	 * <h1>Generic error return
 	 * 

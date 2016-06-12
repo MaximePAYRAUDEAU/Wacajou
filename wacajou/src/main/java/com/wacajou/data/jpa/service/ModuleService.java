@@ -56,4 +56,7 @@ public interface ModuleService extends GenericService<Module> {
 //	Module ConsultByName(String name) throws ServiceException;
 
 	String getError();
+
+	void Update(Module module);
+
 }

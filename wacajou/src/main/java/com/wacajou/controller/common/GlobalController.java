@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.common;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +22,6 @@ import com.wacajou.data.jpa.service.UserService;
  *
  */
 @Controller
-// @SessionAttributes(value = { "user", "userParcours", "userModule" }, types = { User.class , Parcours.class, Module.class})
 public class GlobalController extends GenericModelAttribute{
 	protected static final String SESSION_USER = "session_user";
 
@@ -34,7 +33,14 @@ public class GlobalController extends GenericModelAttribute{
 
 	@Autowired
 	private ModuleService moduleService;
-
+	
+	@RequestMapping(value = "/")
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forward:home");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/home")
 	public ModelAndView goHome() {
 		ModelAndView modelAndView = new ModelAndView();

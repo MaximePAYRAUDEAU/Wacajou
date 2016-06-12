@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.common;
 
 import java.util.List;
 

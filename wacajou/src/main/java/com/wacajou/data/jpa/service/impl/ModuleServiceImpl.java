@@ -192,4 +192,14 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 		
 	}
 
+	@Override
+	public Module getOne(Long id) throws ServiceException {
+		return moduleRepository.getOne(id);
+	}
+
+	@Override
+	public void Update(Module module) {
+		moduleRepository.save(module);
+	}
+
 }

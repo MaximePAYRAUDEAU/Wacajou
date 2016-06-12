@@ -154,7 +154,7 @@ function hideThis(_div){
 					<div class="col-lg-4" >
 						<div th:if="${userInfo != null}">
 							<img th:if="${userInfo.image != null }" src="../user/profile.png"
-								th:src="'http://localhost:8080' + @{/images/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
+								th:src="'http://localhost:8080' + @{/file/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
 							<img th:unless="${userInfo.image != null }" src="../images/profile-default-male.png"
 							th:src="'http://localhost:8080' + @{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />
 							<a href="#" class="fa fa-gear" style="text-decoration:none" data-toggle="collapse" data-target="#setimage" aria-expanded="false" aria-controls="setimage"></a>

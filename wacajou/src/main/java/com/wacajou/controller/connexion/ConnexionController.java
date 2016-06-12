@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.connexion;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wacajou.controller.common.GenericModelAttribute;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.User;
@@ -29,17 +30,14 @@ import com.wacajou.security.Validate;
  *
  */
 @Controller
-//@SessionAttributes(value = "user", types = { User.class })
 public class ConnexionController extends GenericModelAttribute {
-
-//	protected static final String SESSION_USER = "session_user";
 	
 	@Autowired
 	private UserService userService;
 
 	@RequestMapping("/login")
 	public String connexion(Model model) {
-		return "user/login";
+		return "redirect:home";
 	}
 
 	/**
@@ -155,7 +153,7 @@ public class ConnexionController extends GenericModelAttribute {
 	 * @return Home page
 	 */
 	@RequestMapping(value = "/logout")
-	public ModelAndView deconnexion(SessionStatus session) { //, HttpSession sess
+	public ModelAndView deconnexion(SessionStatus session) {
 		session.setComplete();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.clear();

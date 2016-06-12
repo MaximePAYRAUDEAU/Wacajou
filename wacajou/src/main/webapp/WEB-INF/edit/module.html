@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="author" content="Payraudeau Maxime" />
+</head>
+<body>
+	<form class="form-horizontal well" method="post" action="#" enctype="multipart/form-data" th:action="@{/module/edit/process}">
+		<div class="form-group">
+			<label for="name" >Nom :</label>
+			<input type="text"  name="name" th:field="*{module.name}" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="domain" >Domain :</label>
+			<select name="domain" class="form-control" th:field="*{module.domain}">
+				<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain.message}" />
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="description" >Description :</label>
+			<textarea name="description" th:field="*{module.description}" class="form-control" placeholder="Description">
+			</textarea>
+		</div>
+		<div class="form-group">
+			<label for="image" >Image :</label>
+			<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+			<input type="file" name="image" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="respo" >Responsable :</label>
+			<select name="user_id" class="form-control" th:field="*{module.respo}">
+				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
+			</select>
+		</div>
+		<input type="submit" value="Créer" name="send" class="btn btn-default btn-sm"/>
+	</form>
+</body>
+
+</html>

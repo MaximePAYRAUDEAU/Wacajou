@@ -225,4 +225,10 @@ public class ParcoursServiceImpl extends CommentServiceImpl<Parcours> implements
 		}
 	}
 
+	@Override
+	public Parcours getOne(Long id) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

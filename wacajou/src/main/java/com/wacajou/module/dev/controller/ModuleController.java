@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wacajou.WacajouApplication;
+import com.wacajou.controller.common.GenericModelAttribute;
 import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Statut;
@@ -117,5 +119,20 @@ public class ModuleController extends GenericModelAttribute{
 		}else
 			modelAndView.setViewName("redirect:../../home");
 		return modelAndView;		
+	}
+	
+	@RequestMapping(value = "/edit")
+	public ModelAndView editModule(@RequestParam Long id, ModelAndView modelAndView){
+		Module module = moduleService.getOne(id);
+		modelAndView.addObject("module", module);
+		modelAndView.setViewName("edit/module");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/edit/process", method = RequestMethod.POST)
+	public ModelAndView editModuleSave(@ModelAttribute Module module, ModelAndView modelAndView){
+		moduleService.Update(module);
+		modelAndView.setViewName("consult/module?" + module.getName());
+		return modelAndView;
 	}
 }

@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wacajou.WacajouApplication;
+import com.wacajou.controller.common.GenericModelAttribute;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Reason;
