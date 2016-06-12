@@ -48,7 +48,6 @@ public class ModuleController extends GenericModelAttribute{
 				listReturn.add(user);
 			}
 		}
-		modelAndView.addObject("domains", Domain.values());
 		modelAndView.addObject("users", listReturn);
 		
 		return modelAndView;

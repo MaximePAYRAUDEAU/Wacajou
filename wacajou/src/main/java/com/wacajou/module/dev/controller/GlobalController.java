@@ -1,23 +1,16 @@
 package com.wacajou.module.dev.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wacajou.data.jpa.domain.Module;
-import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Reason;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
-import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.service.ModuleService;
 import com.wacajou.data.jpa.service.ParcoursService;
 import com.wacajou.data.jpa.service.UserService;
@@ -63,7 +56,7 @@ public class GlobalController extends GenericModelAttribute{
 
 	@RequestMapping(value = "/administration")
 	public ModelAndView admin(@ModelAttribute("user") User user, ModelAndView modelAndView) {
-		if (user != null) {
+		if (user.isConnect()) {
 			if (!(user.getStatut().equals(Statut.ANCIEN) || user.getStatut()
 					.equals(Statut.STUDENT)))
 				modelAndView.setViewName("admin/admin");
@@ -82,7 +75,7 @@ public class GlobalController extends GenericModelAttribute{
 	
 	@RequestMapping(value = "/profil")
 	public ModelAndView profilPage(@ModelAttribute("user") User user, ModelAndView mandv) {
-		if (user != null) {
+		if (user.isConnect()) {
 			mandv.setViewName("user/profil");
 			mandv.addObject("reasons", Reason.values());
 		}else

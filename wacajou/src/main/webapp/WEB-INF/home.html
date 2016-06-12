@@ -51,28 +51,38 @@ function hideThis(_div){
 				<a href="#menu-toggle" id="menu-toggle"><i
 					class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
 			</div>
-		    <ul class="slides-container">	
-		    <li>    
-		      <img src="http://lorempixel.com/800/600/" alt="Cinelli" />
-		      <div class="container slide-mid-left">
-		      	<h1>Test header</h1>
-		      	<div class="contrast" >
-		      		<p>Testing something</p>
-		      	</div>
-		      </div>
-		      </li>
-		      <li>
-		      <img src="http://lorempixel.com/800/600/" alt="Surly" />
-		      </li>
-		      <li>
-		      <img src="http://lorempixel.com/800/600/" alt="Cinelli" />
-		      </li>
-		      <li>
-		      <img src="http://lorempixel.com/800/600/" alt="Affinity" />
-		      </li>
-		    </ul>
-		
-		    <nav class="slides-navigation chevron">
+			<ul class="slides-container">
+				<li th:each="parcours: ${Allparcours}"><img src=""
+					th:src="@{/images/parcours/} + ${parcours.image}"
+					alt="No image found" />
+					<div class="container slide-mid-left">
+						<h1 th:text="${parcours.name}">Name</h1>
+						<div class="contrast">
+							<p th:text="${parcours.domain.message}" >Domain</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<img src="http://lorempixel.com/800/600/" alt="Cinelli" />
+					<div class="container slide-mid-left">
+						<h1>Test header</h1>
+						<div class="contrast">
+							<p>Testing something</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<img src="http://lorempixel.com/800/600/" alt="Surly" />
+				</li>
+				<li>
+					<img src="http://lorempixel.com/800/600/" alt="Cinelli" />
+				</li>
+				<li>
+					<img src="http://lorempixel.com/800/600/" alt="Affinity" />
+				</li>
+			</ul>
+
+			<nav class="slides-navigation chevron">
 		      <a href="#" class="next fa fa-chevron-right fa-2x"></a>
 		      <a href="#" class="prev fa fa-chevron-left fa-2x"></a>
 		    </nav>

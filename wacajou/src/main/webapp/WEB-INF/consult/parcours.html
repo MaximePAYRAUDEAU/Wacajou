@@ -28,6 +28,7 @@ function hideThis(_div){
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
     <link href="../css/overlay.css" th:href="@{/css/overlay.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/superslides.css" th:href="@{/css/superslides.css}" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +56,13 @@ function hideThis(_div){
                     <div class="col-md-12">
 
              			<div class="thumbnail">
-                    		<img class="img-responsive" src="http://placehold.it/800x300" alt="" />
+             			<div id="slides" class="parcours-header-img">
+								<ul class="slides-container">
+									<li><img src="" class="img-responsive"
+										th:src="@{/images/parcours/} + ${parcoursConsult.image}"
+										alt="No image found" /></li>
+								</ul>
+							</div>
                     		<div class="caption-full">
                         		<h4 class="pull-right" th:text="${parcoursConsult.domain}">Domain</h4>
                         		<h2 th:text="${parcoursConsult.name}">Parcours Name</h2>
@@ -85,10 +92,11 @@ function hideThis(_div){
 					    <h4>Modules principaux</h4>
 						<div class="col-md-4" th:each="mod_princ: ${modulePrincipaux}">
  							<div class="thumbnail"> 
- 							                    			<div class="caption-full">
- 							
-								<div class="hovereffect">
-                    				<img class="img-responsive" src="http://placehold.it/400x200" alt="" />
+ 							    <div class="caption-full">
+								<div class="hovereffect module-menu-img">
+											<img src="" class="img-responsive module-menu-img"
+											th:src="@{/images/module/} + ${mod_princ.image}"
+											alt="No image found" />
                     				<div class="overlay">
                         				<h2 class="text-center"><a href="#" th:href="@{/module/consult(name=${mod_princ.name})}" th:text="${mod_princ.name}" style="text-decoration: none">Module Name</a>
 										</h2>
@@ -152,7 +160,15 @@ function hideThis(_div){
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		  <script src="../js/jquery.superslides.min.js" th:src="@{/js/jquery.superslides.min.js}"></script>
+		  <script>
+		    $(function() {
+		      $('#slides').superslides({
+		        hashchange: true
+		      });
+		    });
+		  </script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {

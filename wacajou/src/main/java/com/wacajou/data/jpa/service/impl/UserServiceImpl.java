@@ -167,11 +167,13 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 	@Override
 	public UserInfo getInfos(User user) throws ServiceException {
 		UserInfo info = userInfoRepository.findByUser(user);
+		System.out.println("Info : " + info);
 		if(info == null ){
 			info = new UserInfo();
 			info.setUser(user);
 			userInfoRepository.save(info);
 		}
+		System.out.println("Info 1 : " + info.getId());
 		return info;
 	}
 
@@ -200,7 +202,7 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 		else if(file_name.equals("mark"))
 			info.setMark(full_file_name);
 		else if(file_name.equals("internship"))
-			info.setIntership(full_file_name);
+			info.setInternship(full_file_name);
 		else if(file_name.equals("image"))
 			info.setImage(full_file_name);
 		else if(file_name.equals("university"))

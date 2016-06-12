@@ -34,8 +34,8 @@ import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.service.UserService;
 
 @Controller
-@SessionAttributes(value = UserController.SESSION_USER, types = { User.class })
-public class UserController {
+//@SessionAttributes(value = UserController.SESSION_USER, types = { User.class })
+public class UserController extends GenericModelAttribute{
 	protected static final String SESSION_USER = "session_user";
 
 	private String[] autoFormat = {"pdf", "png", "jpeg"};
@@ -87,7 +87,19 @@ public class UserController {
 			@RequestParam("login") String login, 
 			@RequestParam("promo") String promo,
 			@RequestParam("statut") String statut, 
+			@RequestParam(value = "file", required = false) MultipartFile file, 
 			ModelAndView modelAndView) {
+		if((!file.isEmpty()) && (file != null)){
+			String filename = file.getOriginalFilename();
+			String[] tmpFile = filename.split("\\.");
+			String extension = tmpFile[tmpFile.length-1].toLowerCase();
+			boolean upload = false;
+			if(extension.equals("csv") || extension.equals("xls") || extension.equals("xlsx"))
+					upload = true;
+			if(upload){
+				
+			}
+		}
 		userService.Create(login, promo, statut);
 		modelAndView.setViewName("admin/admin");
 		if(userService.getError() != null)

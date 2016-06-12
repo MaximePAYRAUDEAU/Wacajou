@@ -67,3 +67,12 @@
 .slides-pagination a.current {
   background: #222;
 }
+.module-header-img {
+	max-height: 350px !important;
+}
+.module-menu-img {
+	height: 200px ! imporant;
+}
+.parcours-header-img {
+	max-height: 450px !important;
+}

@@ -32,7 +32,7 @@
 <body>
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<div id="sidebar-wrapper" th:if="${user != null}">
+		<div id="sidebar-wrapper" th:if="${user.isConnect()}">
 			<!-- <div class="container" th:if="${userInfo != null}">
 				<a th:href="@{/profil}"><img src="../user/profile.png"
 					th:src="'http://localhost:8080' + @{/images/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
@@ -45,33 +45,33 @@
 			</div> -->
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<a th:href="@{/home}"> Wacajou application </a>
+					<a th:href="@{/home}"> Wacajou application</a>
+				</li>
+				<li class="sidebar-brand">
+					<a th:href="@{/logout}" class="glyphicon glyphicon-off" ></a>
 				</li>
 				<!--  <div th:if="${user != null}" >				-->	
 					
-					<li>
-						<a th:href="@{/logout}" ><i class="glyphicon glyphicon-off"></i></a>
-					</li>
 					<li>
 						<a th:href="@{/profil}" th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</a>
 					</li>
 					<li>
 						<a th:href="@{/profil}" >Profil</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a th:href="@{/mail}" >Messagerie</a>
-					</li>
+					</li> -->
 					<li th:if="${userRight != null}">
-						<a th:href="@{/administration}" >Administration</a>
+						<a th:href="@{/administration}" href="#" >Administration</a>
 					</li>
-					<li th:if="${userParcours != null}" >
+					<li th:if="${userParcours}" >
 						<a data-toggle="collapse" href="#module" aria-expanded="false" aria-controls="module" th:text="${userParcours.name}">Mon parcours</a>
 						<ul class="collapse" id="module">
-							<li th:each="module: ${modules}"><a th:href="@{/module/${module.id}}" th:text="${module.name}" >Module</a></li>
-							<li><a href="#">Module 1</a></li>
+							<li th:each="module: ${modules}" th:if="${modules}" ><a th:href="@{/module/${module.id}}" th:text="${module.name}" >Module</a></li>
+							<!-- <li><a href="#">Module 1</a></li>
 							<li><a href="#">Module 2</a></li>
 							<li><a href="#">Module 3</a></li>
-							<li><a href="#">Module 4</a></li>
+							<li><a href="#">Module 4</a></li> -->
 						</ul>
 					</li>
 					<li>
@@ -88,7 +88,7 @@
 					</li>
 				</ul>
 			</div> 
-			<div id="sidebar-wrapper" th:unless="${user != null}" >
+			<div id="sidebar-wrapper" th:unless="${user.isConnect()}" >
 				<ul class="sidebar-nav">
 					<li class="sidebar-brand">
 						<a th:href="@{/home}"> Wacajou application </a>

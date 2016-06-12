@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <meta charset="utf-8" />
@@ -26,6 +26,7 @@ function hideThis(_div){
 
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/superslides.css" th:href="@{/css/superslides.css}" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,35 +51,47 @@ function hideThis(_div){
         			</div>
    				</div>
                 <div class="row">
-                    <div class="col-md-12">
+					<div class="col-md-12">
 
-             			<div class="thumbnail">
-                    		<img class="img-responsive" src="http://placehold.it/800x300" alt="" />
-                    		<div class="caption-full">
-                        		<h4 class="pull-right" th:text="${moduleConsult.domain}">Domain</h4>
-                        		<h4><a href="#" th:text="${moduleConsult.name}">Module Name</a>
-                        		</h4>
-                        		<p th:text="${moduleConsult.description}">Description
-                        		</p>
-                        		<p>Responsable du module :
-                        		<strong th:text="${moduleConsult.respo.fname} + ' ' + ${moduleConsult.respo.lname}">Responsable </strong>
-                        		</p>
-                            </div>
-                    		<div class="ratings">
-                    	    	<p class="pull-right">3 reviews</p>
-                    	    	<p>
-                            	<span class="glyphicon glyphicon-star"></span>
-                            	<span class="glyphicon glyphicon-star"></span>
-                            	<span class="glyphicon glyphicon-star"></span>
-                            	<span class="glyphicon glyphicon-star"></span>
-                            	<span class="glyphicon glyphicon-star-empty"></span>
-                            	4.0 stars
-                   		    	</p>
-                    		</div>
-               			</div>
+						<div class="thumbnail">
+							<!-- <div id="slides" class="module-header-img">
+								<ul class="slides-container">
+									<li><img src=""
+										th:src="@{/images/module/} + ${moduleConsult.image}"
+										alt="No image found" /></li>
+								</ul>
+							</div> -->
+							
+							<img src="" class="img-responsive module-header-img" 
+										th:src="@{/images/module/} + ${moduleConsult.image}"
+										alt="No image found" />
+								<div class="caption-full">
+									<h4 class="pull-right" th:text="${moduleConsult.domain}">Domain</h4>
+									<h4>
+										<a href="#" th:text="${moduleConsult.name}">Module Name</a>
+									</h4>
+									<p th:text="${moduleConsult.description}">Description</p>
+									<p>
+										Responsable du module : <strong
+											th:if="${moduleConsult.respo != null}"
+											th:text="${moduleConsult.respo.fname} + ' ' + ${moduleConsult.respo.lname}">Responsable
+										</strong>
+									</p>
+								</div>
+								<div class="ratings">
+									<p class="pull-right">3 reviews</p>
+									<p>
+										<span class="glyphicon glyphicon-star"></span> <span
+											class="glyphicon glyphicon-star"></span> <span
+											class="glyphicon glyphicon-star"></span> <span
+											class="glyphicon glyphicon-star"></span> <span
+											class="glyphicon glyphicon-star-empty"></span> 4.0 stars
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
+					<div class="row">
                 	<div class="well">
                     	<div class="text-right">
 	                   	 	<a class="btn btn-success">Leave a Review</a>
@@ -110,9 +123,18 @@ function hideThis(_div){
     <!-- jQuery -->
     <script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		  <script src="../js/jquery.superslides.min.js" th:src="@{/js/jquery.superslides.min.js}"></script>
+		  <script>
+		    $(function() {
+		      $('#slides').superslides({
+		        hashchange: true
+		      });
+		    });
+		  </script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {

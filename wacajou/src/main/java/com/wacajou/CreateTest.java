@@ -19,19 +19,11 @@ import com.wacajou.data.jpa.service.UserService;
 public class CreateTest {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CreateTest.class);
-	@Autowired
-	private UserService userService;
-	
-	@Bean
-	public String setAdmin() {
-		if (userService.getUserByLogin("admin") == null) {
-			userService.Create("admin", "NONE", "ADMIN");
-		}
-		return "";
-	}
 	
 	@Bean 
-	public int createTestingUsers(UserRepository userRepository){
+	public String createTestingUsers(UserRepository userRepository){
+		User userAdmin = new User();
+		userAdmin.Create("admin", "NONE", Statut.ADMIN);
 		User userStudent = new User();
 		userStudent.Create("test_user_student", "none", Statut.STUDENT);
 		User userRespoModule  = new User();
@@ -45,12 +37,13 @@ public class CreateTest {
 		userRepository.save(userRespoModule);
 		userRepository.save(userRespoParcours);
 		userRepository.save(userRespoPeda);
+		userRepository.save(userAdmin);
 		logger.info("Users de test crées.");
-		return 0;
+		return "";
 	}
 	
 	@Bean 
-	public int createTestingModule(ModuleRepository moduleRepository){
+	public String createTestingModule(ModuleRepository moduleRepository){
 		Module module1 = new Module();
 		module1.Create("Génie logiciel", "Le module de génie logiciel à pour but de formé les élèves aux rédactions de livrables pour software ainsi que de leur enseigner des méthodes agiles.", "module-genie-logiciel.jpg", Domain.INFORMATIC);
 		Module module2 = new Module();
@@ -78,6 +71,7 @@ public class CreateTest {
 		moduleRepository.save(module8);
 		
 		logger.info("Module de test crées.");
-		return 0;
+		return "";
 	}
 }
+

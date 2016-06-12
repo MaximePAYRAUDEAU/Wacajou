@@ -35,10 +35,10 @@ public class FiltreLogout implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		HttpServletRequest req = (HttpServletRequest) request;
+		/*HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
         session.invalidate();
-        System.out.println("Logout filter");
+        System.out.println("Logout filter");*/
         chain.doFilter(request, response);
 	}
 

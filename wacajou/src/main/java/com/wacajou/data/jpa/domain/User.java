@@ -68,6 +68,12 @@ public class User extends AbstractEntity {
 		this.type = type;
 	}
 
+	public boolean isConnect(){
+		if(login != null )
+			return true;
+		return false;
+	}
+	
 	public String getFname() {
 		return this.fname;
 	}

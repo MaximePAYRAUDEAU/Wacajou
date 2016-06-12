@@ -32,8 +32,8 @@ public class UserInfo extends AbstractEntity {
 	@Column(name = "mark", nullable = true)
 	private String mark;
 
-	@Column(name = "intership", nullable = true)
-	private String intership;
+	@Column(name = "internship", nullable = true)
+	private String internship;
 
 	@Column(name = "university", nullable = true)
 	private String university;
@@ -53,8 +53,8 @@ public class UserInfo extends AbstractEntity {
 		this.mark = mark;
 	}
 
-	public void setIntership(String intership) {
-		this.intership = intership;
+	public void setInternship(String intership) {
+		this.internship = intership;
 	}
 	
 	public void setUniversity(String university){
@@ -85,8 +85,8 @@ public class UserInfo extends AbstractEntity {
 		return this.mark;
 	}
 	
-	public String getIntership(){
-		return this.intership;
+	public String getInternship(){
+		return this.internship;
 	}
 	
 	public String getUniversity(){
