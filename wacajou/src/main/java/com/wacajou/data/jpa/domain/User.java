@@ -7,31 +7,45 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class User extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
-	@Column(nullable = true)
+	@Column(nullable = true, length = 10)
 	private String number;
-	@Column(nullable = true)
+	
+	@Column(nullable = true, length = 30)
 	private String fname;
-	@Column(nullable = true)
+	
+	@Column(nullable = true, length = 30)
 	private String lname;
-	@Column(nullable = true)
+	
+	@Column(nullable = true, length = 10)
 	private String promo;
+	
 	@Column(nullable = false)
 	private Statut statut;
-	@Column(nullable = true)
+	
+	@Column(nullable = true, length = 100)
 	private String mail;
-	@Column(nullable = false, unique = true)
+	
+	@Column(nullable = false, unique = true, length = 50)
 	private String login;
-	@Column(nullable = true)
+	
+	@Column(nullable = true, length = 30)
 	private String type;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserModule> userModule;
+	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
 	private UserParcours userParcours;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<Comments> comments;
 
@@ -54,6 +68,12 @@ public class User extends AbstractEntity {
 		this.type = type;
 	}
 
+	public boolean isConnect(){
+		if(login != null )
+			return true;
+		return false;
+	}
+	
 	public String getFname() {
 		return this.fname;
 	}

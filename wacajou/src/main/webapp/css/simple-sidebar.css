@@ -123,3 +123,25 @@
         margin-right: 0;
     }
 }
+.menu-burger {
+	position:absolute; 
+	padding-left:20px; 
+	padding-top:20px; 
+	background-color:rgba(0,0,0,0); 
+	z-index: 20 
+}
+.menu-burger a {
+	color: white;
+}
+.chevron, .chevron a, .chevron a:hover{
+	color: white;
+	text-decoration: none;	
+}
+.slide-mid-left {
+	color: white;
+	padding-left: 25px;
+	margin-top: 200px;
+}
+tmp {
+	padding-left:10px;
+}

@@ -1,6 +1,7 @@
 package com.wacajou.data.jpa.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
@@ -11,12 +12,14 @@ import org.springframework.util.Assert;
 
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.ParcoursModule;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.domain.UserModule;
 import com.wacajou.data.jpa.domain.UserParcours;
 import com.wacajou.data.jpa.repository.ModuleRepository;
+import com.wacajou.data.jpa.repository.ParcoursModuleRepository;
 import com.wacajou.data.jpa.repository.ParcoursRepository;
 import com.wacajou.data.jpa.repository.UserInfoRepository;
 import com.wacajou.data.jpa.repository.UserModuleRepository;
@@ -28,7 +31,7 @@ import com.wacajou.ldap.LDAPaccess;
 
 @Component("userService")
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends CommentServiceImpl<User> implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -48,6 +51,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ParcoursRepository parcoursRepository;
 	
+	@Autowired
+	private ParcoursModuleRepository parcoursModuleRepository;
+	
 	private String error = null;
 
 	public String getError() {
@@ -55,7 +61,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void Create(String login, String promo, String statut)
+	public void Create(String login, String promo, Statut statut, Parcours parcours)
 			throws ServiceException {
 		// Vérification valeurs non null
 		Assert.notNull(login);
@@ -66,7 +72,7 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
 		Statut[] tab = Statut.values();
 		for (int i = 0; i < tab.length; i++) {
-			if (tab[i].toString().equals(statut)) {
+			if (tab[i].equals(statut)) {
 				user.Create(login, promo, tab[i]);
 				break;
 			}
@@ -78,15 +84,27 @@ public class UserServiceImpl implements UserService {
 		userInfo.setUser(user);
 		try {
 			userRepository.save(user);
-			userInfoRepository.save(userInfo);
+			try{
+				userInfoRepository.save(userInfo);
+				try{
+					userParcoursRepository.save(new UserParcours(user, parcours));
+				}catch(Exception e){
+					if(parcours == null)
+						e.printStackTrace();
+					else
+						error = "Setting parcours non attribué pour l'utilisateur " + login;
+				}
+			}catch(Exception e){
+				error = "Utilisateur " + login + " déjà existant";
+			}	
 		} catch (Exception e) {
 			e.printStackTrace();
-			error = "Utilisateur déjà existant";
+			error = "Utilisateur " + login + " déjà existant";
 		}
 	}
 
 	@Override
-	public User Connexion(String login, String mdp) throws ServiceException {
+	public User Connect(String login, String mdp) throws ServiceException {
 		// Need to be tested
 		error = null;
 		LDAPaccess access = new LDAPaccess();
@@ -150,7 +168,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUser(long user_id) throws ServiceException {
-		error = null;
 		return userRepository.getOne(user_id);
 	}
 
@@ -167,13 +184,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserInfo getInfos(User user) throws ServiceException {
-		return userInfoRepository.findByUser(user);
+		UserInfo info = userInfoRepository.findByUser(user);
+		if(info == null ){
+			info = new UserInfo();
+			info.setUser(user);
+			userInfoRepository.save(info);
+		}
+		return info;
 	}
 
 	@Override
 	public Parcours getUserParcours(User user) throws ServiceException {
-		UserParcours userParcours = userParcoursRepository.findByUser(user);
-		return parcoursRepository.findByUserParcours(userParcours);
+		return parcoursRepository.findByUser(user);
 	}
 
 	@Override
@@ -183,6 +205,107 @@ public class UserServiceImpl implements UserService {
 		for(int i = 0; i < userModule.size(); i++)
 			modules.add(moduleRepository.findByUserModule(userModule.get(i)));
 		return modules;
+	}
+
+	@Override
+	public void updateInfo(User user, String full_file_name, String file_name)
+			throws ServiceException {
+		UserInfo info = userInfoRepository.findByUser(user);
+		System.out.println("Info : " + info.getId() );
+		System.out.println("File : " + file_name + " FileName : " + full_file_name );
+		if(file_name.equals("cv"))
+			info.setCv(full_file_name);
+		else if(file_name.equals("ldm"))
+			info.setLdm(full_file_name);
+		else if(file_name.equals("mark"))
+			info.setMark(full_file_name);
+		else if(file_name.equals("internship"))
+			info.setInternship(full_file_name);
+		else if(file_name == "image")
+			info.setImage(full_file_name);
+		else if(file_name.equals("university"))
+			info.setUniversity(full_file_name);
+		try{
+			userInfoRepository.save(info);
+		}catch(Exception e){
+			error = "Unable to save informations.";
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setUserParcours(User user, Parcours parcours) throws ServiceException {
+		try{
+			userParcoursRepository.save(new UserParcours(user, parcours));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setUserModule(User user, Parcours parcours, List<Module> module_optional)
+			throws ServiceException {
+		try{
+			if(parcours != null){
+				List<ParcoursModule> module_non_optional = parcoursModuleRepository.findByParcours(parcours);
+				for(ParcoursModule parcoursModule: module_non_optional)
+					module_optional.add(moduleRepository.findByParcoursModule(parcoursModule));
+			}
+			for(Module module: module_optional)
+				userModuleRepository.save(new UserModule(user, module));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void Create(HashMap<String, Object> map) throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Update(User t, HashMap<String, Object> map)
+			throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Delete(User t) throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User getByRespo(User user) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getByName(String name) throws ServiceException {
+		return null;
+	}
+
+	@Override
+	public List<User> getAll() throws ServiceException {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User getOne(Long id) throws ServiceException {
+		return userRepository.getOne(id);
+	}
+
+	@Override
+	public List<User> getUserByParcours(Parcours parcours) throws ServiceException {
+		return userRepository.findByParcours(parcours);
+	}
+
+	@Override
+	public List<User> getUserByModule(Module module) throws ServiceException {
+		return userRepository.findByModule(module);
 	}
 
 }

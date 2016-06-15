@@ -20,7 +20,7 @@ import com.wacajou.data.jpa.domain.User;
 /**
  * Servlet Filter implementation class FiltreAdmin
  */
-@WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD }, urlPatterns = { "/wacajou/admin/*" })
+@WebFilter(urlPatterns = { "/admin/**" })
 public class FiltreAdmin implements Filter {
 	public static final String SESSION_USER = "session_user";
 	public static final String ACCES_RESTREINT = "/home";

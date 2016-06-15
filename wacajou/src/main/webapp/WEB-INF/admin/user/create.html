@@ -1,93 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
 <meta name="author" content="Payraudeau Maxime" />
-
-<title>Create user</title>
-<!-- Bootstrap Core CSS -->
-<link href="../../../css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-
-<!-- Custom CSS -->
-<link href="../../../css/simple-sidebar.css"
-	th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body>
-	<div id="wrapper">
-
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="/wacajou/home"> Wacajou
-						application </a></li>
-				<li><a href="/wacajou/profil">Profil</a></li>
-				<li><a href="/wacajou/mail">Messagerie</a></li>
-				<li><a href="javascript:">Modules</a>
-					<ul>
-						<li><a href="#">Module 1</a></li>
-						<li><a href="#">Module 2</a></li>
-						<li><a href="#">Module 3</a></li>
-						<li><a href="#">Module 4</a></li>
-					</ul></li>
-				<li><a href="#">Events</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
-		<!-- /#sidebar-wrapper -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-4">
-						<h1>Create new user</h1>
-						<form method="post" action="#" th:action="@{/user/add/process}">
-							<fieldset name="createUser">
-								<legend>CrÃ©er un utilisateur</legend>
-								<label for="login">Identifiant :</label> <input type="text"
-									name="login" /><br /> <label for="promo">Promotion :</label>
-								<input type="text" name="promo" /><br /> <label for="statut">Statut
-									:</label> <input type="text" name="statut" /><br /> <input
-									type="submit" value="CrÃ©er l'utilisateur" />
-							</fieldset>
-						</form>
-					</div>
-					<div class="col-lg-6">
-						<p th:text="${error}">Erreur :</p>
-						<p th:text="${success}">SuccÃ¨s :</p>
-					</div>
-				</div>
+	<form data-toggle="validator" role="form" class="form-horizontal well" enctype="multipart/form-data" method="post" action="#" th:action="@{/user/add/process}">
+		<h3>Ajouter un ou plusieurs utilisateurs</h3>
+		<div id="fileUser" class="form-group">
+			<label for="login" class="control-label" >Identifiant :</label>
+			<input type="text" id="login" pattern="[^'\x22\s=].{1,30}" name="login" class="form-control" />
+			<p> or </p>
+			<div class="input-group">
+				<span class="input-group-addon">File :</span>
+				<input type="file" id="login" name="file" class="form-control"/>
 			</div>
+			<div class="help-block with-error">Fichier CSV, XLS ou XLSX avec le login des users séparé par ; .</div>
 		</div>
-	</div>
-	<!-- /#wrapper -->
-
-	<!-- jQuery -->
-	<script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-
-	<!-- Menu Toggle Script -->
-	<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+		<div class="form-group">
+			<label for="promo" class="control-label">Promotion :</label>
+			<select name="promo" class="form-control" required="required">
+				<option th:each="promo: ${promos}" th:value="${promo}" th:text="${promo}" />		
+			</select>	
+		</div>
+		<div class="help-block">Promotion pour les élèves. None pour l'équipe enseignante. </div>		
+		<div class="form-group">
+			<label for="statut" class="control-label">Statut :</label>
+			<select name="statut" class="form-control" required="required">
+				<option th:each="statut: ${statuts}" th:value="${statut}" th:text="${statut.message}" />		
+			</select>
+		</div>
+		<div class="form-group" th:if="${userRight.equals(RespoPedagogique)}">
+			<label for="parcours" class="control-label">Parcours :</label>
+			<select name="parcours" class="form-control">
+				<option th:value="null" th:text="Aucun" />
+				<option th:each="parcours: ${Allparcours}" th:value="${parcours.id}" th:text="${parcours.name}" />
+			</select>
+		</div>
+		<div th:unless="${userRight.equals(RespoPedagogique)}">
+			<input type="hidden" name="parcours" th:value="${responsability.id}" />
+		</div>
+		<input type="submit" value="Créer l'utilisateur" class="btn btn-default btn-sm"/>
+	</form>
+	<script src="../js/validator.min.js" th:src="@{/js/validator.min.js}" type="text/javascript"></script>
 </body>
-
 </html>

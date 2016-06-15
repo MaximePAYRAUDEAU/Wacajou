@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,6 @@ function hideThis(_div){
 
     <!-- Custom CSS -->
     <link href="../css/simple-sidebar.css" th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,51 +42,68 @@ function hideThis(_div){
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+  		        <div class="row">
+        			<div class="col-lg-12">
+           				<a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars fa-4x" aria-hidden="true"></i></a>    
+        			</div>
+   				</div>
                 <div class="row">
                     <div class="col-lg-8">
                      <!--  <h1 th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</h1>-->   
-                    	<a class="btn btn-default" role="button" data-toggle="collapse" href="#setInfos" aria-expanded="false" aria-controls="setInfos">
+                    	<button class="btn btn-default" role="button" data-toggle="collapse" data-target="#setInfos" aria-expanded="false" aria-controls="setInfos">
 							Modifier mes informations
-						</a>
+						</button>
+						<button class="btn btn-default" role="button" data-toggle="collapse" data-target="#addCV" aria-expanded="false" aria-controls="addCV">
+							Ajouter mon cv
+						</button>
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#addLDM" aria-expanded="false" aria-controls="addLDM">
+							Ajouter ma lettre de motivation
+						</button>
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#addNotes" aria-expanded="false" aria-controls="addNotes">
+							Ajouter mes notes
+						</button>
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#reco" aria-expanded="false" aria-controls="reco">
+							Demander une lettre de recommandation
+						</button>
+				
 						<div class="collapse" id="setInfos">
    						 	<form class="col-lg-12 form-horizontal well" method="GET" action="#" th:action="@{/user/infos}" >
+   						 		<h3>Mes informations</h3>					 	
    						 		<div class="form-group">
    						 			<label for="mail" >Mail :</label>
-									<input type="email" name="mail" class="form-control" id="mail" placeholder="Mail" />
+									<input type="email" name="mail" class="form-control" id="mail" th:placeholder="${user.mail}" />
 								</div>
 								<div class="form-group">
-   						 			<label for="intership" >Stage :</label>
-									<input type="text" name="intership" class="form-control" id="intership" placeholder="Stage" />
+   						 			<label for="internship" >Stage :</label>
+									<input type="text" name="internship" class="form-control" id="internship" th:placeholder="${userInfo.internship}" />
 								</div>
 								<div class="form-group">
    						 			<label for="university" >Université :</label>
-									<input type="text" name="university" class="form-control" id="university" placeholder="Université" />
+									<input type="text" name="university" class="form-control" id="university" th:placeholder="${userInfo.university}" />
 								</div>
 								<div class="form-group">
    						 			<label for="activities" >Activités externes :</label>
-									<textarea class="form-control" rows="3"></textarea>
+									<textarea class="form-control" rows="10" th:placeholder="${userInfo.activities}"></textarea>
 								</div>
 								<input type="submit" value="Mettre à jour" class="btn btn-default btn-sm" />
    						 	</form>
  						</div>
 					
-                    	<a class="btn btn-default" role="button" data-toggle="collapse" href="#addCV" aria-expanded="false" aria-controls="addCV">
-							Ajouter mon cv
-						</a>
-						<div class="collapse" id="addCV">
+                    	
+						<div class="collapse" id="addCV">					
    							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/cv/add}">
-       							<div class="form-group">
- 	      							<label for="cv" >CV :</label>
- 	      							<input type="file" name="cv" class="form-control"/>
+       							<h3>Mon cv</h3>	
+       							<div class="form-group tmp">
+ 	      							<label class="control-label" for="cv" >CV :</label>
+ 	      							<input type="file" name="cv" class="file" />
  	      						</div>
          						<input type="submit" value="Ajouter / mettre à jour" class="btn btn-default btn-sm" />
      						</form> 
 						</div>
-						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#addLDM" aria-expanded="false" aria-controls="addLDM">
-							Ajouter ma lettre de motivation
-						</button>				
+										
 						<div class="collapse" id="addLDM">
   							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/ldm/add}">
+       							<h3>Ma lettre de motivation</h3>						
        							<div class="form-group">
  	      							<label for="ldm" >Lettre de motivation :</label>
  	      							<input type="file" name="ldm" class="form-control"/>
@@ -95,11 +111,10 @@ function hideThis(_div){
          						<input type="submit" value="Ajouter / mettre à jour" class="btn btn-default btn-sm" />
      						</form> 
 						</div>
-						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#addNotes" aria-expanded="false" aria-controls="addNotes">
-							Ajouter mes notes
-						</button>				
+										
 						<div class="collapse" id="addNotes">
   							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/notes/add}">
+       							<h3>Mes notes</h3>
        							<div class="form-group">
  	      							<label for="notes" >Notes :</label>
  	      							<input type="file" name="notes" class="form-control"/>
@@ -107,11 +122,10 @@ function hideThis(_div){
          						<input type="submit" value="Ajouter / mettre à jour" class="btn btn-default btn-sm" />
      						</form> 
 						</div>
-						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#reco" aria-expanded="false" aria-controls="reco">
-							Demander une lettre de recommandation
-						</button>				
+										
 						<div class="collapse" id="reco">
   							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/reco/demand}">
+       							<h3>Lettre de recommandation</h3>
        							<div class="form-group">
  	      							<label for="reason" >Raison de la lettre :</label>
  	      							<select name="reason" class="form-control">
@@ -127,6 +141,7 @@ function hideThis(_div){
 						</div>
 						<div class="collapse" id="setimage">
   							<form class="col-lg-12 form-horizontal well" action="#" method="POST" enctype="multipart/form-data" th:action="@{/user/image/add}">
+       							<h3>Ma photo</h3>
        							<div class="form-group">
  	      							<label for="image" >Image :</label>
  	      							<input type="file" name="image" class="form-control"/>
@@ -136,10 +151,19 @@ function hideThis(_div){
 						</div>
 					</div>
 					<div class="col-lg-4" >
-						
-						<img src="../images/profile-default-male.png"
-							th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />
+						<div th:if="${userInfo != null}">
+							<img th:if="${userInfo.image != null }" src="../user/profile.png"
+								th:src="'http://localhost:8080' + @{/file/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
+							<img th:unless="${userInfo.image != null }" src="../images/profile-default-male.png"
+							th:src="'http://localhost:8080' + @{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />
 							<a href="#" class="fa fa-gear" style="text-decoration:none" data-toggle="collapse" data-target="#setimage" aria-expanded="false" aria-controls="setimage"></a>
+						</div>
+						<div th:unless="${userInfo != null}">
+							<img src="../images/profile-default-male.png"
+								th:src="'http://localhost:8080' + @{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />
+							<a href="#" class="fa fa-gear" style="text-decoration:none" data-toggle="collapse" data-target="#setimage" aria-expanded="false" aria-controls="setimage"></a>
+						
+						</div>
 					</div>
                 </div>
                 <div class="row">
@@ -154,6 +178,10 @@ function hideThis(_div){
                 </div>
             </div>
         </div>
+        
+        
+        
+        
         <!-- /#page-content-wrapper -->
 
     </div>

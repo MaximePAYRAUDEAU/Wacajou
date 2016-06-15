@@ -9,7 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserModule;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface UserModuleRepository extends JpaRepository<UserModule, Long>{
 	Page<UserModule> findAll(Pageable pageable);
 	Page<UserModule> findByModule(Module module, Pageable pageable);

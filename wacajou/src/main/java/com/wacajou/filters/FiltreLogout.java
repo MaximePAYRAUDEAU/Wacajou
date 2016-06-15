@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LogoutFilter
  */
-@WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD }, urlPatterns = { "/wacajou/logout" })
+@WebFilter( urlPatterns = { "/logout" })
 public class FiltreLogout implements Filter {
 	public static final String SESSION_USER = "session_user";
 	/**
@@ -35,10 +35,11 @@ public class FiltreLogout implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		HttpServletRequest req = (HttpServletRequest) request;
+		/*HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
-        session.removeAttribute(SESSION_USER);
-		chain.doFilter(request, response);
+        session.invalidate();
+        System.out.println("Logout filter");*/
+        chain.doFilter(request, response);
 	}
 
 	/**

@@ -8,7 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class Message extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
@@ -18,12 +22,15 @@ public class Message extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true)
 	private User userSender;
 	
-	@Column(name = "message", nullable = false)
+	@Column(name = "message", nullable = false, length = 5000)
 	private String message;
-	@Column(name = "title", nullable = true)
+	
+	@Column(name = "title", nullable = true, length = 50)
 	private String title;
-	@Column(name = "subject", nullable = true)
+	
+	@Column(name = "subject", nullable = true, length = 50)
 	private String subject;
+	
 	@Column(name = "logdate")
 	private Date logdate;
 	

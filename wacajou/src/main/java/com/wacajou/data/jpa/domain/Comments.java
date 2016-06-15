@@ -1,14 +1,20 @@
 package com.wacajou.data.jpa.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
-
-import org.springframework.util.Assert;
-
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class Comments extends AbstractEntity {
 
@@ -27,18 +33,19 @@ public class Comments extends AbstractEntity {
 	@Enumerated(EnumType.ORDINAL)
 	private Rating rating;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 30)
 	private String title;
 
 	@Column(nullable = true, length = 5000)
 	private String details;
-
+	
+	@Column(name = "logdate")
+	private Date logdate;
+	
 	protected Comments() {
 	}
 
 	public Comments(Module module, User user, String title, Rating rating, String message) {
-		Assert.notNull(module, "Hotel must not be null");
-		Assert.notNull(details, "Details must not be null");
 		this.module = module;
 		this.rating = rating;
 		this.title = title;
@@ -47,8 +54,6 @@ public class Comments extends AbstractEntity {
 	}
 	
 	public Comments(Parcours parcours, User user, String title, Rating rating, String message) {
-		Assert.notNull(module, "Hotel must not be null");
-		Assert.notNull(details, "Details must not be null");
 		this.parcours = parcours;
 		this.rating = rating;
 		this.title = title;
@@ -90,5 +95,16 @@ public class Comments extends AbstractEntity {
 
 	public void setDetails(String details) {
 		this.details = details;
+	}
+	
+
+	public Date getLogdate(){
+		return this.logdate;
+	}
+	
+	@PrePersist
+	@PreUpdate
+	public void setLogDate(){
+		this.logdate = new Date();
 	}
 }

@@ -10,7 +10,11 @@ import com.wacajou.data.jpa.domain.LettreDeRecommandation;
 import com.wacajou.data.jpa.domain.Reason;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface LettreDeRecommandationRepository extends
 		JpaRepository<LettreDeRecommandation, Long> {
 

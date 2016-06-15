@@ -6,7 +6,11 @@ import org.springframework.data.repository.query.Param;
 
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long>{
 	
 	public final static String FIND_BY_USER = "SELECT u " + 

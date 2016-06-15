@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
@@ -32,40 +32,52 @@
 <body>
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
+		<div th:if="${user != null}">
+		<div id="sidebar-wrapper" th:if="${user.isConnect()}">
+			<!-- <div class="container" th:if="${userInfo != null}">
+				<a th:href="@{/profil}"><img src="../user/profile.png"
+					th:src="'http://localhost:8080' + @{/images/user/} + ${userInfo.image}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
+				</a>
+			</div>
+			<div class="container" th:unless="${userInfo != null}">
+				<a th:href="@{/profil}"><img src="../images/profile-default-male.png"
+					th:src="'http://localhost:8080' + @{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
+				</a>
+			</div> -->
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<a th:href="@{/home}"> Wacajou application </a>
+					<a th:href="@{/home}"> Wacajou application</a>
 				</li>
-				<div th:if="${user != null}" >
-					<li>
-						<a th:href="@{/logout}" ><i class="fa fa-lock"></i></a>
-					</li>
+				<li class="sidebar-brand">
+					<a th:href="@{/logout}" class="glyphicon glyphicon-off" ></a>
+				</li>
+				<!--  <div th:if="${user != null}" >				-->	
+					
 					<li>
 						<a th:href="@{/profil}" th:text="${user.fname + ' ' + user.lname}"> nom de famille prenom</a>
-						<img src="../images/profile.png"
-								th:src="@{/images/${user-info.image}}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />	
 					</li>
 					<li>
 						<a th:href="@{/profil}" >Profil</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a th:href="@{/mail}" >Messagerie</a>
+					</li> -->
+					<li th:if="${responsability != 'none'}">
+					<!-- userRight.equals(RespoPedagogique) || userRight.equals(RespoParcours) || userRight.equals(RespoModule) -->
+						<a th:href="@{/administration}" href="#" >Administration</a>
 					</li>
-					<div th:if="${right != null}">
-					<li>
-						<a th:href="@{/administration}" >Administration</a>
-					</li>
-					</div>
-					<li th:if="${parcours != null}" >
-						<a data-toggle="collapse" href="#module" aria-expanded="false" aria-controls="module" th:text="${parcours.name}">Mon parcours</a>
+					<li th:if="${userParcours}" >
+						<a data-toggle="collapse" href="#module" aria-expanded="false" aria-controls="module" th:text="${userParcours.name}">Mon parcours</a>
 						<ul class="collapse" id="module">
-							<li th:each="module: ${modules}"><a th:href="@{/module/${module.id}}" th:text="${module.name}" >Module</a></li>
-							<li><a href="#">Module 1</a></li>
+							<li th:each="module: ${modules}" th:if="${modules}" ><a th:href="@{/module/${module.id}}" th:text="${module.name}" >Module</a></li>
+							<!-- <li><a href="#">Module 1</a></li>
 							<li><a href="#">Module 2</a></li>
 							<li><a href="#">Module 3</a></li>
-							<li><a href="#">Module 4</a></li>
+							<li><a href="#">Module 4</a></li> -->
 						</ul>
+					</li>
+					<li th:unless="${userParcours}" th:if="${responsability == 'none'}">
+						<a th:href="@{/parcours/inscription}">Choisir mon parcours</a>
 					</li>
 					<li>
 						<a href="#">Events</a>
@@ -79,25 +91,53 @@
 					<li>
 						<a href="#">Contact</a>
 					</li>
-				</div> 
-				<li th:unless="${user != null}" >
-					<img src="../images/profile-default-male.png"
-						th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
-					<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" style="display:none">
-						<div class="form-group">
-							<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
-						</div>
-						<div class="form-group">
-							<input type="password" name="mdp" class="form-control" id="mdp" placeholder="Mot de passe"/>
-						</div>
-						<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
-					</form>
-					<input type="button" id="connexion" value="Connexion / Hide" class="btn btn-default btn-sm" onclick="javscript:hideThis('connexion');" />
-				</li>		
-			</ul>
-		</div>
+				</ul>
+			</div>
+			<div id="sidebar-wrapper" th:unless="${user.isConnect()}" >
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a th:href="@{/home}"> Wacajou application </a>
+					</li>
+					<li>
+						<img src="../images/profile-default-male.png"
+							th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
+						<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" >
+							<div class="form-group">
+								<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
+							</div>
+							<div class="form-group">
+								<input type="password" name="mdp" class="form-control" id="mdp" placeholder="Mot de passe"/>
+							</div>
+							<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
+						</form>
+					</li>		
+				</ul>
+			</div>
+			</div>
+			<div id="sidebar-wrapper" th:unless="${user != null}">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a th:href="@{/home}"> Wacajou application </a>
+					</li>
+					<li>
+						<img src="../images/profile-default-male.png"
+							th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
+						<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" >
+							<div class="form-group">
+								<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
+							</div>
+							<div class="form-group">
+								<input type="password" name="mdp" class="form-control" id="mdp" placeholder="Mot de passe"/>
+							</div>
+							<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
+						</form>
+					</li>		
+				</ul>
+			</div>
 		<!-- /#sidebar-wrapper -->
+		
 	</div>
+	 
 	<script>
 	w3IncludeHTML();
 	</script>

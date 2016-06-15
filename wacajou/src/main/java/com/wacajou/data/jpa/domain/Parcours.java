@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+/**
+ * 
+ * @author Payraudeau Maxime
+ *
+ */
 @Entity
 public class Parcours extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
@@ -21,13 +25,13 @@ public class Parcours extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true )
 	private User respo;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, length = 50)
 	private String name;
 
-	@Column(name = "description", nullable = true)
+	@Column(name = "description", nullable = true, length = 5000)
 	private String description;
 
-	@Column(name = "image", nullable = true)
+	@Column(name = "image", nullable = true, length = 50)
 	private String image;
 
 	@Column(name = "domain", nullable = false)
@@ -74,7 +78,11 @@ public class Parcours extends AbstractEntity {
 	public String getImage() {
 		return this.image;
 	}
-
+	
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public Domain getDomain() {
 		return this.domain;
 	}
@@ -84,5 +92,7 @@ public class Parcours extends AbstractEntity {
 		return "Id=" + getId() + ", Name=" + getName() + ", Description=" + getDescription() + ", Image=" + getImage()
 				+ ", Domain=" + getDomain().toString();
 	}
+
+	
 
 }

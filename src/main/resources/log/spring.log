@@ -1,0 +1,942 @@
+2016-06-07 09:05:34.004  INFO 12000 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 12000 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 09:05:34.036  INFO 12000 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 09:05:36.547  INFO 12000 --- [localhost-startStop-1] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2ae9ae7d: startup date [Tue Jun 07 09:05:36 CEST 2016]; root of context hierarchy
+2016-06-07 09:05:43.642  INFO 12000 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$192841c7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:05:43.964  INFO 12000 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b766838e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:05:44.074  INFO 12000 --- [localhost-startStop-1] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 09:05:44.074  INFO 12000 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7527 ms
+2016-06-07 09:05:46.465  INFO 12000 --- [localhost-startStop-1] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 09:05:46.664  INFO 12000 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 09:05:46.679  INFO 12000 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 09:05:46.679  INFO 12000 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 09:05:46.679  INFO 12000 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 09:05:46.773  INFO 12000 --- [localhost-startStop-1] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 09:05:47.462  INFO 12000 --- [localhost-startStop-1] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 09:05:47.556  INFO 12000 --- [localhost-startStop-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 09:05:48.199  INFO 12000 --- [localhost-startStop-1] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 09:05:48.215  INFO 12000 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 09:05:48.215  INFO 12000 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 09:05:49.599  INFO 12000 --- [localhost-startStop-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 09:05:51.661  INFO 12000 --- [localhost-startStop-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 09:05:52.750  INFO 12000 --- [localhost-startStop-1] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 09:05:55.899  INFO 12000 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 09:05:55.900  INFO 12000 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 09:05:55.964  INFO 12000 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 09:05:56.292  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 09:05:56.292  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 09:05:56.292  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 09:05:56.292  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 09:05:56.354  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 09:05:56.354  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, id, version, statut]
+2016-06-07 09:05:56.354  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 09:05:56.354  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 09:05:56.448  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 09:05:56.448  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 09:05:56.448  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 09:05:56.448  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 09:05:56.615  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 09:05:56.615  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 09:05:56.615  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:05:56.615  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:05:56.662  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 09:05:56.662  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 09:05:56.662  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 09:05:56.662  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 09:05:56.708  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 09:05:56.708  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 09:05:56.708  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 09:05:56.708  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 09:05:56.787  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 09:05:56.787  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 09:05:56.787  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 09:05:56.787  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 09:05:56.849  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 09:05:56.849  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 09:05:56.849  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 09:05:56.849  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 09:05:56.912  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 09:05:56.923  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 09:05:56.924  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:05:56.924  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:05:56.959  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 09:05:56.959  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 09:05:56.959  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 09:05:56.959  INFO 12000 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 09:05:59.814  INFO 12000 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 09:06:06.381  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.389  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.404  INFO 12000 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:06:06.420  WARN 12000 --- [localhost-startStop-1] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'file_name' in string value "user/${file_name}/add"
+2016-06-07 09:06:06.420  INFO 12000 --- [localhost-startStop-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-06-07 09:06:06.451 ERROR 12000 --- [localhost-startStop-1] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'file_name' in string value "user/${file_name}/add"
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766)
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.run(SpringBootServletInitializer.java:149)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:129)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:85)
+	at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5244)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1408)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1398)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'file_name' in string value "user/${file_name}/add"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:174)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:204)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:178)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$2.resolveStringValue(PropertySourcesPlaceholderConfigurer.java:172)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:808)
+	at org.springframework.context.support.ApplicationContextAwareProcessor$EmbeddedValueResolver.resolveStringValue(ApplicationContextAwareProcessor.java:140)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.resolveEmbeddedValuesInPatterns(RequestMappingHandlerMapping.java:272)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.createRequestMappingInfo(RequestMappingHandlerMapping.java:249)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.createRequestMappingInfo(RequestMappingHandlerMapping.java:206)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getMappingForMethod(RequestMappingHandlerMapping.java:185)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getMappingForMethod(RequestMappingHandlerMapping.java:53)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$1.inspect(AbstractHandlerMethodMapping.java:233)
+	at org.springframework.core.MethodIntrospector$1.doWith(MethodIntrospector.java:72)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:530)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:229)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:213)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:183)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:125)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 25 common frames omitted
+
+2016-06-07 09:06:06.451  INFO 12000 --- [localhost-startStop-1] .b.l.ClasspathLoggingApplicationListener : Application failed to start with classpath: [file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/classes/, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/antlr-2.7.7.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/aopalliance-1.0.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/asm-3.3.1.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/aspectjweaver-1.8.9.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/cglib-2.2.2.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/classmate-1.1.0.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/dom4j-1.6.1.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/groovy-2.4.6.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/hibernate-commons-annotations-4.0.5.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/hibernate-core-4.3.11.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/hibernate-entitymanager-4.3.11.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/hibernate-validator-5.2.4.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jackson-annotations-2.6.6.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jackson-core-2.6.6.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jackson-databind-2.6.6.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jandex-1.1.0.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/javassist-3.18.1-GA.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/javax.transaction-api-1.2.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jboss-logging-3.3.0.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jcl-over-slf4j-1.7.21.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jstl-1.2.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/jul-to-slf4j-1.7.21.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/log4j-over-slf4j-1.7.21.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/logback-classic-1.1.7.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/logback-core-1.1.7.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/mysql-connector-java-6.0.2.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/ognl-3.0.8.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/slf4j-api-1.7.21.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/snakeyaml-1.16.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-aop-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-aspects-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-beans-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-autoconfigure-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-devtools-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-aop-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-data-jpa-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-jdbc-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-logging-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-thymeleaf-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-validation-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-boot-starter-web-1.3.5.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-context-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-core-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-data-commons-1.11.4.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-data-jpa-1.9.4.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-expression-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-jdbc-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-orm-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-session-1.0.2.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-tx-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-web-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/spring-webmvc-4.2.6.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/thymeleaf-2.1.4.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/thymeleaf-layout-dialect-1.3.3.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/thymeleaf-spring4-2.1.4.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/tomcat-embed-el-8.0.33.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/tomcat-jdbc-8.0.33.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/tomcat-juli-8.0.33.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/unbescape-1.1.0.RELEASE.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/validation-api-1.1.0.Final.jar, file:/P:/ISEP/GL/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wacajou/WEB-INF/lib/xml-apis-1.0.b2.jar]
+2016-06-07 09:06:06.467 ERROR 12000 --- [Catalina-startStop-1] org.apache.catalina.core.ContainerBase   : A child container failed during start
+
+java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/wacajou]]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:871)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1408)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1398)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/wacajou]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	... 6 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'file_name' in string value "user/${file_name}/add"
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766)
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.run(SpringBootServletInitializer.java:149)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:129)
+	at org.springframework.boot.context.web.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:85)
+	at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5244)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 6 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'file_name' in string value "user/${file_name}/add"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:174)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:204)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:178)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$2.resolveStringValue(PropertySourcesPlaceholderConfigurer.java:172)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:808)
+	at org.springframework.context.support.ApplicationContextAwareProcessor$EmbeddedValueResolver.resolveStringValue(ApplicationContextAwareProcessor.java:140)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.resolveEmbeddedValuesInPatterns(RequestMappingHandlerMapping.java:272)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.createRequestMappingInfo(RequestMappingHandlerMapping.java:249)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.createRequestMappingInfo(RequestMappingHandlerMapping.java:206)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getMappingForMethod(RequestMappingHandlerMapping.java:185)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getMappingForMethod(RequestMappingHandlerMapping.java:53)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$1.inspect(AbstractHandlerMethodMapping.java:233)
+	at org.springframework.core.MethodIntrospector$1.doWith(MethodIntrospector.java:72)
+	at org.springframework.util.ReflectionUtils.doWithMethods(ReflectionUtils.java:530)
+	at org.springframework.core.MethodIntrospector.selectMethods(MethodIntrospector.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:229)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:213)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:183)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:125)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 25 common frames omitted
+
+2016-06-07 09:06:06.467 ERROR 12000 --- [main] org.apache.catalina.core.ContainerBase   : A child container failed during start
+
+java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:441)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:769)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:625)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1408)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1398)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.catalina.LifecycleException: A child container failed during start
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:924)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:871)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 6 common frames omitted
+
+2016-06-07 09:06:06.482 ERROR 12000 --- [main] org.apache.catalina.startup.Catalina     : The required Server component failed to start so Tomcat is unable to start.
+
+org.apache.catalina.LifecycleException: Failed to start component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:625)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:769)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 7 common frames omitted
+Caused by: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:154)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:441)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 9 common frames omitted
+Caused by: org.apache.catalina.LifecycleException: A child container failed during start
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:924)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 11 common frames omitted
+
+2016-06-07 09:06:06.482  INFO 12000 --- [main] org.apache.coyote.ajp.AjpNioProtocol     : Pausing ProtocolHandler ["ajp-nio-8009"]
+2016-06-07 09:06:06.482  INFO 12000 --- [main] o.apache.catalina.core.StandardService   : Arrêt du service Catalina
+2016-06-07 09:06:06.498 ERROR 12000 --- [main] o.a.coyote.http11.Http11NioProtocol      : Failed to destroy end point associated with ProtocolHandler ["http-nio-8080"]
+
+java.lang.NullPointerException: null
+	at org.apache.tomcat.util.net.NioEndpoint.releaseCaches(NioEndpoint.java:305)
+	at org.apache.tomcat.util.net.NioEndpoint.unbind(NioEndpoint.java:481)
+	at org.apache.tomcat.util.net.AbstractEndpoint.destroy(AbstractEndpoint.java:823)
+	at org.apache.coyote.AbstractProtocol.destroy(AbstractProtocol.java:533)
+	at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1023)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.core.StandardService.destroyInternal(StandardService.java:589)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.core.StandardServer.destroyInternal(StandardServer.java:859)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:629)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+2016-06-07 09:06:06.498  INFO 12000 --- [main] org.apache.coyote.ajp.AjpNioProtocol     : Destroying ProtocolHandler ["ajp-nio-8009"]
+2016-06-07 09:06:06.498 ERROR 12000 --- [main] org.apache.coyote.ajp.AjpNioProtocol     : Failed to destroy end point associated with ProtocolHandler ["ajp-nio-8009"]
+
+java.lang.NullPointerException: null
+	at org.apache.tomcat.util.net.NioEndpoint.releaseCaches(NioEndpoint.java:305)
+	at org.apache.tomcat.util.net.NioEndpoint.unbind(NioEndpoint.java:481)
+	at org.apache.tomcat.util.net.AbstractEndpoint.destroy(AbstractEndpoint.java:823)
+	at org.apache.coyote.AbstractProtocol.destroy(AbstractProtocol.java:533)
+	at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1023)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.core.StandardService.destroyInternal(StandardService.java:589)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.core.StandardServer.destroyInternal(StandardServer.java:859)
+	at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:305)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:629)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+2016-06-07 09:06:06.560  WARN 12000 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [wacajou] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+2016-06-07 09:06:06.560  WARN 12000 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [wacajou] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2016-06-07 09:08:06.696  INFO 8240 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 8240 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 09:08:06.711  INFO 8240 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 09:08:07.852  INFO 8240 --- [localhost-startStop-1] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@8ec0c5f: startup date [Tue Jun 07 09:08:07 CEST 2016]; root of context hierarchy
+2016-06-07 09:08:11.370  INFO 8240 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$8244eb40] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:08:11.594  INFO 8240 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$20832d07] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:08:11.704  INFO 8240 --- [localhost-startStop-1] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 09:08:11.704  INFO 8240 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3852 ms
+2016-06-07 09:08:12.719  INFO 8240 --- [localhost-startStop-1] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 09:08:12.791  INFO 8240 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 09:08:12.791  INFO 8240 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 09:08:12.791  INFO 8240 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 09:08:12.791  INFO 8240 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 09:08:12.822  INFO 8240 --- [localhost-startStop-1] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 09:08:13.119  INFO 8240 --- [localhost-startStop-1] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 09:08:13.166  INFO 8240 --- [localhost-startStop-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 09:08:13.400  INFO 8240 --- [localhost-startStop-1] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 09:08:13.416  INFO 8240 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 09:08:13.416  INFO 8240 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 09:08:14.651  INFO 8240 --- [localhost-startStop-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 09:08:16.055  INFO 8240 --- [localhost-startStop-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 09:08:17.286  INFO 8240 --- [localhost-startStop-1] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 09:08:19.826  INFO 8240 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 09:08:19.840  INFO 8240 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 09:08:19.853  INFO 8240 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 09:08:19.916  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 09:08:19.931  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 09:08:19.931  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 09:08:19.931  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 09:08:19.947  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 09:08:19.947  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, comment, id, version, statut]
+2016-06-07 09:08:19.947  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 09:08:19.947  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 09:08:19.963  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 09:08:19.978  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 09:08:19.978  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 09:08:19.978  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 09:08:19.994  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 09:08:19.994  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 09:08:19.994  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:08:19.994  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:08:20.010  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 09:08:20.010  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 09:08:20.010  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 09:08:20.010  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 09:08:20.025  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 09:08:20.025  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 09:08:20.025  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 09:08:20.025  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 09:08:20.041  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 09:08:20.041  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 09:08:20.041  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 09:08:20.041  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 09:08:20.181  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 09:08:20.181  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 09:08:20.181  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 09:08:20.181  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 09:08:20.213  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 09:08:20.213  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 09:08:20.213  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:08:20.213  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:08:20.228  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 09:08:20.228  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 09:08:20.228  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 09:08:20.228  INFO 8240 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 09:08:20.228  INFO 8240 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 09:08:23.227  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.242  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.258  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.258  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profil]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.profilPage(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.258  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addUserPage()
+2016-06-07 09:08:23.258  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add/process],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addingUser(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:08:23.273  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-07 09:08:23.273  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-07 09:08:23.383  INFO 8240 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/images/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:08:23.383  INFO 8240 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:08:23.383  INFO 8240 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:08:23.383  INFO 8240 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/fonts/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:08:23.633  INFO 8240 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@8ec0c5f: startup date [Tue Jun 07 09:08:07 CEST 2016]; root of context hierarchy
+2016-06-07 09:08:26.527  INFO 8240 --- [localhost-startStop-1] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-07 09:08:26.568  INFO 8240 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : Started ServletInitializer in 21.945 seconds (JVM running for 33.378)
+2016-06-07 09:08:26.755  INFO 8240 --- [main] org.apache.coyote.ajp.AjpNioProtocol     : Starting ProtocolHandler ["ajp-nio-8009"]
+2016-06-07 09:08:26.802  INFO 8240 --- [main] org.apache.catalina.startup.Catalina     : Server startup in 31729 ms
+2016-06-07 09:08:42.093  INFO 8240 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 09:08:42.095  INFO 8240 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-06-07 09:08:42.264  INFO 8240 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 169 ms
+2016-06-07 09:58:26.530  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement du contexte [/wacajou] a démarré
+2016-06-07 09:58:26.682  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 09:58:26.760  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Closing Spring root WebApplicationContext
+2016-06-07 09:58:26.774  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@8ec0c5f: startup date [Tue Jun 07 09:08:07 CEST 2016]; root of context hierarchy
+2016-06-07 09:58:26.966  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2016-06-07 09:58:26.987  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-06-07 09:58:54.659  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 8240 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 09:58:54.700  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 09:58:56.986  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37c06f5: startup date [Tue Jun 07 09:58:56 CEST 2016]; root of context hierarchy
+2016-06-07 09:59:03.181  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$ef25c466] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:59:03.438  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8d64062d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 09:59:03.565  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 09:59:03.566  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6580 ms
+2016-06-07 09:59:04.865  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 09:59:04.940  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 09:59:04.942  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 09:59:04.943  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 09:59:04.943  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 09:59:04.982  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 09:59:05.306  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 09:59:05.358  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 09:59:08.714  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 09:59:08.719  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 09:59:08.719  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 09:59:10.220  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 09:59:11.590  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 09:59:12.691  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 09:59:14.965  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 09:59:14.966  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 09:59:14.986  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 09:59:15.219  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 09:59:15.220  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 09:59:15.220  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 09:59:15.220  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 09:59:15.260  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 09:59:15.284  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, comment, id, version, statut]
+2016-06-07 09:59:15.285  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 09:59:15.286  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 09:59:15.352  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 09:59:15.352  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 09:59:15.352  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 09:59:15.352  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 09:59:15.408  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 09:59:15.409  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 09:59:15.409  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:59:15.410  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 09:59:15.438  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 09:59:15.439  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 09:59:15.439  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 09:59:15.439  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 09:59:15.464  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 09:59:15.464  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 09:59:15.464  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 09:59:15.464  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 09:59:15.511  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 09:59:15.511  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 09:59:15.511  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 09:59:15.511  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 09:59:15.581  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 09:59:15.582  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 09:59:15.583  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 09:59:15.583  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 09:59:15.610  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 09:59:15.611  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 09:59:15.611  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:59:15.612  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 09:59:15.652  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 09:59:15.653  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 09:59:15.654  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 09:59:15.654  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 09:59:15.657  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 09:59:20.887  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:59:20.891  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 09:59:20.894  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 09:59:20.895  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 09:59:20.896  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.896  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.899  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.900  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 09:59:20.901  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 09:59:20.901  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.904  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 09:59:20.905  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.910  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 09:59:20.911  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.914  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.915  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.917  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/{file_name}/add],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addFile(java.lang.String,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.919  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profil]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.profilPage(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.920  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addUserPage()
+2016-06-07 09:59:20.921  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add/process],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addingUser(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.ModelAndView)
+2016-06-07 09:59:20.948  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-07 09:59:20.950  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-07 09:59:21.074  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/images/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:59:21.075  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:59:21.075  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:59:21.076  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/fonts/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 09:59:21.352  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37c06f5: startup date [Tue Jun 07 09:58:56 CEST 2016]; root of context hierarchy
+2016-06-07 09:59:24.383  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-07 09:59:24.426  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Started ServletInitializer in 34.237 seconds (JVM running for 3091.227)
+2016-06-07 09:59:24.450  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement de ce contexte est terminé
+2016-06-07 09:59:38.150  INFO 8240 --- [http-nio-8080-exec-11] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 09:59:38.154  INFO 8240 --- [http-nio-8080-exec-11] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-06-07 09:59:38.235  INFO 8240 --- [http-nio-8080-exec-11] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 80 ms
+2016-06-07 10:04:49.790 ERROR 8240 --- [http-nio-8080-exec-20] o.s.boot.context.web.ErrorPageFilter     : Forwarding to error page from request [/module/create/send] due to exception [Optional long parameter 'user_id' is present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+
+java.lang.IllegalStateException: Optional long parameter 'user_id' is present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.handleNullValue(AbstractNamedValueMethodArgumentResolver.java:205)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:98)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:99)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:161)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:832)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:743)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:869)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.wacajou.filters.FiltrePublic.doFilter(FiltrePublic.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.boot.context.web.ErrorPageFilter.doFilter(ErrorPageFilter.java:120)
+	at org.springframework.boot.context.web.ErrorPageFilter.access$000(ErrorPageFilter.java:61)
+	at org.springframework.boot.context.web.ErrorPageFilter$1.doFilterInternal(ErrorPageFilter.java:95)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.boot.context.web.ErrorPageFilter.doFilter(ErrorPageFilter.java:113)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:521)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1096)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:674)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+2016-06-07 10:05:35.724  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement du contexte [/wacajou] a démarré
+2016-06-07 10:05:35.730  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 10:05:35.801  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Closing Spring root WebApplicationContext
+2016-06-07 10:05:35.818  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37c06f5: startup date [Tue Jun 07 09:58:56 CEST 2016]; root of context hierarchy
+2016-06-07 10:05:35.832  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2016-06-07 10:05:35.852  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-06-07 10:05:50.613  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 8240 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 10:05:50.644  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 10:05:52.691  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@69b6b599: startup date [Tue Jun 07 10:05:52 CEST 2016]; root of context hierarchy
+2016-06-07 10:05:58.447  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$9740030a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 10:05:58.649  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$357e44d1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 10:05:58.762  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 10:05:58.762  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6072 ms
+2016-06-07 10:05:59.816  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 10:05:59.890  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 10:05:59.892  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 10:05:59.893  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 10:05:59.894  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 10:05:59.934  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 10:06:00.269  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 10:06:00.316  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 10:06:00.604  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 10:06:00.608  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 10:06:00.612  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 10:06:02.137  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 10:06:03.473  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 10:06:04.561  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 10:06:06.806  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 10:06:06.812  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 10:06:06.840  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 10:06:06.968  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 10:06:06.968  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 10:06:06.968  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 10:06:06.968  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 10:06:07.009  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 10:06:07.009  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, comment, id, version, statut]
+2016-06-07 10:06:07.040  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 10:06:07.040  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 10:06:07.141  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 10:06:07.141  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 10:06:07.141  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 10:06:07.141  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 10:06:07.161  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 10:06:07.177  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 10:06:07.178  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 10:06:07.179  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 10:06:07.218  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 10:06:07.219  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 10:06:07.219  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 10:06:07.220  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 10:06:07.245  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 10:06:07.246  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 10:06:07.247  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 10:06:07.248  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 10:06:07.296  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 10:06:07.297  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 10:06:07.298  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 10:06:07.298  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 10:06:07.342  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 10:06:07.343  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 10:06:07.343  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 10:06:07.344  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 10:06:07.369  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 10:06:07.369  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 10:06:07.370  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 10:06:07.370  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 10:06:07.393  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 10:06:07.394  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 10:06:07.395  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 10:06:07.395  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 10:06:07.402  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 10:06:14.860  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 10:06:14.865  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 10:06:14.867  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 10:06:14.868  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 10:06:14.868  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.869  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.871  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.871  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 10:06:14.871  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 10:06:14.873  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.875  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 10:06:14.876  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.881  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 10:06:14.882  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.883  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.884  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.886  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/{file_name}/add],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addFile(java.lang.String,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.887  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profil]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.profilPage(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.888  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addUserPage()
+2016-06-07 10:06:14.888  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add/process],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addingUser(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:06:14.965  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-07 10:06:14.966  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-07 10:06:15.079  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/images/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:06:15.079  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:06:15.079  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:06:15.079  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/fonts/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:06:15.334  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@69b6b599: startup date [Tue Jun 07 10:05:52 CEST 2016]; root of context hierarchy
+2016-06-07 10:06:18.412  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.boot.SpringApplication               : Users de test crées.
+2016-06-07 10:06:20.444  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-07 10:06:20.491  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Started ServletInitializer in 33.909 seconds (JVM running for 3507.293)
+2016-06-07 10:06:20.835  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement de ce contexte est terminé
+2016-06-07 10:06:44.746  INFO 8240 --- [http-nio-8080-exec-19] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 10:06:44.752  INFO 8240 --- [http-nio-8080-exec-19] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-06-07 10:06:44.877  INFO 8240 --- [http-nio-8080-exec-19] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 121 ms
+2016-06-07 10:12:59.147  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement du contexte [/wacajou] a démarré
+2016-06-07 10:12:59.158  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 10:12:59.169  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Closing Spring root WebApplicationContext
+2016-06-07 10:12:59.170  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@69b6b599: startup date [Tue Jun 07 10:05:52 CEST 2016]; root of context hierarchy
+2016-06-07 10:12:59.174  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2016-06-07 10:12:59.194  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2016-06-07 10:13:16.032  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 8240 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 10:13:16.044  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 10:13:18.241  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@33adaaa6: startup date [Tue Jun 07 10:13:18 CEST 2016]; root of context hierarchy
+2016-06-07 10:13:25.615  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$c737b85f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 10:13:25.846  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6575fa26] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 10:13:26.008  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 10:13:26.009  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 7768 ms
+2016-06-07 10:13:28.772  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 10:13:29.008  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 10:13:29.013  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 10:13:29.014  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 10:13:29.015  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 10:13:29.121  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 10:13:29.873  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 10:13:30.041  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 10:13:30.968  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 10:13:30.981  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 10:13:30.993  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 10:13:33.022  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 10:13:35.049  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 10:13:36.529  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 10:13:39.867  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 10:13:39.869  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 10:13:39.902  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 10:13:40.093  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 10:13:40.109  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 10:13:40.109  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 10:13:40.110  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 10:13:40.201  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 10:13:40.204  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, comment, id, version, statut]
+2016-06-07 10:13:40.205  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 10:13:40.206  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 10:13:40.335  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 10:13:40.336  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 10:13:40.336  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 10:13:40.336  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 10:13:40.478  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 10:13:40.479  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 10:13:40.479  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 10:13:40.480  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 10:13:40.538  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 10:13:40.539  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 10:13:40.540  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 10:13:40.541  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 10:13:40.575  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 10:13:40.575  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 10:13:40.576  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 10:13:40.576  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 10:13:40.668  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 10:13:40.669  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 10:13:40.670  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 10:13:40.670  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 10:13:40.782  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 10:13:40.782  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 10:13:40.783  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 10:13:40.783  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 10:13:40.884  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 10:13:40.886  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 10:13:40.886  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 10:13:40.887  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 10:13:40.959  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 10:13:40.960  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 10:13:40.960  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 10:13:40.961  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 10:13:40.971  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 10:13:47.985  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 10:13:47.989  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 10:13:47.992  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 10:13:47.992  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 10:13:47.993  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:47.993  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:47.995  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:47.996  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 10:13:47.997  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 10:13:47.997  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.000  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 10:13:48.002  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/{file_name}/add],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addFile(java.lang.String,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profil]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.profilPage(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addUserPage()
+2016-06-07 10:13:48.006  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add/process],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addingUser(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.ModelAndView)
+2016-06-07 10:13:48.047  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-07 10:13:48.047  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-07 10:13:48.229  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/images/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:13:48.229  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:13:48.230  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:13:48.231  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/fonts/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 10:13:48.723  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@33adaaa6: startup date [Tue Jun 07 10:13:18 CEST 2016]; root of context hierarchy
+2016-06-07 10:13:58.031  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-07 10:13:58.181  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] com.wacajou.ServletInitializer           : Started ServletInitializer in 46.566 seconds (JVM running for 3964.982)
+2016-06-07 10:13:58.351  INFO 8240 --- [ContainerBackgroundProcessor[StandardEngine[Catalina]]] o.apache.catalina.core.StandardContext   : Le rechargement de ce contexte est terminé
+2016-06-07 10:14:07.422  INFO 8240 --- [http-nio-8080-exec-25] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 10:14:07.424  INFO 8240 --- [http-nio-8080-exec-25] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-06-07 10:14:07.498  INFO 8240 --- [http-nio-8080-exec-25] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 73 ms
+2016-06-07 10:21:27.527  WARN 8240 --- [http-nio-8080-exec-31] o.s.web.servlet.PageNotFound             : No mapping found for HTTP request with URI [/wacajou] in DispatcherServlet with name 'dispatcherServlet'
+2016-06-07 10:54:20.715 ERROR 8240 --- [http-nio-8080-exec-37] o.s.boot.context.web.ErrorPageFilter     : Cannot forward to error page for request [/administration] as the response has already been committed. As a result, the response may have the wrong status code. If your application is running on WebSphere Application Server you may be able to resolve this problem by setting com.ibm.ws.webcontainer.invokeFlushAfterService to false
+
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:393)
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:426)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:342)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:317)
+	at org.apache.catalina.connector.Response.flushBuffer(Response.java:511)
+	at org.apache.catalina.connector.ResponseFacade.flushBuffer(ResponseFacade.java:318)
+	at org.springframework.boot.context.web.ErrorPageFilter.doFilter(ErrorPageFilter.java:127)
+	at org.springframework.boot.context.web.ErrorPageFilter.access$000(ErrorPageFilter.java:61)
+	at org.springframework.boot.context.web.ErrorPageFilter$1.doFilterInternal(ErrorPageFilter.java:95)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.boot.context.web.ErrorPageFilter.doFilter(ErrorPageFilter.java:113)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:521)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1096)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:674)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.io.IOException: Une connexion établie a été abandonnée par un logiciel de votre ordinateur hôte
+	at sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:124)
+	at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:101)
+	at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:172)
+	at org.apache.coyote.http11.InternalNioOutputBuffer.writeToSocket(InternalNioOutputBuffer.java:139)
+	at org.apache.coyote.http11.InternalNioOutputBuffer.addToBB(InternalNioOutputBuffer.java:197)
+	at org.apache.coyote.http11.InternalNioOutputBuffer.access$000(InternalNioOutputBuffer.java:41)
+	at org.apache.coyote.http11.InternalNioOutputBuffer$SocketOutputBuffer.doWrite(InternalNioOutputBuffer.java:320)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:116)
+	at org.apache.coyote.http11.AbstractOutputBuffer.doWrite(AbstractOutputBuffer.java:256)
+	at org.apache.coyote.Response.doWrite(Response.java:501)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:388)
+	... 28 common frames omitted
+
+2016-06-07 11:31:12.112  INFO 9088 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : Starting ServletInitializer v0.0.1-SNAPSHOT on DESKTOP-PAYRAUDEAU with PID 9088 (P:\ISEP\GL\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\wacajou\WEB-INF\classes started by ISEP in P:\eclipse)
+2016-06-07 11:31:12.248  INFO 9088 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : The following profiles are active: dev
+2016-06-07 11:31:14.613  INFO 9088 --- [localhost-startStop-1] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6fe1a55: startup date [Tue Jun 07 11:31:14 CEST 2016]; root of context hierarchy
+2016-06-07 11:31:20.510  INFO 9088 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'configConnexion' of type [class com.wacajou.ConfigConnexion$$EnhancerBySpringCGLIB$$fd9d4f0c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 11:31:20.798  INFO 9088 --- [localhost-startStop-1] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9bdb90d3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-07 11:31:20.917  INFO 9088 --- [localhost-startStop-1] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring embedded WebApplicationContext
+2016-06-07 11:31:20.918  INFO 9088 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6304 ms
+2016-06-07 11:31:23.787  INFO 9088 --- [localhost-startStop-1] b.a.w.TomcatWebSocketContainerCustomizer : NonEmbeddedServletContainerFactory detected. Websockets support should be native so this normally is not a problem.
+2016-06-07 11:31:24.045  INFO 9088 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-07 11:31:24.051  INFO 9088 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'errorPageFilter' to: [/*]
+2016-06-07 11:31:24.052  INFO 9088 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-07 11:31:24.053  INFO 9088 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'filtrePublic' to: [/*]
+2016-06-07 11:31:24.147  INFO 9088 --- [localhost-startStop-1] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: com.mysql.cj.jdbc.Driver
+2016-06-07 11:31:24.801  INFO 9088 --- [localhost-startStop-1] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-07 11:31:24.978  INFO 9088 --- [localhost-startStop-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-07 11:31:26.450  INFO 9088 --- [localhost-startStop-1] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-07 11:31:26.462  INFO 9088 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-07 11:31:26.471  INFO 9088 --- [localhost-startStop-1] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-07 11:31:28.449  INFO 9088 --- [localhost-startStop-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-07 11:31:30.747  INFO 9088 --- [localhost-startStop-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2016-06-07 11:31:31.947  INFO 9088 --- [localhost-startStop-1] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-07 11:31:34.916  INFO 9088 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2016-06-07 11:31:34.917  INFO 9088 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000102: Fetching database metadata
+2016-06-07 11:31:34.960  INFO 9088 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000396: Updating schema
+2016-06-07 11:31:35.782  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.comments
+2016-06-07 11:31:35.784  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, parcours_id, rating, details, id, title, version]
+2016-06-07 11:31:35.785  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc]
+2016-06-07 11:31:35.786  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_khybsooej44gy3qm2urcfgvmy, fk_rv1vgl3g4uccpifs0rl3yxx0y, fk_1x3vdhb5vv8eu5708riqe07wc, primary]
+2016-06-07 11:31:35.918  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.lettrederecommandation
+2016-06-07 11:31:35.920  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [path, reason, usersender_id, userreciver_id, comment, id, version, statut]
+2016-06-07 11:31:35.922  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu]
+2016-06-07 11:31:35.925  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_85djgldu9nww6rclrt77e2rl0, fk_cqhje2k2r5xrmiovjp83a5pfu, primary]
+2016-06-07 11:31:36.007  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.message
+2016-06-07 11:31:36.009  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_sender_id, usersender_id, userreciver_id, subject, logdate, id, message, title, version, user_reciver_id]
+2016-06-07 11:31:36.010  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6]
+2016-06-07 11:31:36.011  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_95bbr2wnyye4tkx5eotofdbcd, fk_d5sya8u25gokxa2btuif6fbb0, fk_5dbv65sjejus0gv40d11rikhg, fk_plotc0j22235ee8lp139mxke6, primary]
+2016-06-07 11:31:36.086  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.module
+2016-06-07 11:31:36.087  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, description, modulename, id, module_name, version, respo_id]
+2016-06-07 11:31:36.088  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 11:31:36.089  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ao25w2hy445wesxeo9wfvsp77, uk_obshnq2filgvvsc4fg4xfu2pa, primary, fk_f60joenmh0mip4qa19q6ntqgu]
+2016-06-07 11:31:36.193  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcours
+2016-06-07 11:31:36.194  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, domain, name, description, id, version, respo_id]
+2016-06-07 11:31:36.195  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_t1d2l49p8yarunmudw1vdttqo]
+2016-06-07 11:31:36.197  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_t1d2l49p8yarunmudw1vdttqo, primary]
+2016-06-07 11:31:36.266  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.parcoursmodule
+2016-06-07 11:31:36.267  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, parcours_id, optional, id, version]
+2016-06-07 11:31:36.267  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s]
+2016-06-07 11:31:36.268  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_i990c2dn2568vif0f76v47n36, fk_eisp7wyyu00b665x6uopcno4s, primary]
+2016-06-07 11:31:36.315  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.user
+2016-06-07 11:31:36.316  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [promo, fname, number, lname, mail, id, login, type, version, statut]
+2016-06-07 11:31:36.317  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: []
+2016-06-07 11:31:36.317  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_ew1hvam8uwaknuaellwhqchhb, primary]
+2016-06-07 11:31:36.360  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userinfo
+2016-06-07 11:31:36.361  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [image, cv, intership, ldm, user_id, activities, university, id, version, mark]
+2016-06-07 11:31:36.361  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_br0adpt7xunxruoecwcfa89u4]
+2016-06-07 11:31:36.368  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [uk_br0adpt7xunxruoecwcfa89u4, primary]
+2016-06-07 11:31:36.434  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.usermodule
+2016-06-07 11:31:36.435  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [module_id, user_id, id, version]
+2016-06-07 11:31:36.436  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_gkenna4byv5uslqtqhig7e3ud, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 11:31:36.437  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_gkenna4byv5uslqtqhig7e3ud, primary, fk_itti739yj1og9bm1hkwexddtg]
+2016-06-07 11:31:36.553  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: isep.userparcours
+2016-06-07 11:31:36.559  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [user_id, parcours_id, id, version]
+2016-06-07 11:31:36.560  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000108: Foreign keys: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j]
+2016-06-07 11:31:36.561  INFO 9088 --- [localhost-startStop-1] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000126: Indexes: [fk_n1cvwhjc7dwprsenmj43pqa6h, fk_eawhxurl4yxowi7r1d3yj721j, primary]
+2016-06-07 11:31:36.570  INFO 9088 --- [localhost-startStop-1] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000232: Schema update complete
+2016-06-07 11:31:43.057  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tmp]}" onto public java.lang.String com.wacajou.controller.GreetingController.tmp(java.lang.String,org.springframework.ui.Model)
+2016-06-07 11:31:43.063  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting]}" onto public java.lang.String com.wacajou.controller.GreetingController.greeting(java.lang.String,org.springframework.ui.Model)
+2016-06-07 11:31:43.065  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/test],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.connexionTest(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.066  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public void com.wacajou.module.dev.controller.ConnexionController.connexion(java.lang.String,java.lang.String,javax.servlet.http.HttpSession,org.springframework.ui.Model)
+2016-06-07 11:31:43.067  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String com.wacajou.module.dev.controller.ConnexionController.connexion(org.springframework.ui.Model)
+2016-06-07 11:31:43.068  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ConnexionController.deconnexion(org.springframework.web.bind.support.SessionStatus,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.070  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/administration]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.admin(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.071  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.testing(javax.servlet.http.HttpSession)
+2016-06-07 11:31:43.071  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sidebar]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.sidebar(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.072  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.GlobalController.goHome()
+2016-06-07 11:31:43.076  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/*],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.setMessage()
+2016-06-07 11:31:43.077  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/message/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.MessageController.sendMessage(java.lang.String,java.lang.String,java.lang.String,com.wacajou.data.jpa.domain.User,javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.082  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModule(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.084  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/module/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ModuleController.createModuleSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,org.springframework.web.servlet.ModelAndView,javax.servlet.http.HttpSession)
+2016-06-07 11:31:43.086  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcours(org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.088  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/parcours/create/send],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.ParcoursController.createParcoursSend(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.multipart.MultipartFile,long,java.util.List<java.lang.Long>,java.util.List<java.lang.Long>,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.091  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addUserPage()
+2016-06-07 11:31:43.091  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profil]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.profilPage(javax.servlet.http.HttpSession,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.092  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/add/process],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addingUser(java.lang.String,java.lang.String,java.lang.String,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.092  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/{file_name}/add],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.wacajou.module.dev.controller.UserController.addFile(java.lang.String,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile,org.springframework.web.servlet.mvc.support.RedirectAttributes,org.springframework.web.servlet.ModelAndView)
+2016-06-07 11:31:43.140  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-07 11:31:43.142  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-07 11:31:43.265  INFO 9088 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/images/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 11:31:43.265  INFO 9088 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 11:31:43.270  INFO 9088 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 11:31:43.270  INFO 9088 --- [localhost-startStop-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/fonts/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-07 11:31:43.609  INFO 9088 --- [localhost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6fe1a55: startup date [Tue Jun 07 11:31:14 CEST 2016]; root of context hierarchy
+2016-06-07 11:31:50.820  INFO 9088 --- [localhost-startStop-1] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-07 11:31:50.866  INFO 9088 --- [localhost-startStop-1] com.wacajou.ServletInitializer           : Started ServletInitializer in 43.475 seconds (JVM running for 68.445)
+2016-06-07 11:31:51.046  INFO 9088 --- [main] org.apache.coyote.ajp.AjpNioProtocol     : Starting ProtocolHandler ["ajp-nio-8009"]
+2016-06-07 11:31:51.091  INFO 9088 --- [main] org.apache.catalina.startup.Catalina     : Server startup in 63502 ms
+2016-06-07 11:33:31.022  INFO 9088 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/wacajou]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-06-07 11:33:31.023  INFO 9088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-06-07 11:33:31.120  INFO 9088 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 93 ms
+2016-06-07 13:28:50.738  WARN 9088 --- [http-nio-8080-exec-2] o.s.web.servlet.PageNotFound             : No mapping found for HTTP request with URI [/wacajou/mail] in DispatcherServlet with name 'dispatcherServlet'
