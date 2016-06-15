@@ -6,11 +6,12 @@ import org.hibernate.service.spi.ServiceException;
 
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
 
 public interface UserService {
-	void Create(String login, String promo, String statut)
+	void Create(String login, String promo, Statut statut, Parcours parcours)
 			throws ServiceException;
 
 	User Connect(String login, String mdp) throws ServiceException;
@@ -35,5 +36,14 @@ public interface UserService {
 	List<User> getAllUser() throws ServiceException;
 
 	String getError();
+
+	void setUserParcours(User user, Parcours parcours)throws ServiceException;
+
+	void setUserModule(User user, Parcours parcours,
+			List<Module> module) throws ServiceException;
+
+	List<User> getUserByParcours(Parcours parcours) throws ServiceException;
+
+	List<User> getUserByModule(Module module) throws ServiceException;
 
 }

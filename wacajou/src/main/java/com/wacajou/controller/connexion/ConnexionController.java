@@ -2,24 +2,26 @@ package com.wacajou.controller.connexion;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wacajou.config.WebServletConfig;
 import com.wacajou.controller.common.GenericModelAttribute;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
+import com.wacajou.data.jpa.service.ModuleService;
+import com.wacajou.data.jpa.service.ParcoursService;
 import com.wacajou.data.jpa.service.UserService;
 import com.wacajou.security.Validate;
 
@@ -34,7 +36,11 @@ public class ConnexionController extends GenericModelAttribute {
 	
 	@Autowired
 	private UserService userService;
-
+	@Autowired
+	private ModuleService moduleService;
+	@Autowired
+	private ParcoursService parcoursService;
+	
 	@RequestMapping("/login")
 	public String connexion(Model model) {
 		return "redirect:home";
@@ -51,12 +57,13 @@ public class ConnexionController extends GenericModelAttribute {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView connexion(
 			@RequestParam(value = "login", required = true) String login,
-			@RequestParam(value = "mdp", required = true) String mdp, HttpSession session,
+			@RequestParam(value = "mdp", required = true) String mdp,
+			HttpServletRequest request,
 			ModelAndView modelAndView) {
+		
 		User user = userService.Connect(login, mdp);
+		
 		if (userService.getError() == null) {
-			modelAndView.addObject("message", "Request successfully done !");
-			modelAndView.addObject("user", user);
 			UserInfo info = null;
 			info = userService.getInfos(user);
 			if(info == null){
@@ -81,7 +88,13 @@ public class ConnexionController extends GenericModelAttribute {
 				if(info.getUniversity() == null)
 					info.setUniversity("Université");
 			}
+			
+			int visits = (int) request.getServletContext().getAttribute(WebServletConfig.VIEW);
+			request.getServletContext().setAttribute(WebServletConfig.VIEW, visits++);
+			
+			modelAndView.addObject("user", user);
 			modelAndView.addObject("userInfo", info);
+			modelAndView.addObject("userRight", user.getStatut());
 			modelAndView.addObject("userParcours", userService.getUserParcours(user));
 			modelAndView.addObject("userModule", userService.getUserModule(user));
 			modelAndView.setViewName("home");
@@ -97,13 +110,11 @@ public class ConnexionController extends GenericModelAttribute {
 	public ModelAndView connexionTest(
 			@RequestParam(value = "login", required = true) String login,
 			@RequestParam(value = "mdp", required = true) String mdp,
-			HttpStatus statut,
+			HttpServletRequest request,
 			ModelAndView modelAndView) {
 		Validate.isValid(login, "");
 		User user = userService.ConnexionAlwayTrue(login);
 		if (userService.getError() == null) {
-			modelAndView.addObject("message", "Request successfully done !");
-			modelAndView.addObject("user", user);
 			UserInfo info = null;
 			info = userService.getInfos(user);
 			if(info == null){
@@ -128,9 +139,25 @@ public class ConnexionController extends GenericModelAttribute {
 				if(info.getUniversity() == null)
 					info.setUniversity("Université");
 			}
-			modelAndView.addObject("userInfo", info);
 			Parcours parcours = userService.getUserParcours(user);
 			List<Module> module = userService.getUserModule(user);
+			int visits = (int) request.getServletContext().getAttribute(WebServletConfig.VIEW);
+			request.getServletContext().setAttribute(WebServletConfig.VIEW, visits++);
+			Statut statut = user.getStatut();
+			if(statut.equals(Statut.RESPO_MODULE))
+				modelAndView.addObject("responsability", moduleService.getByRespo(user));
+			else if(statut.equals(Statut.RESPO_PARCOURS))
+				modelAndView.addObject("responsability", parcoursService.getByRespo(user));
+			else if(statut.equals(Statut.RESPO_PEDAGOGIQUE))
+				modelAndView.addObject("responsability", "all");
+			else if(statut.equals(Statut.ADMIN))
+				modelAndView.addObject("responsability", "admin");
+			else
+				modelAndView.addObject("responsability", "none");
+			modelAndView.addObject("user", user);
+			modelAndView.addObject("userInfo", info);
+			modelAndView.addObject("userRight", statut);
+			
 			if(parcours == null)
 				modelAndView.addObject("userParcours", false );
 			else
@@ -157,7 +184,6 @@ public class ConnexionController extends GenericModelAttribute {
 		session.setComplete();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.clear();
-		System.out.println("Logout controller");
 		modelAndView.setViewName("home");
 		return modelAndView;
 	}

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
 
-import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.User;
 
 public abstract interface GenericService<T> {

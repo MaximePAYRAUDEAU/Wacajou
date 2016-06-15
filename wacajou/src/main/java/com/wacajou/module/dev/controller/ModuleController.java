@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,10 +22,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wacajou.WacajouApplication;
 import com.wacajou.controller.common.GenericModelAttribute;
+import com.wacajou.data.jpa.domain.Comments;
 import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.Rating;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
+import com.wacajou.data.jpa.service.CommentService;
 import com.wacajou.data.jpa.service.ModuleService;
 import com.wacajou.data.jpa.service.UserService;
 
@@ -38,6 +43,7 @@ public class ModuleController extends GenericModelAttribute{
 	
 	@Autowired
 	private ModuleService moduleService;
+	
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView createModule(HttpSession session, ModelAndView modelAndView){
@@ -114,6 +120,13 @@ public class ModuleController extends GenericModelAttribute{
 		ModelAndView modelAndView = new ModelAndView();
 		Module module = moduleService.getByName(name);
 		if( module != null ){
+			try{
+				List<Comments> comments = moduleService.getComments(module);
+				modelAndView.addObject("comments", comments);
+				modelAndView.addObject("commentAverage", moduleService.getAverage(module, comments));
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			modelAndView.addObject("moduleConsult", module);
 			modelAndView.setViewName("consult/module");
 		}else
@@ -124,7 +137,16 @@ public class ModuleController extends GenericModelAttribute{
 	@RequestMapping(value = "/edit")
 	public ModelAndView editModule(@RequestParam Long id, ModelAndView modelAndView){
 		Module module = moduleService.getOne(id);
-		modelAndView.addObject("module", module);
+		List<User> listReturn = new ArrayList<User>();
+		List<User> listUsers = userService.getAllUser();
+		for(int i = 0; i < listUsers.size(); i++){
+			User user = listUsers.get(i);
+			if(user.getStatut().equals(Statut.RESPO_MODULE)){
+				listReturn.add(user);
+			}
+		}
+		modelAndView.addObject("users", listReturn);
+		modelAndView.addObject("module", module);		
 		modelAndView.setViewName("edit/module");
 		return modelAndView;
 	}
@@ -132,7 +154,58 @@ public class ModuleController extends GenericModelAttribute{
 	@RequestMapping(value = "/edit/process", method = RequestMethod.POST)
 	public ModelAndView editModuleSave(@ModelAttribute Module module, ModelAndView modelAndView){
 		moduleService.Update(module);
-		modelAndView.setViewName("consult/module?" + module.getName());
+		modelAndView.setViewName("redirect:../../administration");
 		return modelAndView;
 	}
-}
+	
+	@RequestMapping(value = "/inscription", method = RequestMethod.POST)
+	public ModelAndView inscriptionModule(@ModelAttribute("user") User user, @RequestParam("parcours") Parcours parcours, ModelAndView modelAndView){
+		if(user.isConnect()){
+			List<Module> modules = moduleService.getByParcours(parcours);
+			List<Module> modules_optional = moduleService.getByParcoursOptional(parcours);
+			modelAndView.addObject("modules", modules);
+			modelAndView.addObject("modules_optional", modules_optional);
+			modelAndView.addObject("parcours", parcours);
+			modelAndView.setViewName("inscription/module");
+		}else{
+			modelAndView.setViewName("redirect:../../home");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/inscription/process", method = RequestMethod.POST)
+	public ModelAndView inscriptionModuleProcess(@ModelAttribute("userParcours") Parcours parcours, @ModelAttribute("user") User user, @RequestParam("modules") List<Long> modules, ModelAndView modelAndView){
+		if(user.isConnect()){
+			List<Module> module = new ArrayList<Module>();
+			for(Long id: modules)
+				module.add(moduleService.getOne(id));
+			userService.setUserModule(user, parcours, module);
+			modelAndView.addObject("userModule", userService.getUserModule(user));
+			modelAndView.setViewName("user/profil");
+		}else{
+			modelAndView.setViewName("redirect:../../../home");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/comment", method = RequestMethod.POST)
+	public ModelAndView setComment(@ModelAttribute("user") User user, 
+			@RequestParam("name") String name, 
+			@RequestParam("title") String title, 
+			@RequestParam("message") String message, 
+			@RequestParam("rating") Rating rating, 
+			ModelAndView modelAndView){
+		if(user.isConnect()){
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("tilte", title);
+			map.put("message", message);
+			map.put("rating", rating);
+			Module module = moduleService.getByName(name);
+			moduleService.Evaluate(module, user, map);
+			modelAndView.addObject("moduleConsult", module);
+			modelAndView.setViewName("forward:../../module/consult");
+		}else
+			modelAndView.setViewName("redirect:../../home");
+		return modelAndView;		
+	}
+} 

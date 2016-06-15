@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.service.spi.ServiceException;
 
 import com.wacajou.data.jpa.domain.Comments;
+import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.User;
 /**
  * 
@@ -13,7 +14,7 @@ import com.wacajou.data.jpa.domain.User;
  *
  * @param <T> Class (Parcours, Module, User)
  */
-public interface CommentService<T> {
+public interface CommentService<T> extends GenericService<T>{
 	/**
 	 * <h1>Get All comment from entity T
 	 * 

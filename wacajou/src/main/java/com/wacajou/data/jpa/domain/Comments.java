@@ -10,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-
-import org.springframework.util.Assert;
 /**
  * 
  * @author Payraudeau Maxime

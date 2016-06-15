@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wacajou.config.WebServletConfig;
 
 @Controller
-@PropertySource("classpath:/config/install.properties")
 public class ImageController {
+	
 	@Autowired
 	private ServletContext servletContext;
 	
@@ -36,10 +36,11 @@ public class ImageController {
 			@PathVariable(value = "extension") String extension,
 			HttpServletResponse response) throws IOException {
 		if (extension != null) {
+			System.out.println(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + folder + "/"
+					+ name + "." + extension);
 			File file = new File(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + folder + "/"
 					+ name + "." + extension);
 			FileInputStream fis = null;
-	//		InputStream in = null;
 			byte[] fileReturn = null;
 			try {
 				fis = new FileInputStream(file);

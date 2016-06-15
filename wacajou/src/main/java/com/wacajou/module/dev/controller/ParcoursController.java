@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -135,6 +136,29 @@ public class ParcoursController extends GenericModelAttribute{
 			modelAndView.setViewName("consult/parcours");
 		} else
 			modelAndView.setViewName("redirect:../../home");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/inscription")
+	public ModelAndView inscriptionParcours(@ModelAttribute("user") User user, ModelAndView modelAndView){
+		if(user.isConnect()){
+			modelAndView.setViewName("inscription/parcours");
+		}else{
+			modelAndView.setViewName("redirect:../../home");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/inscription/process", method = RequestMethod.POST)
+	public ModelAndView inscriptionParcoursProcess(@ModelAttribute("user") User user, @RequestParam("parcours") Long parcours_id, ModelAndView modelAndView){
+		if(user.isConnect()){
+			Parcours parcours = parcoursService.getOne(parcours_id);
+			userService.setUserParcours(user, parcours);
+			modelAndView.addObject("userParcours", userService.getUserParcours(user));
+			modelAndView.setViewName("forward:../../module/inscription");
+		}else{
+			modelAndView.setViewName("redirect:../../home");
+		}
 		return modelAndView;
 	}
 }

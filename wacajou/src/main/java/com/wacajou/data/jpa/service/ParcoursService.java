@@ -6,7 +6,6 @@ import org.hibernate.service.spi.ServiceException;
 
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
-import com.wacajou.data.jpa.domain.User;
 
 public interface ParcoursService extends GenericService<Parcours> {
 	

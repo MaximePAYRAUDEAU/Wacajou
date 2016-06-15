@@ -1,5 +1,7 @@
 package com.wacajou.data.jpa.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.wacajou.data.jpa.domain.Comments;
+import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserModule;
@@ -22,13 +26,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			"FROM User u " + 
 			"LEFT JOIN u.userModule um " + 
 			"LEFT JOIN um.module m " + 
-			"WHERE m.name = :moduleName";
+			"WHERE m = :module";
 	
 	public final static String FIND_BY_PARCOURS = "SELECT u " + 
 			"FROM User u " + 
 			"LEFT JOIN u.userParcours up " + 
 			"LEFT JOIN up.parcours p " + 
-			"WHERE p.name = :parcoursName";
+			"WHERE p = :parcours";
 
 	User findByComments(Comments comments);
 
@@ -49,9 +53,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Page<User> findByStatut(Statut statut, Pageable pageable);
 
 	@Query(FIND_BY_MODULE)
-	Page<User> findByModule(@Param("moduleName") String moduleName, Pageable pageable);
+	List<User> findByModule(@Param("module") Module module);
 	
 	@Query(FIND_BY_PARCOURS)
-	Page<User> findByParcours(@Param("parcoursName") String parcoursName, Pageable pageable);
+	List<User> findByParcours(@Param("parcours") Parcours parcours);
 
 }

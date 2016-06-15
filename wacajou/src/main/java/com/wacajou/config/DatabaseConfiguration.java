@@ -43,6 +43,9 @@ public class DatabaseConfiguration {
 	private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
 	private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	private static final String PROPERTY_NAME_HIBERNATE_DDL_AUTO = "hibernate.ddl_auto";
+	private static final String PROPERTY_NAME_HIBERNATE_CHARSET = "hibernate.connection.CharSet";
+	private static final String PROPERTY_NAME_HIBERNATE_CHARACTER_ENCODING = "hibernate.connection.characterEncoding";
+	private static final String PROPERTY_NAME_HIBERNATE_USER_UNICODE = "hibernate.connection.useUnicode";
 	private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
 
 	@Resource
@@ -142,6 +145,13 @@ public class DatabaseConfiguration {
 				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 		properties.setProperty(PROPERTY_NAME_HIBERNATE_DIALECT,
 				env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+		
+		properties.setProperty(PROPERTY_NAME_HIBERNATE_CHARSET,
+				"utf8");
+		properties.setProperty(PROPERTY_NAME_HIBERNATE_CHARACTER_ENCODING,
+				"utf8");
+		properties.setProperty(PROPERTY_NAME_HIBERNATE_USER_UNICODE,
+				"true");
 		return properties;
 	}
 

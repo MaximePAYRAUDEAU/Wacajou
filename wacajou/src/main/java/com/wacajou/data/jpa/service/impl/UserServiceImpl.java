@@ -1,6 +1,7 @@
 package com.wacajou.data.jpa.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
@@ -11,11 +12,14 @@ import org.springframework.util.Assert;
 
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.ParcoursModule;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
 import com.wacajou.data.jpa.domain.UserModule;
+import com.wacajou.data.jpa.domain.UserParcours;
 import com.wacajou.data.jpa.repository.ModuleRepository;
+import com.wacajou.data.jpa.repository.ParcoursModuleRepository;
 import com.wacajou.data.jpa.repository.ParcoursRepository;
 import com.wacajou.data.jpa.repository.UserInfoRepository;
 import com.wacajou.data.jpa.repository.UserModuleRepository;
@@ -47,6 +51,9 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 	@Autowired
 	private ParcoursRepository parcoursRepository;
 	
+	@Autowired
+	private ParcoursModuleRepository parcoursModuleRepository;
+	
 	private String error = null;
 
 	public String getError() {
@@ -54,7 +61,7 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 	}
 
 	@Override
-	public void Create(String login, String promo, String statut)
+	public void Create(String login, String promo, Statut statut, Parcours parcours)
 			throws ServiceException {
 		// Vérification valeurs non null
 		Assert.notNull(login);
@@ -65,7 +72,7 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 		User user = new User();
 		Statut[] tab = Statut.values();
 		for (int i = 0; i < tab.length; i++) {
-			if (tab[i].toString().equals(statut)) {
+			if (tab[i].equals(statut)) {
 				user.Create(login, promo, tab[i]);
 				break;
 			}
@@ -77,10 +84,22 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 		userInfo.setUser(user);
 		try {
 			userRepository.save(user);
-			userInfoRepository.save(userInfo);
+			try{
+				userInfoRepository.save(userInfo);
+				try{
+					userParcoursRepository.save(new UserParcours(user, parcours));
+				}catch(Exception e){
+					if(parcours == null)
+						e.printStackTrace();
+					else
+						error = "Setting parcours non attribué pour l'utilisateur " + login;
+				}
+			}catch(Exception e){
+				error = "Utilisateur " + login + " déjà existant";
+			}	
 		} catch (Exception e) {
 			e.printStackTrace();
-			error = "Utilisateur déjà existant";
+			error = "Utilisateur " + login + " déjà existant";
 		}
 	}
 
@@ -149,7 +168,6 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 
 	@Override
 	public User getUser(long user_id) throws ServiceException {
-		error = null;
 		return userRepository.getOne(user_id);
 	}
 
@@ -167,13 +185,11 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 	@Override
 	public UserInfo getInfos(User user) throws ServiceException {
 		UserInfo info = userInfoRepository.findByUser(user);
-		System.out.println("Info : " + info);
 		if(info == null ){
 			info = new UserInfo();
 			info.setUser(user);
 			userInfoRepository.save(info);
 		}
-		System.out.println("Info 1 : " + info.getId());
 		return info;
 	}
 
@@ -195,6 +211,8 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 	public void updateInfo(User user, String full_file_name, String file_name)
 			throws ServiceException {
 		UserInfo info = userInfoRepository.findByUser(user);
+		System.out.println("Info : " + info.getId() );
+		System.out.println("File : " + file_name + " FileName : " + full_file_name );
 		if(file_name.equals("cv"))
 			info.setCv(full_file_name);
 		else if(file_name.equals("ldm"))
@@ -203,7 +221,7 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 			info.setMark(full_file_name);
 		else if(file_name.equals("internship"))
 			info.setInternship(full_file_name);
-		else if(file_name.equals("image"))
+		else if(file_name == "image")
 			info.setImage(full_file_name);
 		else if(file_name.equals("university"))
 			info.setUniversity(full_file_name);
@@ -213,6 +231,81 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 			error = "Unable to save informations.";
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void setUserParcours(User user, Parcours parcours) throws ServiceException {
+		try{
+			userParcoursRepository.save(new UserParcours(user, parcours));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setUserModule(User user, Parcours parcours, List<Module> module_optional)
+			throws ServiceException {
+		try{
+			if(parcours != null){
+				List<ParcoursModule> module_non_optional = parcoursModuleRepository.findByParcours(parcours);
+				for(ParcoursModule parcoursModule: module_non_optional)
+					module_optional.add(moduleRepository.findByParcoursModule(parcoursModule));
+			}
+			for(Module module: module_optional)
+				userModuleRepository.save(new UserModule(user, module));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void Create(HashMap<String, Object> map) throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Update(User t, HashMap<String, Object> map)
+			throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Delete(User t) throws ServiceException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User getByRespo(User user) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getByName(String name) throws ServiceException {
+		return null;
+	}
+
+	@Override
+	public List<User> getAll() throws ServiceException {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User getOne(Long id) throws ServiceException {
+		return userRepository.getOne(id);
+	}
+
+	@Override
+	public List<User> getUserByParcours(Parcours parcours) throws ServiceException {
+		return userRepository.findByParcours(parcours);
+	}
+
+	@Override
+	public List<User> getUserByModule(Module module) throws ServiceException {
+		return userRepository.findByModule(module);
 	}
 
 }

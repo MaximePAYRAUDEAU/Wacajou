@@ -1,11 +1,10 @@
 package com.wacajou.controller.common;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wacajou.data.jpa.domain.Reason;
@@ -23,7 +22,6 @@ import com.wacajou.data.jpa.service.UserService;
  */
 @Controller
 public class GlobalController extends GenericModelAttribute{
-	protected static final String SESSION_USER = "session_user";
 
 	@Autowired
 	private UserService userService;
@@ -48,7 +46,7 @@ public class GlobalController extends GenericModelAttribute{
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/test")
+	/*@RequestMapping(value = "/test")
 	public ModelAndView testing(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home");
@@ -58,35 +56,22 @@ public class GlobalController extends GenericModelAttribute{
 				"test@isep.fr", "TEST");
 		session.setAttribute("session_user", user);
 		return modelAndView;
-	}
-
-	@RequestMapping(value = "/administration")
-	public ModelAndView admin(@ModelAttribute("user") User user, ModelAndView modelAndView) {
-		if (user.isConnect()) {
-			if (!(user.getStatut().equals(Statut.ANCIEN) || user.getStatut()
-					.equals(Statut.STUDENT)))
-				modelAndView.setViewName("admin/admin");
-			else
-				modelAndView.setViewName("home");
-		} else
-			modelAndView.setViewName("home");
-		return modelAndView;
-	}
+	}*/
 
 	@RequestMapping(value = "/sidebar")
-	public ModelAndView sidebar(ModelAndView mandv) {
-		mandv.setViewName("template/sidebar");
-		return mandv;
+	public ModelAndView sidebar(ModelAndView modelAndView) {
+		modelAndView.setViewName("template/sidebar");
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/profil")
-	public ModelAndView profilPage(@ModelAttribute("user") User user, ModelAndView mandv) {
+	public ModelAndView profilPage(@ModelAttribute("user") User user, ModelAndView modelAndView) {
 		if (user.isConnect()) {
-			mandv.setViewName("user/profil");
-			mandv.addObject("reasons", Reason.values());
+			modelAndView.setViewName("user/profil");
+			modelAndView.addObject("reasons", Reason.values());
 		}else
-			mandv.setViewName("home");
-		return mandv;
+			modelAndView.setViewName("home");
+		return modelAndView;
 	}
 	
 }

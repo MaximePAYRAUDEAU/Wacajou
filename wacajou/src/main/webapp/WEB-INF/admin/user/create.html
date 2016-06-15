@@ -32,11 +32,12 @@
 		<div class="form-group" th:if="${userRight.equals(RespoPedagogique)}">
 			<label for="parcours" class="control-label">Parcours :</label>
 			<select name="parcours" class="form-control">
-				<option th:each="parcours: ${Allparcours}" th:value="${parcours}" th:text="${parcours.name}" />
+				<option th:value="null" th:text="Aucun" />
+				<option th:each="parcours: ${Allparcours}" th:value="${parcours.id}" th:text="${parcours.name}" />
 			</select>
 		</div>
 		<div th:unless="${userRight.equals(RespoPedagogique)}">
-			<input type="hidden" value="${user.parcours}" />
+			<input type="hidden" name="parcours" th:value="${responsability.id}" />
 		</div>
 		<input type="submit" value="Créer l'utilisateur" class="btn btn-default btn-sm"/>
 	</form>

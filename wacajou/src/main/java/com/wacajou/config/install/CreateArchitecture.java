@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration()
-@Profile("install")
+//@Profile("install")
 @PropertySource("classpath:/config/install.properties")
 public class CreateArchitecture {
 	
@@ -33,7 +33,7 @@ public class CreateArchitecture {
 		} catch (Exception e1) {
 			logger.error("Error creating architecture : " + e1.getMessage());
 		}
-		ConfigFile cf = new ConfigFile();
+		/*ConfigFile cf = new ConfigFile();
 		cf.getFile(path);
 		if(cf.getPath() == null){
 			cf.InstallConfigFile(path);
@@ -42,7 +42,7 @@ public class CreateArchitecture {
 			createArchitecture(cf.getPath());
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}		*/
 		return true;
 	}
 	

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
@@ -32,6 +32,7 @@
 <body>
 	<div id="wrapper">
 		<!-- Sidebar -->
+		<div th:if="${user != null}">
 		<div id="sidebar-wrapper" th:if="${user.isConnect()}">
 			<!-- <div class="container" th:if="${userInfo != null}">
 				<a th:href="@{/profil}"><img src="../user/profile.png"
@@ -61,7 +62,8 @@
 					<!-- <li>
 						<a th:href="@{/mail}" >Messagerie</a>
 					</li> -->
-					<li th:if="${userRight != null}">
+					<li th:if="${responsability != 'none'}">
+					<!-- userRight.equals(RespoPedagogique) || userRight.equals(RespoParcours) || userRight.equals(RespoModule) -->
 						<a th:href="@{/administration}" href="#" >Administration</a>
 					</li>
 					<li th:if="${userParcours}" >
@@ -73,6 +75,9 @@
 							<li><a href="#">Module 3</a></li>
 							<li><a href="#">Module 4</a></li> -->
 						</ul>
+					</li>
+					<li th:unless="${userParcours}" th:if="${responsability == 'none'}">
+						<a th:href="@{/parcours/inscription}">Choisir mon parcours</a>
 					</li>
 					<li>
 						<a href="#">Events</a>
@@ -87,8 +92,29 @@
 						<a href="#">Contact</a>
 					</li>
 				</ul>
-			</div> 
+			</div>
 			<div id="sidebar-wrapper" th:unless="${user.isConnect()}" >
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a th:href="@{/home}"> Wacajou application </a>
+					</li>
+					<li>
+						<img src="../images/profile-default-male.png"
+							th:src="@{/images/profile-default-male.png}" alt="No profile picture found" class="col-sm-offset-3 col-sm-6 img-circle" />									
+						<form class="col-sm-offset-1 col-sm-10 form-horizontal" id="connexion" method="post" action="#" th:action="@{/login/test}" >
+							<div class="form-group">
+								<input type="text" name="login" class="form-control" id="login" placeholder="Login" />
+							</div>
+							<div class="form-group">
+								<input type="password" name="mdp" class="form-control" id="mdp" placeholder="Mot de passe"/>
+							</div>
+							<input type="submit" value="Se connecter" class="btn btn-default btn-sm" />
+						</form>
+					</li>		
+				</ul>
+			</div>
+			</div>
+			<div id="sidebar-wrapper" th:unless="${user != null}">
 				<ul class="sidebar-nav">
 					<li class="sidebar-brand">
 						<a th:href="@{/home}"> Wacajou application </a>

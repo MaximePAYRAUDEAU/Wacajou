@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
@@ -147,14 +146,14 @@
 				<div class="row">
 					<div class="col-lg-12" th:if="${userRight.equals(RespoParcours)}">
 						<div id="lettreDeRecommmandation"
-							w3-include-html="/wacajou/user/ldr"></div>
+							w3-include-html="/wacajou/administration/ldr"></div>
 					</div>
 				</div>
 				<div class="row" id="module">
 					<div class="col-lg-12 well">
-						<h4>Modules existants</h4>
-						<div id="filter_col4_m" data-column="3" class="from-control">
-							<select class="column_filter_m form-control" id="col3_filter_m">
+						<h4>Modules</h4>
+						<div id="filter_col3_m" data-column="2" class="from-control">
+							<select class="column_filter_m form-control" id="col2_filter_m">
 								<option value="">All</option>
 								<option th:each="domain: ${Domain}" th:value="${domain.message}" th:text="${domain.message}">Domain</option>
 							</select>
@@ -164,7 +163,6 @@
 							cellspacing="0" width="100%">
 							<thead>
 								<tr>
-<!-- 									<th>Id</th> -->
 									<th>Nom</th>
 									<th>Responsable login</th>
 									<th>Domaine</th>
@@ -189,7 +187,7 @@
 				</div>
 				<div id="parcours" class="row">
 					<div class="col-lg-12 well">
-						<h4>Parcours existants</h4>
+						<h4>Parcours</h4>
 						<table id="parcoursTable" class="table table-striped"
 							cellspacing="0" width="100%">
 							<thead>
@@ -212,7 +210,7 @@
 				</div>
 				<div class="row" id="user">
 					<div class="col-lg-12 well">
-						<h4>Utilisateurs inscrits</h4>
+						<h4>Utilisateurs</h4>
 						<div id="filter_col4" data-column="3" class="from-control">
 							<select class="column_filter form-control" id="col3_filter">
 								<option value="">All</option>

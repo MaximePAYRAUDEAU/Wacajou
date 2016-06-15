@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import com.wacajou.data.jpa.domain.Comments;
 import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.repository.ModuleRepository;
 import com.wacajou.data.jpa.repository.UserRepository;
@@ -200,6 +201,18 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	@Override
 	public void Update(Module module) {
 		moduleRepository.save(module);
+	}
+
+	@Override
+	public List<Module> getByParcours(Parcours parcours)
+			throws ServiceException {
+		return moduleRepository.findByParcours(parcours);
+	}
+
+	@Override
+	public List<Module> getByParcoursOptional(Parcours parcours)
+			throws ServiceException {
+		return null; //moduleRepository.findByParcoursAndOptional(parcours);;
 	}
 
 }

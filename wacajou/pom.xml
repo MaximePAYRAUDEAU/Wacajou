@@ -115,6 +115,16 @@
 			<artifactId>spring-security-ldap</artifactId> </dependency> <dependency> 
 			<groupId>org.apache.directory.server</groupId> <artifactId>apacheds-server-jndi</artifactId> 
 			<version>1.5.5</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11-beta2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.11-beta2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

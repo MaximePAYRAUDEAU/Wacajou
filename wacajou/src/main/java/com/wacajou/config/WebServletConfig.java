@@ -14,13 +14,15 @@ import org.springframework.core.env.Environment;
 public class WebServletConfig {
 	private static final String INSTALL_PATH = "install.path";  
 	public static final String ROOT_PATH = "root";
+	public static final String VIEW = "number_consult";
 	
 	@Autowired
     Environment env;
 	
 	@Bean
 	public ServletContext initServletContext(ServletContext context){
-		context.setAttribute(ROOT_PATH, env.getProperty(INSTALL_PATH));
+		context.setAttribute(ROOT_PATH, env.getProperty(INSTALL_PATH) + "/Wacajou");
+		context.setAttribute(VIEW, 0);
 		return context;
 	}
 }

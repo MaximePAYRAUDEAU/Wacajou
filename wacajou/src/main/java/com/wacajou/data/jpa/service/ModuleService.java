@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.service.spi.ServiceException;
 
 import com.wacajou.data.jpa.domain.Module;
+import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.User;
 /**
  * <h1>Service de gestion des modules
@@ -12,7 +13,7 @@ import com.wacajou.data.jpa.domain.User;
  * @author Payraudeau Maxime
  *
  */
-public interface ModuleService extends GenericService<Module> {
+public interface ModuleService extends CommentService<Module> {
 	/**
 	 * <h1>Création d'un module avec l'ensemble des informations
 	 * 
@@ -58,5 +59,9 @@ public interface ModuleService extends GenericService<Module> {
 	String getError();
 
 	void Update(Module module);
+
+	List<Module> getByParcours(Parcours parcours) throws ServiceException;
+
+	List<Module> getByParcoursOptional(Parcours parcours) throws ServiceException;
 
 }
