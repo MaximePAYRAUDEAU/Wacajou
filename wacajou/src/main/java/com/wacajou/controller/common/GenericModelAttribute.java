@@ -19,7 +19,9 @@ import com.wacajou.data.jpa.service.UserService;
 
 @SessionAttributes( value = {"user", "userInfo", "userParcours", "userModule", "userRight", "responsability"}, types = {User.class, UserInfo.class, Parcours.class, Module.class})
 public abstract class GenericModelAttribute {
-	
+	public static final String ALL_USER = "Alluser";
+	public static final String ALL_MODULE = "Allmodule";
+	public static final String ALL_PARCOURS = "Allparcours";
 	@Autowired
 	private ModuleService moduleService;
 	@Autowired
@@ -28,17 +30,17 @@ public abstract class GenericModelAttribute {
 	private UserService userService;
 	
 	/* Get all of each Entity*/	
-	@ModelAttribute("Allmodule")
+	@ModelAttribute(ALL_MODULE)
 	public List<Module> modules() {
 		return moduleService.getAll();
 	}
 
-	@ModelAttribute("Allparcours")
+	@ModelAttribute(ALL_PARCOURS)
 	public List<Parcours> parcours() {
 		return parcoursService.getAll();
 	}
 
-	@ModelAttribute("Alluser")
+	@ModelAttribute(ALL_USER)
 	public List<User> users() {
 		return userService.getAllUser();
 	}

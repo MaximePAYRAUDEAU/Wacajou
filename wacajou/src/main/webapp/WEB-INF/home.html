@@ -53,13 +53,14 @@ function hideThis(_div){
 			</div>
 			<ul class="slides-container">
 				<li th:each="parcours: ${Allparcours}"><img src=""
-					th:src="@{/images/parcours/} + ${parcours.image}"
+					th:src="@{/file/parcours/} + ${parcours.image}"
 					alt="No image found" />
 					<div class="container slide-mid-left">
-						<h1 th:text="${parcours.name}">Name</h1>
+						<a class="h1" th:href="@{/parcours/consult(name=${parcours.name})}" th:text="${parcours.name}">Name</a>
 						<div class="contrast">
 							<p th:text="${parcours.domain.message}" >Domain</p>
 						</div>
+						
 					</div>
 				</li>
 				<li>

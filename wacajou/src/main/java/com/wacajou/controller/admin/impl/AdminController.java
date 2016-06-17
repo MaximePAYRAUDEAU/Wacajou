@@ -1,4 +1,4 @@
-package com.wacajou.controller.common;
+package com.wacajou.controller.admin.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,8 +19,7 @@ import com.wacajou.data.jpa.service.ParcoursService;
 import com.wacajou.data.jpa.service.UserService;
 
 @Controller
-@RequestMapping(value = "/administration", produces = "application/json; charset=UTF-8")
-public class AdminController extends GenericModelAttribute{
+public class AdminController extends AdminModelAttribute{
 	@Autowired
 	private UserService userService;
 
@@ -29,7 +29,7 @@ public class AdminController extends GenericModelAttribute{
 	@Autowired
 	private ModuleService moduleService;
 	
-	@RequestMapping("")
+	@RequestMapping("/administration")
 	public ModelAndView admin(@ModelAttribute("user") User user, ModelAndView modelAndView) {
 		if (user.isConnect()) {
 			if (!(user.getStatut().equals(Statut.ANCIEN) || user.getStatut().equals(Statut.STUDENT))){
@@ -48,6 +48,43 @@ public class AdminController extends GenericModelAttribute{
 		modelAndView.setViewName("admin/user/ldr");
 		return modelAndView;
 	}
+	
+/*	@RequestMapping("/{type}/create")
+	public ModelAndView create(@PathVariable("type") String type, ModelAndView modelAndView){
+		if(type.equals("module"))
+			modelAndView.addObject("Module", new Module());
+		else if(type.equals("parcours"))
+			modelAndView.addObject("Parcours", new Parcours());
+		else if(type.equals("user"))
+			modelAndView.addObject("User", new User());
+		else {
+			modelAndView.setViewName("redirect:../../");
+			return modelAndView;
+		}
+		modelAndView.setViewName("admin/" + type + "/create");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/module/create/process")
+	public ModelAndView createModuleProcess(@ModelAttribute("Module")Module module, ModelAndView modelAndView){
+		
+		modelAndView.setViewName("forward:../../administration");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/module/create/process")
+	public ModelAndView createModuleProcess(@ModelAttribute("Module")Module module, ModelAndView modelAndView){
+		
+		modelAndView.setViewName("forward:../../administration");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/module/create/process")
+	public ModelAndView createModuleProcess(@ModelAttribute("Module")Module module, ModelAndView modelAndView){
+		
+		modelAndView.setViewName("forward:../../administration");
+		return modelAndView;
+	}*/
 	
 	private void settingModel(User user, ModelAndView modelAndView){
 		if(user.getStatut().equals(Statut.RESPO_MODULE)){

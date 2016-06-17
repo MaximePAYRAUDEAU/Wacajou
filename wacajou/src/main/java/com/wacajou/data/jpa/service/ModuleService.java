@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
 
+import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.User;
@@ -21,19 +22,12 @@ public interface ModuleService extends CommentService<Module> {
 	 * @param description
 	 * @param image
 	 * @param domain
-	 * @param user_id
+	 * @param code
+	 * @param user
 	 * @throws ServiceException
 	 */
-	void Create(String name, String description, String image, String domain,
-			String user_id) throws ServiceException;
-
-	void Create(String name, String description, String image, String domain,
-			User user) throws ServiceException;
-
-	void Update(Module module, String name, String description, String image, String domain,
-			User user) throws ServiceException;
-
-	void Delete(String name) throws ServiceException;
+/*	void Create(String name, String description, String image, Domain domain, String code, User user)
+			throws ServiceException;*/
 
 	/**
 	 * <h1>Recupération de tout les modules existants
@@ -55,8 +49,6 @@ public interface ModuleService extends CommentService<Module> {
 //	Module getByRespo(User respo) throws ServiceException;
 
 //	Module ConsultByName(String name) throws ServiceException;
-
-	String getError();
 
 	void Update(Module module);
 

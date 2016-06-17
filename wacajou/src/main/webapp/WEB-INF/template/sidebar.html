@@ -79,7 +79,7 @@
 					<li th:unless="${userParcours}" th:if="${responsability == 'none'}">
 						<a th:href="@{/parcours/inscription}">Choisir mon parcours</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="#">Events</a>
 					</li>
 					<li>
@@ -90,7 +90,7 @@
 					</li>
 					<li>
 						<a href="#">Contact</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div id="sidebar-wrapper" th:unless="${user.isConnect()}" >
@@ -137,9 +137,5 @@
 		<!-- /#sidebar-wrapper -->
 		
 	</div>
-	 
-	<script>
-	w3IncludeHTML();
-	</script>
 </body>
 </html>

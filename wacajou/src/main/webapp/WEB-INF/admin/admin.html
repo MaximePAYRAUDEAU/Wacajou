@@ -140,7 +140,7 @@
 					<div class="col-lg-12"
 						th:if="${userRight.equals(RespoParcours) || userRight.equals(RespoPedagogique)}">
 						<div class="collapse" id="createUser"
-							w3-include-html="/wacajou/user/add"></div>
+							w3-include-html="/wacajou/user/create"></div>
 					</div>
 				</div>
 				<div class="row">
@@ -151,7 +151,7 @@
 				</div>
 				<div class="row" id="module">
 					<div class="col-lg-12 well">
-						<h4>Modules</h4>
+						<h3>Modules</h3>
 						<div id="filter_col3_m" data-column="2" class="from-control">
 							<select class="column_filter_m form-control" id="col2_filter_m">
 								<option value="">All</option>
@@ -163,6 +163,8 @@
 							cellspacing="0" width="100%">
 							<thead>
 								<tr>
+									<th>Code</th>
+									<th>Semestre</th>
 									<th>Nom</th>
 									<th>Responsable login</th>
 									<th>Domaine</th>
@@ -173,9 +175,11 @@
 							<tbody>
 								<tr th:each="module : ${Allmodule}">
 <!-- 									<td th:text="${module.id}">1</td> -->
-									<td th:text="${module.name}">Title ...</td>
+									<td th:text="${module.code}">Code </td>
+									<td th:text="${module.semester}">Semester</td>
+									<td th:text="${module.name}">Title </td>
 									<td th:if="${module.respo != null}"
-										th:text="${module.respo.login}">Text ...</td>
+										th:text="${module.respo.login}">Text</td>
 									<td th:unless="${module.respo != null}">None</td>
 									<td th:text="${module.domain.message}">Domein</td>
 									<td class="link" th:href="@{/module/consult(name=${module.name})}">Voir la fiche</td>
@@ -187,7 +191,7 @@
 				</div>
 				<div id="parcours" class="row">
 					<div class="col-lg-12 well">
-						<h4>Parcours</h4>
+						<h3>Parcours</h3>
 						<table id="parcoursTable" class="table table-striped"
 							cellspacing="0" width="100%">
 							<thead>
@@ -210,7 +214,7 @@
 				</div>
 				<div class="row" id="user">
 					<div class="col-lg-12 well">
-						<h4>Utilisateurs</h4>
+						<h3>Utilisateurs</h3>
 						<div id="filter_col4" data-column="3" class="from-control">
 							<select class="column_filter form-control" id="col3_filter">
 								<option value="">All</option>

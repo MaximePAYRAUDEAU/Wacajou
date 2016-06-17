@@ -32,15 +32,9 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	@Autowired
 	private UserRepository userRepository;
 	
-	//@Autowired
-	/*public ModuleServiceImpl(ModuleRepository moduleRepository, UserRepository userRepository) {
-		this.userRepository = userRepository;
-		this.moduleRepository = moduleRepository;
-	}*/
-
-	@Override
+	/*@Override
 	public void Create(String name, String description, String image,
-			String domain, String user_id) throws ServiceException {
+			Domain domain, String code, User user) throws ServiceException {
 		error = null;
 		Assert.notNull(name);
 		Assert.notNull(domain);
@@ -48,7 +42,7 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 		Domain[] tab = Domain.values();
 		for (int i = 0; i < tab.length; i++) {
 			if (tab[i].toString().equals(domain)) {
-				module.Create(name, description, image, tab[i]);
+				module.Create(name, description, image, code, tab[i]);
 				break;
 			}
 		}
@@ -56,14 +50,8 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 		if (module.getDomain() == null) {
 			error = "Domain non conforme";
 		}
-		if (user_id != null) {
-			String[] user_info = user_id.split(",");
-			String fname = user_info[0];
-			String lname = user_info[1];
-			User user = this.userRepository.findByFnameAndLname(fname, lname);
+		if(user != null)
 			module.setRespo(user);
-		} else
-			module.setRespo(this.userRepository.findByLogin("admin"));
 		try {
 			moduleRepository.save(module);
 		} catch (Exception e) {
@@ -71,40 +59,10 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 			error = "Module déjà existant";
 		}
 
-	}
+	}*/
 
 	public String getError() {
 		return error;
-	}
-
-	@Override
-	public void Update(Module module, String name, String description, String image, String domain,
-			User user) throws ServiceException {
-		error = null;
-		try {
-		//	Module module = moduleRepository.findByName(name);
-			if (module != null) {
-				module.setDescription("updated desc");
-				this.moduleRepository.saveAndFlush(module);
-			}else{
-				error = "Module inexistant";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			error = "Erreur dans l'update";
-		}
-	}
-
-	@Override
-	public void Delete(String name) throws ServiceException {
-		error = null;
-		Module module = getByName(name);
-		try {
-			moduleRepository.delete(module);
-		} catch (Exception e) {
-			e.printStackTrace();
-			error = "Erreur lors de la suppression du module";
-		}
 	}
 
 	@Override
@@ -129,7 +87,6 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	@Override
 	public Module getByRespo(User user)
 			throws ServiceException {
-		error = null;
 		return moduleRepository.findByRespo(user);
 	}
 
@@ -144,40 +101,36 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	}
 
 	@Override
-	public void Create(String name, String description, String image,
-			String domain, User user) throws ServiceException {
-		error = null;
-		Assert.notNull(name);
-		Assert.notNull(domain);
+	public void Create(HashMap<String, Object> map) throws ServiceException {
 		Module module = new Module();
 		Domain[] tab = Domain.values();
 		for (int i = 0; i < tab.length; i++) {
-			if (tab[i].toString().equals(domain)) {
-				module.Create(name, description, image, tab[i]);
+			if (tab[i].toString().equals(map.get("domain"))) {
+				module.Create((String) map.get("name"), (String) map.get("description"), (String) map.get("image"), (String) map.get("code"), tab[i]);
 				break;
 			}
 		}
-
-		if (module.getDomain() == null) {
+		if (module.getDomain() == null)
 			error = "Domain non conforme";
-		}
-		if (user != null) {
-			module.setRespo(user);
-		} else
-			module.setRespo(userRepository.findByLogin("admin"));
+		if(map.containsKey("user"))
+			module.setRespo((User) map.get("user"));
+		if(map.containsKey("semester"))
+			module.setSemester((String) map.get("semester"));
+		if(map.containsKey("tp_cours"))
+			module.setTpCours((int) map.get("tp_cours"));
+		if(map.containsKey("project"))
+			module.setProject((int) map.get("project"));
+		if(map.containsKey("ects"))
+			module.setEcts((double) map.get("ects"));
+		if(map.containsKey("link"))
+			module.setLink((String) map.get("link"));
+		
 		try {
 			moduleRepository.save(module);
 		} catch (Exception e) {
 			e.printStackTrace();
 			error = "Module déjà existant";
-		}
-
-	}
-
-	@Override
-	public void Create(HashMap<String, Object> map) throws ServiceException {
-		// TODO Auto-generated method stub
-		
+		}		
 	}
 
 	@Override
@@ -189,8 +142,7 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 
 	@Override
 	public void Delete(Module t) throws ServiceException {
-		// TODO Auto-generated method stub
-		
+		moduleRepository.delete(t);
 	}
 
 	@Override

@@ -8,17 +8,17 @@
     <meta name="description" content="" />
     <meta name="author" content="Payraudeau Maxime" />
 
-    <title>Wacajou - Parcours page</title>
+    <title th:text="'Wacajou - ' + ${parcoursConsult.name}">Wacajou - Parcours page</title>
 	<script src="http://www.w3schools.com/lib/w3data.js"></script>
 	<script type="text/javascript">
-function hideThis(_div){
-    var obj = document.getElementById(_div);
-    if(obj.style.display == "block")
-        obj.style.display = "none";
-    else
-        obj.style.display = "block";
-}
-</script>
+	function hideThis(_div){
+    	var obj = document.getElementById(_div);
+    	if(obj.style.display == "block")
+    	    obj.style.display = "none";
+    	else
+    	    obj.style.display = "block";
+	}
+	</script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />

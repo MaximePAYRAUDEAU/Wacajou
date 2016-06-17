@@ -36,9 +36,9 @@ public class ImageController {
 			@PathVariable(value = "extension") String extension,
 			HttpServletResponse response) throws IOException {
 		if (extension != null) {
-			System.out.println(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + folder + "/"
+			System.out.println(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + "/" + folder + "/"
 					+ name + "." + extension);
-			File file = new File(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + folder + "/"
+			File file = new File(servletContext.getAttribute(WebServletConfig.ROOT_PATH) + "/" +folder + "/"
 					+ name + "." + extension);
 			FileInputStream fis = null;
 			byte[] fileReturn = null;

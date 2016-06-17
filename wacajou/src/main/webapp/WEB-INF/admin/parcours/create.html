@@ -5,7 +5,7 @@
 </head>
 <body>
 	<form class="form-horizontal well" method="post" action="#" enctype="multipart/form-data" th:action="@{/parcours/create/send}">
-		<h3>Créer un parcours</h3>
+		<h3>CrÃ©er un parcours</h3>
 		<div class="form-group">
 			<label for="name" >Nom :</label>
 			<input type="text"  name="name" class="form-control"/>
@@ -40,10 +40,11 @@
 		<div class="form-group">
 			<label for="respo" >Responsable :</label>
 			<select name="user_id" class="form-control">
+				<option th:value="null" th:text="Aucun" />
 				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
 			</select>
 		</div>
-		<input type="submit" value="Créer" name="send" class="btn btn-default btn-sm"/>
+		<input type="submit" value="CrÃ©er" name="send" class="btn btn-default btn-sm"/>
 	</form>
 </body>
 

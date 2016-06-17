@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import com.wacajou.data.jpa.domain.Domain;
+
 /**
  * 
  * @author Payraudeau Maxime
@@ -22,7 +24,7 @@ public class Parcours extends AbstractEntity {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parcours")
 	private Set<UserParcours> userParcours;
 
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true )
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, optional = true)
 	private User respo;
 
 	@Column(name = "name", nullable = false, length = 50)
@@ -37,6 +39,9 @@ public class Parcours extends AbstractEntity {
 	@Column(name = "domain", nullable = false)
 	private Domain domain;
 
+	@Column(name = "link", nullable = true)
+	private String link;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parcours")
 	private Set<Comments> comments;
 
@@ -86,7 +91,15 @@ public class Parcours extends AbstractEntity {
 	public Domain getDomain() {
 		return this.domain;
 	}
+	
+	public void setLink(String link){
+		this.link = link;
+	}
 
+	public String getLink(){
+		return this.link;
+	}
+	
 	@Override
 	public String toString() {
 		return "Id=" + getId() + ", Name=" + getName() + ", Description=" + getDescription() + ", Image=" + getImage()

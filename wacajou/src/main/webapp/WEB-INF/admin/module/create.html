@@ -5,20 +5,47 @@
 </head>
 <body>
 	<form class="form-horizontal well" method="post" action="#" enctype="multipart/form-data" th:action="@{/module/create/send}">
-		<div class="form-group">
+		<h3>Créer un module</h3>
+		<div class="row form-group" >
+		<div class="col-xs-2">
+			<label for="code" >Code :</label>
+			<input type="number"  name="code" class="form-control"/>
+		</div>
+		<div class="col-xs-4">
 			<label for="name" >Nom :</label>
 			<input type="text"  name="name" class="form-control"/>
+		</div>
+		</div>
+		<div class="form-group">
+			<label for="semester" >Semestre :</label>
+			<input type="text"  name="semester" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="domain" >Domain :</label>
 			<select name="domain" class="form-control">
-				<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain.message}" />
+				<option th:each="domain: ${Domain}" th:value="${domain}" th:text="${domain.message}" />
 			</select>
+		</div>
+		<div class="form-group">
+			<label for="ects" >Ects :</label>
+			<input type="number"  name="ects" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="description" >Description :</label>
 			<textarea name="description" class="form-control" placeholder="Description">
 			</textarea>
+		</div>
+		<div class="form-group">
+			<label for="link" >Url isep :</label>
+			<input type="text"  name="link" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="tp_cours" >Tp/Cours :</label>
+			<input type="number"  name="tp_cours" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="project" >Projet :</label>
+			<input type="number"  name="project" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="image" >Image :</label>
@@ -31,7 +58,7 @@
 				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
 			</select>
 		</div>
-		<input type="submit" value="Cr�er" name="send" class="btn btn-default btn-sm"/>
+		<input type="submit" value="Créer" name="send" class="btn btn-default btn-sm"/>
 	</form>
 </body>
 

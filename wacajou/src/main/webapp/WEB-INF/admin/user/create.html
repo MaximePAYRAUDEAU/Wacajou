@@ -4,7 +4,7 @@
 <meta name="author" content="Payraudeau Maxime" />
 </head>
 <body>
-	<form data-toggle="validator" role="form" class="form-horizontal well" enctype="multipart/form-data" method="post" action="#" th:action="@{/user/add/process}">
+	<form data-toggle="validator" role="form" class="form-horizontal well" enctype="multipart/form-data" method="post" action="#" th:action="@{/user/create/process}">
 		<h3>Ajouter un ou plusieurs utilisateurs</h3>
 		<div id="fileUser" class="form-group">
 			<label for="login" class="control-label" >Identifiant :</label>
@@ -14,7 +14,7 @@
 				<span class="input-group-addon">File :</span>
 				<input type="file" id="login" name="file" class="form-control"/>
 			</div>
-			<div class="help-block with-error">Fichier CSV, XLS ou XLSX avec le login des users séparé par ; .</div>
+			<div class="help-block with-error">Fichier CSV, XLS ou XLSX avec le login des users sÃ©parÃ© par ; .</div>
 		</div>
 		<div class="form-group">
 			<label for="promo" class="control-label">Promotion :</label>
@@ -22,14 +22,14 @@
 				<option th:each="promo: ${promos}" th:value="${promo}" th:text="${promo}" />		
 			</select>	
 		</div>
-		<div class="help-block">Promotion pour les élèves. None pour l'équipe enseignante. </div>		
+		<div class="help-block">Promotion pour les Ã©lÃ¨ves. None pour l'Ã©quipe enseignante. </div>		
 		<div class="form-group">
 			<label for="statut" class="control-label">Statut :</label>
 			<select name="statut" class="form-control" required="required">
 				<option th:each="statut: ${statuts}" th:value="${statut}" th:text="${statut.message}" />		
 			</select>
 		</div>
-		<div class="form-group" th:if="${userRight.equals(RespoPedagogique)}">
+		<div class="form-group" th:if="${userRight.equals(RespoPedagogique)}" >
 			<label for="parcours" class="control-label">Parcours :</label>
 			<select name="parcours" class="form-control">
 				<option th:value="null" th:text="Aucun" />
@@ -39,7 +39,7 @@
 		<div th:unless="${userRight.equals(RespoPedagogique)}">
 			<input type="hidden" name="parcours" th:value="${responsability.id}" />
 		</div>
-		<input type="submit" value="Créer l'utilisateur" class="btn btn-default btn-sm"/>
+		<input type="submit" value="CrÃ©er l'utilisateur" class="btn btn-default btn-sm"/>
 	</form>
 	<script src="../js/validator.min.js" th:src="@{/js/validator.min.js}" type="text/javascript"></script>
 </body>

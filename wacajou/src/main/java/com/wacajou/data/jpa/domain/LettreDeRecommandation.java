@@ -23,7 +23,7 @@ public class LettreDeRecommandation extends AbstractEntity {
 	private String path;
 
 	@Column(name = "statut", nullable = false)
-	private LDRStatut statut;
+	private LDRStatus statut;
 	
 	@Column(name = "reason", nullable = false)
 	private Reason reason;
@@ -43,7 +43,7 @@ public class LettreDeRecommandation extends AbstractEntity {
 		this.path = path;
 	}
 
-	public void setStatut(LDRStatut statut) {
+	public void setStatut(LDRStatus statut) {
 		this.statut = statut;
 	}
 	
@@ -67,7 +67,7 @@ public class LettreDeRecommandation extends AbstractEntity {
 		return this.path;
 	}
 	
-	public LDRStatut getStatut(){
+	public LDRStatus getStatut(){
 		return this.statut;
 	}
 	
