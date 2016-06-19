@@ -1,6 +1,5 @@
 package com.wacajou.controller.common;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.wacajou.data.jpa.domain.Domain;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
+import com.wacajou.data.jpa.domain.Reason;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.domain.UserInfo;
@@ -22,6 +22,10 @@ public abstract class GenericModelAttribute {
 	public static final String ALL_USER = "Alluser";
 	public static final String ALL_MODULE = "Allmodule";
 	public static final String ALL_PARCOURS = "Allparcours";
+	
+	public static final String RESPO_MODULE = "RespoModule";
+	public static final String RESPO_PARCOURS = "RespoParcours";
+	public static final String RESPO_PEDAGOGIQUE = "RespoPedagogique";	
 	@Autowired
 	private ModuleService moduleService;
 	@Autowired
@@ -42,20 +46,20 @@ public abstract class GenericModelAttribute {
 
 	@ModelAttribute(ALL_USER)
 	public List<User> users() {
-		return userService.getAllUser();
+		return userService.getAll();
 	}
 	
 	/* Set userRight*/ 	
-	@ModelAttribute("RespoParcours")
+	@ModelAttribute(RESPO_MODULE)
 	public Statut rightParcours(){
 		return Statut.RESPO_PARCOURS;
 	}
 
-	@ModelAttribute("RespoModule")
+	@ModelAttribute(RESPO_PARCOURS)
 	public Statut rightModule(){
 		return Statut.RESPO_MODULE;
 	}
-	@ModelAttribute("RespoPedagogique")
+	@ModelAttribute(RESPO_PEDAGOGIQUE)
 	public Statut rightPedagogique(){
 		return Statut.RESPO_PEDAGOGIQUE;
 	}
@@ -63,5 +67,10 @@ public abstract class GenericModelAttribute {
 	@ModelAttribute("Domain")
 	public Domain[] domain(){
 		return Domain.values();
+	}
+	
+	@ModelAttribute("Reasons")
+	public Reason[] reaseon(){
+		return Reason.values();
 	}
 }

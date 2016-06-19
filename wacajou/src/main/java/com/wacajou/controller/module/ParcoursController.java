@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.module;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -64,24 +64,19 @@ public class ParcoursController extends GenericModelAttribute{
 	
 	@RequestMapping(value = "/inscription")
 	public ModelAndView inscriptionParcours(@ModelAttribute("user") User user, ModelAndView modelAndView){
-		if(user.isConnect()){
-			modelAndView.setViewName("inscription/parcours");
-		}else{
-			modelAndView.setViewName("redirect:../../home");
-		}
+		modelAndView.setViewName("user/inscription");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/inscription/process", method = RequestMethod.POST)
-	public ModelAndView inscriptionParcoursProcess(@ModelAttribute("user") User user, @RequestParam("parcours") Long parcours_id, ModelAndView modelAndView){
-		if(user.isConnect()){
-			Parcours parcours = parcoursService.getOne(parcours_id);
-			userService.setUserParcours(user, parcours);
-			modelAndView.addObject("userParcours", userService.getUserParcours(user));
-			modelAndView.setViewName("forward:../../module/inscription");
-		}else{
-			modelAndView.setViewName("redirect:../../home");
-		}
+	public ModelAndView inscriptionParcoursProcess(
+			@ModelAttribute("user") User user, 
+			@RequestParam("parcours") Long parcours_id, 
+			ModelAndView modelAndView){
+		Parcours parcours = parcoursService.getOne(parcours_id);
+		userService.setUserParcours(user, parcours);
+		modelAndView.addObject("userParcours", userService.getUserParcours(user));
+		modelAndView.setViewName("redirect:../../module/inscription");
 		return modelAndView;
 	}
 }

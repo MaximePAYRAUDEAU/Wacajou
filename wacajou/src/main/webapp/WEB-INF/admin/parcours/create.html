@@ -4,8 +4,8 @@
 <meta name="author" content="Payraudeau Maxime" />
 </head>
 <body>
-	<form class="form-horizontal well" method="post" action="#" enctype="multipart/form-data" th:action="@{/parcours/create/send}">
-		<h3>Créer un parcours</h3>
+	<form class="form-horizontal well" method="post" action="#" enctype="multipart/form-data" th:action="@{/administration/parcours/create/process}">
+		<h3>Cr�er un parcours</h3>
 		<div class="form-group">
 			<label for="name" >Nom :</label>
 			<input type="text"  name="name" class="form-control"/>
@@ -13,7 +13,7 @@
 		<div class="form-group">
 			<label for="domain" >Domain :</label>
 			<select name="domain" class="form-control">
-				<option th:each="domain: ${domains}" th:value="${domain}" th:text="${domain.message}" />
+				<option th:each="domain: ${Domain}" th:value="${domain}" th:text="${domain.message}" />
 			</select>
 		</div>
 		<div class="form-group">
@@ -22,26 +22,26 @@
 			</textarea>		</div>
 		<div class="form-group">
 			<label for="image" >Image :</label>
-			<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+			<input type="hidden" name="MAX_FILE_SIZE" value="1048576000" />
 			<input type="file" name="image" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="module" >Modules principaux :</label>
 			<select multiple="multiple" name="module" class="form-control" >
-				<option th:each="module: ${modules}" th:value="${module.id}" th:text="${module.name}" />
+				<option th:each="module: ${Allmodule}" th:value="${module.id}" th:text="${module.name}" />
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="module_option" >Modules optionels :</label>
 			<select multiple="multiple" name="module_optional" class="form-control">
-				<option th:each="module_optional: ${modules}" th:value="${module_optional.id}" th:text="${module_optional.name}" />
+				<option th:each="module_optional: ${Allmodule}" th:value="${module_optional.id}" th:text="${module_optional.name}" />
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="respo" >Responsable :</label>
 			<select name="user_id" class="form-control">
-				<option th:value="null" th:text="Aucun" />
-				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
+				<option th:value="0" th:text="Aucun" />
+				<option th:each="user: ${ListRespoParcours}" th:value="${user.id}" th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
 			</select>
 		</div>
 		<input type="submit" value="Créer" name="send" class="btn btn-default btn-sm"/>

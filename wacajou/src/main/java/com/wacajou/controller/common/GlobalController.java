@@ -32,15 +32,22 @@ public class GlobalController extends GenericModelAttribute{
 	@Autowired
 	private ModuleService moduleService;
 	
+	@RequestMapping(value = "")
+	public ModelAndView home1() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forward:home");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/")
-	public ModelAndView home() {
+	public ModelAndView home2() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("forward:home");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/home")
-	public ModelAndView goHome() {
+	public ModelAndView home3() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home");
 		return modelAndView;

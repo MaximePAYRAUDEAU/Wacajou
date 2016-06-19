@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.wacajou.common.ldap.LDAPObject;
+import com.wacajou.common.ldap.LDAPaccess;
 import com.wacajou.data.jpa.domain.Module;
 import com.wacajou.data.jpa.domain.Parcours;
 import com.wacajou.data.jpa.domain.ParcoursModule;
@@ -26,8 +28,6 @@ import com.wacajou.data.jpa.repository.UserModuleRepository;
 import com.wacajou.data.jpa.repository.UserParcoursRepository;
 import com.wacajou.data.jpa.repository.UserRepository;
 import com.wacajou.data.jpa.service.UserService;
-import com.wacajou.ldap.LDAPObject;
-import com.wacajou.ldap.LDAPaccess;
 
 @Component("userService")
 @Transactional
@@ -151,17 +151,6 @@ public class UserServiceImpl extends CommentServiceImpl<User> implements UserSer
 			return userRepository.findByLogin(login);
 		} catch (Exception e) {
 			error = "Error user not found";
-			return null;
-		}
-	}
-
-	@Override
-	public List<User> getAllUser() throws ServiceException {
-		error = null;
-		try {
-			return userRepository.findAll();
-		} catch (Exception e) {
-			error = "Erreur";
 			return null;
 		}
 	}

@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.module;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -25,14 +25,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.wacajou.common.file.csv.CSVFile;
+import com.wacajou.common.file.xls.XLSXFile;
 import com.wacajou.config.WebServletConfig;
 import com.wacajou.controller.common.GenericModelAttribute;
 import com.wacajou.data.jpa.domain.Statut;
 import com.wacajou.data.jpa.domain.User;
 import com.wacajou.data.jpa.service.ParcoursService;
 import com.wacajou.data.jpa.service.UserService;
-import com.wacajou.file.csv.CSVFile;
-import com.wacajou.file.xls.XLSXFile;
 
 @Controller
 // @SessionAttributes(value = UserController.SESSION_USER, types = { User.class

@@ -1,4 +1,4 @@
-package com.wacajou.file.csv;
+package com.wacajou.common.file.csv;
 
 import java.io.BufferedReader;
 import java.io.File;

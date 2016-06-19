@@ -69,7 +69,7 @@
                         		<p th:text="${parcoursConsult.description}">Description
                         		</p>
                         		<p>Responsable du parcours :
-                        		<strong th:text="${parcoursConsult.respo.fname} + ' ' + ${parcoursConsult.respo.lname}">Responsable </strong>
+                        		<strong th:if="${parcoursConsult.respo != null}" th:text="${parcoursConsult.respo.fname} + ' ' + ${parcoursConsult.respo.lname}">Responsable </strong>
                         		</p>
                             </div>
                     		<div class="ratings">

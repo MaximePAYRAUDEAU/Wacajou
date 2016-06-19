@@ -56,4 +56,6 @@ public interface ModuleService extends CommentService<Module> {
 
 	List<Module> getByParcoursOptional(Parcours parcours) throws ServiceException;
 
+	void Create(Module module);
+
 }

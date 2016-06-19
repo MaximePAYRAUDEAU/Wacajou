@@ -36,7 +36,67 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery -->
+    <script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="../js/validator.min.js" th:src="@{/js/validator.min.js}" type="text/javascript"></script>
+	<script src="//code.jquery.com/jquery-1.12.3.min.js" type="text/javascript"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	function filterColumn ( i ) {
+	    $('#userTable').DataTable().column( i ).search(
+	        $('#col'+i+'_filter').val()
+	    ).draw();
+	}
+	function filterColumn_m ( i ) {
+	    $('#moduleTable').DataTable().column( i ).search(
+	        $('#col'+i+'_filter_m').val()
+	    ).draw();
+	}
+	
+ 
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
+	$(document).ready(function() {
+	    var tableModule = $("#moduleTable").DataTable({
+	    	"language": {
+	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"  
+	    		},
+   			"columnDefs": [
+   			               	{
+   			                   "targets": [ 0 ],
+   			                   "visible": false
+   			               	}  
+   			           ]
+	    });
+	    var tableParcours = $("#parcoursTable").DataTable({
+	    	"language": {
+	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+	    	}
+	    });
+	    var tableUser = $("#userTable").DataTable({
+	    	"language": {
+	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+	    	},
+			"columnDefs": [
+  			               	{
+  			                   "targets": [ 0 ],
+  			                   "visible": false
+  			               	}  
+  			           ]
+	    } );
+	    $('select.column_filter').on( 'click', function () {
+	        filterColumn( $(this).parents('div').attr('data-column') );
+	    } );
+	    $('select.column_filter_m').on( 'click', function () {
+	        filterColumn_m( $(this).parents('div').attr('data-column') );
+	    } );
+	    
+	} );
+    </script>
 </head>
 <body style="margin-top: 50px">
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -126,21 +186,21 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12" th:if="${userRight.equals(RespoParcours) || userRight.equals(RespoPedagogique)}">
-						<div class="collapse" id="createModule"
-							w3-include-html="/wacajou/module/create"></div>
+						<div class="collapse" id="createModule"						
+							w3-include-html="/wacajou/administration/module/create"></div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-12" th:if="${userRight.equals(RespoPedagogique)}">
 						<div class="collapse" id="createParcours"
-							w3-include-html="/wacajou/parcours/create"></div>
+							w3-include-html="/wacajou/administration/parcours/create"></div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-12"
 						th:if="${userRight.equals(RespoParcours) || userRight.equals(RespoPedagogique)}">
 						<div class="collapse" id="createUser"
-							w3-include-html="/wacajou/user/create"></div>
+							w3-include-html="/wacajou/administration/user/create"></div>
 					</div>
 				</div>
 				<div class="row">
@@ -152,38 +212,52 @@
 				<div class="row" id="module">
 					<div class="col-lg-12 well">
 						<h3>Modules</h3>
-						<div id="filter_col3_m" data-column="2" class="from-control">
-							<select class="column_filter_m form-control" id="col2_filter_m">
+						<div id="filter_col1_m" data-column="4" class="input-group">
+							<span class="input-group-addon">Filtre domaine :</span>
+							<select class="column_filter_m form-control" id="col4_filter_m">
 								<option value="">All</option>
 								<option th:each="domain: ${Domain}" th:value="${domain.message}" th:text="${domain.message}">Domain</option>
 							</select>
-						</div>
+						</div><br/>
+						<div id="filter_col2_m" data-column="2" class="input-group">
+							<span class="input-group-addon">Filtre semestre :</span>
+							<select class="column_filter_m form-control" id="col2_filter_m">
+								<option value="">All</option>
+								<option >3</option>
+								<option >4</option>
+								<option >5</option>
+								<option >6</option>
+							</select>
+						</div> 
 						<br />
 						<table id="moduleTable" class="table table-striped"
 							cellspacing="0" width="100%">
 							<thead>
 								<tr>
+									<th>Status</th>
 									<th>Code</th>
 									<th>Semestre</th>
 									<th>Nom</th>
-									<th>Responsable login</th>
 									<th>Domaine</th>
+									<th>Responsable login</th>
+									<th>Crédits</th>
 									<th>Fiche</th>
 									<th>Modifier</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="module : ${Allmodule}">
-<!-- 									<td th:text="${module.id}">1</td> -->
+ 									<td th:text="${module.status}">Status</td>
 									<td th:text="${module.code}">Code </td>
 									<td th:text="${module.semester}">Semester</td>
 									<td th:text="${module.name}">Title </td>
+									<td th:text="${module.domain.message}">Domein</td>
 									<td th:if="${module.respo != null}"
 										th:text="${module.respo.login}">Text</td>
 									<td th:unless="${module.respo != null}">None</td>
-									<td th:text="${module.domain.message}">Domein</td>
+									<td th:text="${module.ects}" >Ects</td>
 									<td class="link" th:href="@{/module/consult(name=${module.name})}">Voir la fiche</td>
-									<td class="link" th:href="@{/module/edit(id=${module.id})}">Modifier</td>
+									<td class="link" th:href="@{/administration/module/edit(id=${module.id})}">Modifier</td>
 								</tr>
 							</tbody>
 						</table>
@@ -199,14 +273,18 @@
 									<th>Id</th>
 									<th>Nom</th>
 									<th>Responsable login</th>
+									<th>Voir la fiche</th>
+									<th>Modifier</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="parcours : ${Allparcours}"
-									th:href="@{/parcours/consult(name=${parcours.name})}">
+								<tr th:each="parcours : ${Allparcours}">
 									<td th:text="${parcours.id}">1</td>
 									<td th:text="${parcours.name}">Title ...</td>
-									<td th:text="${parcours.respo.login}">Text ...</td>
+									<td th:if="${parcours.respo != null}" th:text="${parcours.respo.login}" >Respo</td>
+									<td th:unless="${parcours.respo != null}" >Aucun</td>
+									<td class="link" th:href="@{/parcours/consult(name=${parcours.name})}">Voir la fiche</td>
+									<td class="link" th:href="@{/administration/parcours/edit(id=${parcours.id})}">Modifier</td>
 								</tr>
 							</tbody>
 						</table>
@@ -222,6 +300,12 @@
 								<option value="Ancien">Ancien</option>
 								<option value="Responsable">Responsable</option>
 							</select>
+						</div><br/>
+						<div id="filter_col5" data-column="4" class="from-control">
+							<select class="column_filter form-control" id="col4_filter">
+								<option value="">All</option>
+								<option th:each="year: ${years}" th:value="${year}" th:text="${year}">Year</option>
+							</select>
 						</div>
 						<br />
 						<table id="userTable" class="table table-striped" cellspacing="0"
@@ -229,9 +313,9 @@
 							<thead>
 								<tr>
 									<th>Id</th>
-									<th>FName</th>
 									<th>Login</th>
 									<th>Statut</th>
+									<th>Promo</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -251,8 +335,6 @@
 									<td th:text="${users.statut.message}">Statut ...</td>
 								</tr>
 							</tbody>
-							<tfoot>
-							</tfoot>
 						</table>
 					</div>
 				</div>
@@ -268,12 +350,8 @@
 
 	</div>
 	<!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-
+    
+  
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
@@ -292,44 +370,7 @@
 	<script>
 	w3IncludeHTML();
 	</script>
-	<script type="text/javascript">
-	function filterColumn ( i ) {
-	    $('#userTable').DataTable().column( i ).search(
-	        $('#col'+i+'_filter').val()
-	    ).draw();
-	}
-	function filterColumn_m ( i ) {
-	    $('#moduleTable').DataTable().column( i ).search(
-	        $('#col'+i+'_filter_m').val()
-	    ).draw();
-	}
-	$(document).ready(function() {
-	    var tableModule = $("#moduleTable").DataTable({
-	    	"language": {
-	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
-	    	}
-	    });
-	    var tableParcours = $("#parcoursTable").DataTable({
-	    	"language": {
-	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
-	    	}
-	    });
-	    var tableUser = $("#userTable").DataTable({
-	    	"language": {
-	    		"url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
-	    	}
-	    });
-	    $('select.column_filter').on( 'click', function () {
-	        filterColumn( $(this).parents('div').attr('data-column') );
-	    } );
-	    $('select.column_filter_m').on( 'click', function () {
-	        filterColumn_m( $(this).parents('div').attr('data-column') );
-	    } );
-	} );
-    </script>
-    <script src="../js/validator.min.js" th:src="@{/js/validator.min.js}" type="text/javascript"></script>
-	<script src="//code.jquery.com/jquery-1.12.3.min.js" type="text/javascript"></script>
-	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	
 	
 </body>
 

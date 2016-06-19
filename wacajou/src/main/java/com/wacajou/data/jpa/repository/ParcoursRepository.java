@@ -15,7 +15,7 @@ import com.wacajou.data.jpa.domain.User;
  * @author Payraudeau Maxime
  *
  */
-public interface ParcoursRepository extends JpaRepository<Parcours, Integer>{
+public interface ParcoursRepository extends JpaRepository<Parcours, Long>{
 	public final static String FIND_BY_USER = "SELECT p " + 
 			"FROM Parcours p " + 
 			"LEFT JOIN p.userParcours up " + 
@@ -40,5 +40,6 @@ public interface ParcoursRepository extends JpaRepository<Parcours, Integer>{
 	Parcours findByRespo(@Param("respo") User respo);
 	
 	List<Parcours> findAll();
+
 	
 }

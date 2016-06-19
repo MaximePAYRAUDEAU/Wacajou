@@ -1,5 +1,7 @@
 package com.wacajou.data.jpa.domain;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -38,7 +40,7 @@ public class Module extends AbstractEntity {
 	@Column(name = "domain", nullable = false)
 	private Domain domain;
 
-	@Column(name = "image", nullable = true, length = 50)
+	@Column(name = "image", nullable = true)
 	private String image;
 
 	@Column(name = "code", nullable = false)
@@ -46,27 +48,28 @@ public class Module extends AbstractEntity {
 
 	@Column(name = "semester", nullable = true)
 	private String semester;
-	
+
 	@Column(name = "tp_cours", nullable = true)
-	private int tp_cours;
-	
+	private double tpCours;
+
 	@Column(name = "project", nullable = true)
-	private int project;
-	
+	private double project;
+
 	@Column(name = "ECTS", nullable = true)
 	private double ects;
-	
+
 	@Column(name = "link", nullable = true)
 	private String link;
-	
+
 	@Column(name = "statut", nullable = false)
 	private Status status;
-	
+
 	public Module() {
 
 	}
 
-	public void Create(String name, String description, String image, String code, Domain domain) {
+	public void Create(String name, String description, String image,
+			String code, Domain domain) {
 		this.name = name;
 		this.description = description;
 		this.domain = domain;
@@ -77,7 +80,7 @@ public class Module extends AbstractEntity {
 	public User getRespo() {
 		return this.respo;
 	}
-	
+
 	public void setRespo(User user) {
 		this.respo = user;
 	}
@@ -89,15 +92,15 @@ public class Module extends AbstractEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
 
-	public void setName(String name){
+	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Set<Comments> getComms() {
 		return this.comments;
 	}
@@ -106,63 +109,71 @@ public class Module extends AbstractEntity {
 		return this.domain;
 	}
 
-	public void setDomain(Domain domain){
+	public void setDomain(Domain domain) {
 		this.domain = domain;
 	}
-	
-	public void setImage(String image){
+
+	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 	public String getImage() {
 		return this.image;
 	}
-	
-	public void setCode(String code){
+
+	public void setCode(String code) {
 		this.code = code;
 	}
-	
-	public String getCode(){
+
+	public String getCode() {
 		return this.code;
 	}
-	
-	public void setTpCours(int tp_cours){
-		this.tp_cours = tp_cours;
-	}
-	
-	public int getTpCours(){
-		return this.tp_cours;
+
+	public void setTpCours(double tpCours) {
+		this.tpCours = tpCours;
 	}
 
-	public void setProject(int project){
+	public double getTpCours() {
+		return this.tpCours;
+	}
+
+	public void setProject(double project) {
 		this.project = project;
 	}
-	
-	public int getProject(){
+
+	public double getProject() {
 		return this.project;
 	}
-	
-	public void setSemester(String semester){
+
+	public void setSemester(String semester) {
 		this.semester = semester;
 	}
 
-	public String getSemester(){
+	public String getSemester() {
 		return this.semester;
 	}
-	
-	public void setEcts(double ects){
+
+	public void setEcts(double ects) {
 		this.ects = ects;
 	}
-	
-	public double getEcts(){
+
+	public double getEcts() {
 		return this.ects;
 	}
-	
-	public void setLink(String link){
+
+	public void setLink(String link) {
 		this.link = link;
 	}
 
-	public String getLink(){
+	public String getLink() {
 		return this.link;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Status getStatus() {
+		return this.status;
 	}
 }

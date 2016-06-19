@@ -32,35 +32,6 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	@Autowired
 	private UserRepository userRepository;
 	
-	/*@Override
-	public void Create(String name, String description, String image,
-			Domain domain, String code, User user) throws ServiceException {
-		error = null;
-		Assert.notNull(name);
-		Assert.notNull(domain);
-		Module module = new Module();
-		Domain[] tab = Domain.values();
-		for (int i = 0; i < tab.length; i++) {
-			if (tab[i].toString().equals(domain)) {
-				module.Create(name, description, image, code, tab[i]);
-				break;
-			}
-		}
-
-		if (module.getDomain() == null) {
-			error = "Domain non conforme";
-		}
-		if(user != null)
-			module.setRespo(user);
-		try {
-			moduleRepository.save(module);
-		} catch (Exception e) {
-			e.printStackTrace();
-			error = "Module déjà existant";
-		}
-
-	}*/
-
 	public String getError() {
 		return error;
 	}
@@ -94,10 +65,10 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	public Module getByName(String name) throws ServiceException {
 		error = null;
 		Module module = moduleRepository.findByName(name);
-		if (module.equals(null)) {
+		if (module == null) {
 			error = "Module inexistant";
 		}
-		return module;
+		return module;		
 	}
 
 	@Override
@@ -152,7 +123,11 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 
 	@Override
 	public void Update(Module module) {
-		moduleRepository.save(module);
+		try{
+			moduleRepository.save(module);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -165,6 +140,16 @@ public class ModuleServiceImpl extends CommentServiceImpl<Module> implements Mod
 	public List<Module> getByParcoursOptional(Parcours parcours)
 			throws ServiceException {
 		return null; //moduleRepository.findByParcoursAndOptional(parcours);;
+	}
+
+	@Override
+	public void Create(Module module) 
+			throws ServiceException {
+		try{
+			moduleRepository.save(module);
+		}catch(Exception e){
+			throw new ServiceException("Create module failed : ", e);
+		}
 	}
 
 }

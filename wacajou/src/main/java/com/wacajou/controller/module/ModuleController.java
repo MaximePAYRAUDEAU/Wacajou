@@ -1,4 +1,4 @@
-package com.wacajou.module.dev.controller;
+package com.wacajou.controller.module;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

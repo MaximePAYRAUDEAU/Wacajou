@@ -1,15 +1,15 @@
 package com.wacajou.controller.admin.impl;
 
-import com.wacajou.controller.common.GenericModelAttribute;
-import com.wacajou.data.jpa.domain.Statut;
-import com.wacajou.data.jpa.domain.User;
-import com.wacajou.data.jpa.service.UserService;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.wacajou.controller.common.GenericModelAttribute;
+import com.wacajou.data.jpa.domain.Statut;
+import com.wacajou.data.jpa.domain.User;
 
 public abstract class AdminModelAttribute extends GenericModelAttribute {
 
@@ -19,53 +19,39 @@ public abstract class AdminModelAttribute extends GenericModelAttribute {
 	public static final String LIST_RESPO_MODULE = "ListRespoModule";
 	public static final String LIST_RESPO_PARCOURS = "ListRespoParcours";
 	public static final String LIST_RESPO_PEDAGOGIQUE = "ListRespoPedagogique";
-	
 	public static final String ALL_MODULE = GenericModelAttribute.ALL_MODULE;
 	
 	@ModelAttribute(LIST_ELEVE)
-	public List<User> listUserEleve(@ModelAttribute(ALL_USER) List<User> listUsers) {
-		List<User> listReturn = new ArrayList<User>();
-		for (User user: listUsers)
-			if (user.getStatut().equals(Statut.STUDENT))
-				listReturn.add(user);
-		return listReturn;
+	public @ResponseBody List<User> listUserEleve(@ModelAttribute(ALL_USER) List<User> listUsers) {
+		return listFromStatus(listUsers, Statut.STUDENT);
 	}
 	
 	@ModelAttribute(LIST_ANCIEN)
-	public List<User> listUserAncien(@ModelAttribute(ALL_USER) List<User> listUsers) {
-		List<User> listReturn = new ArrayList<User>();
-		for (User user: listUsers)
-			if (user.getStatut().equals(Statut.ANCIEN))
-				listReturn.add(user);
-		return listReturn;
+	public @ResponseBody List<User> listUserAncien(@ModelAttribute(ALL_USER) List<User> listUsers) {
+		return listFromStatus(listUsers, Statut.ANCIEN);
 	}
 	
 	@ModelAttribute(LIST_RESPO_MODULE)
-	public List<User> listUserRespoModule(@ModelAttribute(ALL_USER) List<User> listUsers) {
-		List<User> listReturn = new ArrayList<User>();
-		for (User user: listUsers)
-			if (user.getStatut().equals(Statut.RESPO_MODULE))
-				listReturn.add(user);
-		return listReturn;
+	public @ResponseBody List<User> listUserRespoModule(@ModelAttribute(ALL_USER) List<User> listUsers) {
+		return listFromStatus(listUsers, Statut.RESPO_MODULE);
 	}
 
 	@ModelAttribute(LIST_RESPO_PARCOURS)
-	public List<User> listUserRespoParcours(@ModelAttribute(ALL_USER) List<User> listUsers) {
-		List<User> listReturn = new ArrayList<User>();
-		for (User user: listUsers)
-			if (user.getStatut().equals(Statut.RESPO_PARCOURS))
-				listReturn.add(user);
-		return listReturn;
+	public @ResponseBody List<User> listUserRespoParcours(@ModelAttribute(ALL_USER) List<User> listUsers) {
+		return listFromStatus(listUsers, Statut.RESPO_PARCOURS);
 	}
 
 	@ModelAttribute(LIST_RESPO_PEDAGOGIQUE)
-	public List<User> listUserRespoPedagogique(@ModelAttribute(ALL_USER) List<User> listUsers) {
+	public @ResponseBody List<User> listUserRespoPedagogique(@ModelAttribute(ALL_USER) List<User> listUsers) {
+		return listFromStatus(listUsers, Statut.RESPO_PEDAGOGIQUE);
+	}
+	
+	private List<User> listFromStatus(List<User> listUsers, Statut Statut){
 		List<User> listReturn = new ArrayList<User>();
 		for (User user: listUsers)
-			if (user.getStatut().equals(Statut.RESPO_PEDAGOGIQUE))
+			if (user.getStatut().equals(Statut))
 				listReturn.add(user);
 		return listReturn;
 	}
-
 	
 }

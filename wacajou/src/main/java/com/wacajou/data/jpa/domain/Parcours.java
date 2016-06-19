@@ -15,7 +15,7 @@ import com.wacajou.data.jpa.domain.Domain;
  *
  */
 @Entity
-public class Parcours extends AbstractEntity {
+public class Parcours extends AbstractEntity implements ParcoursInterface {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parcours")
@@ -64,6 +64,10 @@ public class Parcours extends AbstractEntity {
 		this.respo = user;
 	}
 
+	public void setName(String name){
+		this.name = name;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -92,6 +96,10 @@ public class Parcours extends AbstractEntity {
 		return this.domain;
 	}
 	
+	public void setDomain(Domain domain) {
+		this.domain = domain;		
+	}
+	
 	public void setLink(String link){
 		this.link = link;
 	}
@@ -105,7 +113,5 @@ public class Parcours extends AbstractEntity {
 		return "Id=" + getId() + ", Name=" + getName() + ", Description=" + getDescription() + ", Image=" + getImage()
 				+ ", Domain=" + getDomain().toString();
 	}
-
-	
 
 }

@@ -1,4 +1,4 @@
-package com.wacajou.file.xls;
+package com.wacajou.common.file.xls;
 
 import java.io.File;
 import java.io.FileInputStream;

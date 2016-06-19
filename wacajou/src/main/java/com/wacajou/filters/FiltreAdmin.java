@@ -20,9 +20,8 @@ import com.wacajou.data.jpa.domain.User;
 /**
  * Servlet Filter implementation class FiltreAdmin
  */
-@WebFilter(urlPatterns = { "/admin/**" })
+@WebFilter(urlPatterns = { "/administration/**" })
 public class FiltreAdmin implements Filter {
-	public static final String SESSION_USER = "session_user";
 	public static final String ACCES_RESTREINT = "/home";
 
     /**
@@ -43,18 +42,14 @@ public class FiltreAdmin implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        System.out.println("Admin filter called ");
-        HttpSession session = req.getSession();
-        User user = (User) session.getAttribute(SESSION_USER);
-        if(user != null)
-        	if(user.getStatut().equals(Statut.ADMIN))
-        		chain.doFilter(request, response);
-        	else 
-                res.sendRedirect( req.getContextPath() + ACCES_RESTREINT );
-        else
-        	res.sendRedirect( req.getContextPath() + ACCES_RESTREINT );
+        System.out.println("Administration filter call !");
+		try {
+			chain.doFilter(request, response);
+		} catch (Exception ex) {
+			request.setAttribute("errorMessage", ex);
+			request.getRequestDispatcher("/WEB-INF/views/jsp/error.jsp")
+                               .forward(request, response);
+		}
 	}
 
 	/**

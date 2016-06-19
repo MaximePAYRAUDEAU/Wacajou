@@ -21,7 +21,7 @@ public class WebServletConfig {
 	
 	@Bean
 	public ServletContext initServletContext(ServletContext context){
-		context.setAttribute(ROOT_PATH, env.getProperty(INSTALL_PATH) + "/Wacajou");
+		context.setAttribute(ROOT_PATH, env.getProperty(INSTALL_PATH) + "Wacajou");
 		context.setAttribute(VIEW, 0);
 		return context;
 	}

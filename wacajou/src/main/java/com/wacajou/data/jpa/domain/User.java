@@ -94,6 +94,10 @@ public class User extends AbstractEntity {
 		return this.comments;
 	}
 
+	public UserParcours getParcours(){
+		return this.userParcours;
+	}
+	
 	public String getLogin() {
 		return this.login;
 	}
@@ -101,10 +105,16 @@ public class User extends AbstractEntity {
 	public String getNumber() {
 		return this.number;
 	}
+	
+	public String getPromo() {
+		return this.promo;
+	}
 
 	@Override
 	public String toString() {
 		return getId() + "," + getLogin() + "," + getFname() + "," + getLname()
 				+ "," + getMail() + "," + getStatut();
 	}
+
+	
 }

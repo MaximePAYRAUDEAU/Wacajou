@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="Payraudeau Maxime" />
+
+<title>Wacajou - Administration</title>
+<script src="http://www.w3schools.com/lib/w3data.js"
+	type="text/javascript"></script>
+
+<script type="text/javascript">
+	function hideThis(_div) {
+		var obj = document.getElementById(_div);
+		if (obj.style.display == "block")
+			obj.style.display = "none";
+		else
+			obj.style.display = "block";
+	}
+</script>
+
+<!-- 	<style type="text/css">a {text-decoration: none}</style> -->
+<!-- Bootstrap Core CSS -->
+<link href="../css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="../css/font-awesome.min.css"
+	th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+<link
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="../css/simple-sidebar.css"
+	th:href="@{/css/simple-sidebar.css}" rel="stylesheet" />
+<link href="../css/custom-datatable.css"
+	th:href="@{/css/custom-datatable.css}" rel="stylesheet" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body style="margin-top: 50px">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Administration</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="#module">Modules</a></li>
+					<li><a href="#parcours">Parcours</a></li>
+					<li><a href="#user">Utilisateurs</a></li>
+					<li th:if="${userRight.equals(RespoParcours)}"><a
+						href="#lettreDeRecommmandation">Lettre de recommandation</a></li>
+					<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li> -->
+				</ul>
+				<!-- <form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search" />
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form> -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/logout}"><i
+							class="glyphicon glyphicon-off"></i>Logout</a></li>
+					<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul></li> -->
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<div id="wrapper">
+
+		<div w3-include-html="/wacajou/sidebar"></div>
+
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+
+			<div class="container-fluid">
+				<div class="row">
+
+					<form class="form-horizontal well" method="post" action="#"
+						enctype="multipart/form-data" th:action="@{/administration/module/edit/process}"
+						th:object="${moduleForm}">
+						<h3 th:text="${moduleForm.code + ' - ' + moduleForm.name}">Module</h3>
+						<div class="row form-group">
+							<div class="col-xs-2">
+								<input type="hidden" name="code" class="form-control"
+									th:field="*{code}" th:value="${code}" size="15" /> <input
+									type="hidden" name="name" class="form-control"
+									th:field="*{name}" th:value="${name}" size="25" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="semester">Semestre :</label> <input type="text"
+								name="semester" class="form-control" th:field="*{semester}"
+								th:value="${semester}" />
+						</div>
+						<div class="form-group">
+							<label for="domain">Domain :</label> <select name="domain"
+								class="form-control" th:field="*{domain}">
+								<option th:text="${domain}" th:value="${domain}" />
+								<option th:each="domain: ${Domain}" th:value="${domain}"
+									th:text="${domain.message}" />
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="ects">Ects :</label> <input type="number"
+								name="ects" class="form-control" th:field="*{ects}"
+								th:value="${ects}" step="0.1" max="30" />
+						</div>
+						<div class="form-group">
+							<label for="description">Description :</label>
+							<textarea name="description" class="form-control"
+								placeholder="Description" th:field="*{description}"
+								th:value="${description}" rows="7">
+						</textarea>
+						</div>
+						<div class="form-group">
+							<label for="link">Url isep :</label> <input type="text"
+								name="link" class="form-control" th:field="*{link}"
+								th:value="${link}" size="50" />
+						</div>
+						<div class="form-group">
+							<label for="tpCours">Tp/Cours :</label> <input type="number"
+								name="tpCours" class="form-control" th:field="*{tpCours}"
+								th:value="${tpCours}" step="0.5" max="90" />
+						</div>
+						<div class="form-group">
+							<label for="project">Projet :</label> <input type="number"
+								name="project" class="form-control" th:field="*{project}"
+								th:value="${project}" step="0.5" max="90" />
+						</div>
+						<div class="form-group">
+							<label for="image">Image :</label> <input type="hidden"
+								name="MAX_FILE_SIZE" value="1048576000" /> <input type="file"
+								name="image" class="form-control" th:field="*{image}" />
+						</div>
+						<div class="form-group">
+							<label for="respo">Responsable :</label> <select name="respo"
+								class="form-control" th:field="*{respo}">
+								<option th:if="${respo != null}" th:value="${respo}" th:text="${respo.lname} + ' ' + ${respo.fname}" />
+								<option th:value="0" th:text="Aucun" />
+								<option th:each="user: ${users}" th:value="${user.id}"
+									th:text="${user.login} + ' ' + ${user.lname} + ' ' + ${user.fname}" />
+							</select>
+						</div>
+						<input type="submit" value="Update" name="send"
+							class="btn btn-default btn-sm" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+	<!-- jQuery -->
+	<script src="../js/jquery.js" th:src="@{/js/jquery.js}"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+	<script>
+	w3IncludeHTML();
+	</script>
+	<script src="../js/validator.min.js" th:src="@{/js/validator.min.js}"
+		type="text/javascript"></script>
+	<script src="//code.jquery.com/jquery-1.12.3.min.js"
+		type="text/javascript"></script>
+</body>
+
+</html>

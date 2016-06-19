@@ -33,8 +33,6 @@ public interface UserService {
 	void updateInfo(User user, String full_file_name, String file_name)
 			throws ServiceException;
 
-	List<User> getAllUser() throws ServiceException;
-
 	String getError();
 
 	void setUserParcours(User user, Parcours parcours)throws ServiceException;
@@ -45,5 +43,8 @@ public interface UserService {
 	List<User> getUserByParcours(Parcours parcours) throws ServiceException;
 
 	List<User> getUserByModule(Module module) throws ServiceException;
+
+	List<User> getAll() throws ServiceException;
+
 
 }

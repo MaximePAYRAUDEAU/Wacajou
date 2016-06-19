@@ -91,11 +91,10 @@ public class ConnexionController extends GenericModelAttribute {
 			
 			int visits = (int) request.getServletContext().getAttribute(WebServletConfig.VIEW);
 			request.getServletContext().setAttribute(WebServletConfig.VIEW, visits++);
-			
 			modelAndView.addObject("user", user);
 			modelAndView.addObject("userInfo", info);
 			modelAndView.addObject("userRight", user.getStatut());
-			modelAndView.addObject("userParcours", userService.getUserParcours(user));
+			modelAndView.addObject("userParcours", user.getParcours().getParcours());
 			modelAndView.addObject("userModule", userService.getUserModule(user));
 			modelAndView.setViewName("home");
 			return modelAndView;
@@ -157,7 +156,6 @@ public class ConnexionController extends GenericModelAttribute {
 			modelAndView.addObject("user", user);
 			modelAndView.addObject("userInfo", info);
 			modelAndView.addObject("userRight", statut);
-			
 			if(parcours == null)
 				modelAndView.addObject("userParcours", false );
 			else

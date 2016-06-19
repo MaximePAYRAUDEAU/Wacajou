@@ -1,5 +1,6 @@
 package com.wacajou.controller.admin.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +31,9 @@ public class AdminController extends AdminModelAttribute{
 	private ModuleService moduleService;
 	
 	@RequestMapping("/administration")
-	public ModelAndView admin(@ModelAttribute("user") User user, ModelAndView modelAndView) {
-		if (user.isConnect()) {
-			if (!(user.getStatut().equals(Statut.ANCIEN) || user.getStatut().equals(Statut.STUDENT))){
-				modelAndView.setViewName("admin/admin");
-				settingModel(user, modelAndView);
-			} else
-				modelAndView.setViewName("home");
-		} else
-			modelAndView.setViewName("home");
+	public ModelAndView admin(@ModelAttribute(AdminModelAttribute.ALL_USER)List<User> listUser, @ModelAttribute("user") User user, ModelAndView modelAndView) {
+		modelAndView.setViewName("admin/admin");
+				settingModel(listUser, user, modelAndView);
 		return modelAndView;
 	}
 	
@@ -86,17 +81,25 @@ public class AdminController extends AdminModelAttribute{
 		return modelAndView;
 	}*/
 	
-	private void settingModel(User user, ModelAndView modelAndView){
+	private void settingModel(List<User> listUser, User user, ModelAndView modelAndView){
+		List<Integer> years = new ArrayList<Integer>();
 		if(user.getStatut().equals(Statut.RESPO_MODULE)){
 			Module module = moduleService.getByRespo(user);
-			modelAndView.addObject("Allmodule", module);
-			modelAndView.addObject("Alluser", userService.getUserByModule(module));
+			listUser = userService.getUserByModule(module);
+						modelAndView.addObject("Allmodule", module);
 		}else if(user.getStatut().equals(Statut.RESPO_PARCOURS)){
 			Parcours parcours = parcoursService.getByRespo(user);
 			List<Module> modules = moduleService.getByParcours(parcours);
+			listUser = userService.getUserByParcours(parcours);
 			modelAndView.addObject("Allmodule", modules);
 			modelAndView.addObject("Allparcours", parcours);
-			modelAndView.addObject("Alluser", userService.getUserByParcours(parcours));
 		}	
+		for(User userC: listUser)
+			for(int year: years)
+				if(year == Integer.parseInt(userC.getPromo()))
+					years.add(year);
+		modelAndView.addObject("Alluser", listUser);
+		modelAndView.addObject("years", years);
+
 	}
 }

@@ -157,7 +157,6 @@ public class ParcoursServiceImpl extends CommentServiceImpl<Parcours> implements
 			error = "Domain non conforme";
 			return;
 		}
-
 		if (modules != null)
 			for (Long id: modules) {
 				Module module = moduleRepository.findOne(id);
@@ -184,35 +183,40 @@ public class ParcoursServiceImpl extends CommentServiceImpl<Parcours> implements
 
 	@Override
 	public void Update(Parcours parcours, HashMap<String,Object> map) throws ServiceException {
-		String description = (String) map.get("description");
-		String image = (String) map.get("image");
-		List<Long> modules = (List<Long>) map.get("modules");
-		List<Long> modules_optional = (List<Long>) map.get("modules_optional");
-		User user = (User) map.get("user");		
-		if(image != null)
-			parcours.setImage(image);
-		if(description != null)
-			parcours.setDescription(description);
-		if (modules != null)
-			for (Long id: modules) {
-				Module module = moduleRepository.findOne(id);
-				if(parcoursModuleRepository.findByParcoursAndModuleAndOptional(parcours, module, false) != null)
-					parcoursModuleRepository.save(new ParcoursModule(parcours, module, false));
+		if(map.containsKey("image"))
+			if(map.get("image") != null)
+				parcours.setImage((String) map.get("image"));
+		if(map.containsKey("description"))
+			if(map.get("description") != null)
+				parcours.setDescription((String) map.get("description"));
+		parcoursModuleRepository.deleteByParcours(parcours);
+		if (map.containsKey("module"))
+			if(map.get("module") != null){
+				List<Long> modules = (List<Long>) map.get("module");
+				for (Long id: modules) {
+					Module module = moduleRepository.findOne(id);
+					if(parcoursModuleRepository.findByParcoursAndModuleAndOptional(parcours, module, false) != null)
+						parcoursModuleRepository.save(new ParcoursModule(parcours, module, false));
+				}
 			}
-		
-		if (modules_optional != null)
-			for (Long id: modules_optional) {
-				Module module = moduleRepository.findOne(id);
-				if(parcoursModuleRepository.findByParcoursAndModuleAndOptional(parcours, module, true) != null)
-					parcoursModuleRepository.save(new ParcoursModule(parcours, module, true));
+		if (map.containsKey("module_optional"))
+			if(map.get("module_optional") != null){
+				List<Long> module_optional = (List<Long>) map.get("module_optional");
+				for (Long id: module_optional) {
+					Module module = moduleRepository.findOne(id);
+					if(parcoursModuleRepository.findByParcoursAndModuleAndOptional(parcours, module, true) != null)
+						parcoursModuleRepository.save(new ParcoursModule(parcours, module, true));
 			}
-
-		if (user != null)
-			parcours.setRespo(user);
+		}
+		if (map.containsKey("user"))
+			if(map.get("user") != null)
+				parcours.setRespo((User) map.get("user"));
 		try{
 			parcoursRepository.save(parcours);
 		}catch(Exception e){
 			error = "Update error";
+			e.printStackTrace();
+			System.out.println(error);
 		}
 	}
 
@@ -227,8 +231,7 @@ public class ParcoursServiceImpl extends CommentServiceImpl<Parcours> implements
 
 	@Override
 	public Parcours getOne(Long id) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		return parcoursRepository.getOne(id);
 	}
 
 }

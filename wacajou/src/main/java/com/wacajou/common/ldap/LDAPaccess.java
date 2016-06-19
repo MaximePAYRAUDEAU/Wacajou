@@ -1,4 +1,4 @@
-package com.wacajou.ldap;
+package com.wacajou.common.ldap;
 import java.io.Serializable;
 import java.util.Hashtable;
 
